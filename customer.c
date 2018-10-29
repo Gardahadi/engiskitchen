@@ -84,7 +84,43 @@ void DeleteCustomerFromQueue(CQueue *Q,Customer *C){
     }
 }
 
-Customer GenerateCustomer();
-/* Return customer */
-/* Customer is generated with random generation */
-/* If undefined customer is returned, it means that no customer is generated */
+Customer GenerateCustomer(){
+    /* Return customer */
+    /* Customer is generated with random generation */
+    /* If undefined customer is returned, it means that no customer is generated */
+    /* Dictionary */
+    int frequency_ratio = 9; //program X times more likely to not generate any customers in one tick time
+    int number_ratio = 2; //program X times more likely to produce guest with 2 seats
+    int star_ratio = 15;//program is X times more likely to generate normal guest instead of star guest
+    int X; //number for placeholder
+    Customer C;
+    /* Algorithm */
+    X = rand();
+    if((X mod(frequency_ratio+1))==0){
+        //Random guests generated
+        //Determining number of guest
+        X = rand();
+        if((X mod(number_ratio+1))==0){
+            Jumlah(C)=4;
+        } else {
+            Jumlah(C)=2;
+        }
+        //Determining whether guests are star guests or not
+        X=rand();
+        if((X mod(star_ratio+1))==0){
+            //Star guest
+            IsStar(C)=true;
+            Kesabaran(C)=20;
+        } else {
+            //normal guest
+            IsStar(C)=false;
+            Kesabaran(C)=30;
+        }
+    } else {
+        //Undefined guest
+        Kesabaran(C) = UndefCustomer;
+        Jumlah(C) = UndefCustomer;
+        IsStar(C) = false;
+    }
+    return C;
+}
