@@ -94,6 +94,8 @@ void AddCust();
 // Customer can be either star customer or non-star customer
 // If no customer generated, return a not-valid customer
 
+void DelQCust();
+
 void DelCust();
 // I.S. Arbitrary
 // F.S. Customer in both queue and restauran deleted
