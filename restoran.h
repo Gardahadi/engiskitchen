@@ -61,6 +61,7 @@ typedef struct {
 
 extern Restoran R;
 extern Rs;
+extern Room room;
 
 void Move (char* Perintah);
 
