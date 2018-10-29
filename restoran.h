@@ -3,27 +3,19 @@
 #ifndef RESTORAN_H
 #define RESTORAN_H
 
-#include "boolean.h"
-#include "jam.h"
-#include "point.h"
-#include "array.h"
-#include "matriks.h"
-#include "mesinkata.h"
-#include "queue.h"
-#include "stackt.h"
-#include "list.h"
-#include "tree.h"
-#include "graph.h"
+#include "ADT header/boolean.h"
+#include "ADT header/jam.h"
+#include "ADT header/point.h"
+#include "ADT header/array.h"
+#include "ADT header/matriks.h"
+#include "ADT header/mesinkata.h"
+#include "ADT header/queue.h"
+#include "ADT header/stackt.h"
+#include "ADT header/list.h"
+#include "ADT header/tree.h"
+#include "ADT header/graph.h"
 
 #include <stdio.h>
-
-/*  Kamus Umum */
-
-#define BrsMin 0
-#define BrsMax 100
-#define KolMin 0
-#define KolMax 100
-#define KolMax 100
 
 /* Definisi elemen dan koleksi objek */
 
@@ -31,8 +23,7 @@ typedef struct {
 	//Tree of food
 } Resep;
 
-boolean Room [BrsMax][KolMax]; 
-/* Indeks Room yang digunakan: [BrsMin..BrsMax][KolMin..KolMax] */
+MATRIKS Room; //UBAH ELTYPE MATRIKS JADI CHAR
 
 typedef struct {
   Food Makanan; //nama makanan
@@ -74,24 +65,27 @@ typedef struct {
 
 /*FUNGSI PROSEDUR*/
 
-void Move (Restoran *R, char* Perintah);
+extern Restoran R;
+extern Rs;
 
-void GetOrder (Restoran *R);
+void Move (char* Perintah);
 
-void Put (Restoran *R);
+void GetOrder ();
 
-void Take (Restoran *R);
+void Put ();
 
-void Buang (Restoran *R, char* Perintah);
+void Take ();
 
-void Place (Restoran *R);
+void Buang (char* Perintah);
 
-void Give (Restoran *R);
+void Place ();
 
-void Recipe (Restoran *R, Resep Rs);
+void Give ();
 
-void Save (Restoran *R);
+void Recipe ();
 
-void Load (Restoran *R);
+void Save ();
+
+void Load ();
 
 #endif
