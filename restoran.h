@@ -88,8 +88,14 @@ void Save ();
 
 void Load ();
 
-void AddCust ();
+void AddCust();
+// I.S. Arbitrary
+// F.S. Random customer generated :
+// Customer can be either star customer or non-star customer
+// If no customer generated, return a not-valid customer
 
 void DelCust();
+// I.S. Arbitrary
+// F.S. Customer in both queue and restauran deleted
 
 #endif
