@@ -25,12 +25,6 @@ typedef struct {
 
 MATRIKS Room; //UBAH ELTYPE MATRIKS JADI CHAR
 
-typedef struct {
-  Food Makanan; //nama makanan
-  int Jumlah; //jumlah customer
-  int Kesabaran; //tingkat kesabaran
-  boolean IsStar; //true jika star customer
-} Customer;
 
 typedef struct {
   char *Nama; //nama food
