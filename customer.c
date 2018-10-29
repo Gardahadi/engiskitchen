@@ -20,7 +20,6 @@ void CreateEmpty (CQueue * Q, int Max){
         MaxEl(Q)=Max;
     }
 }
-
 void DeAlokasi(CQueue * Q){
     MaxEl(*Q)=0;
     free(*Q).T;
@@ -37,13 +36,30 @@ void AddCustomerToQueue(CQueue *Q,Customer C){
         //not full case
         //star customer insertion
         if(IsStar(C)){
+            i = Tail(*Q);
+            while((!IsStar((*Q).T[i]))&&(i>Head(*Q))){
+                (*Q).T[i+1]=(*Q).T[i];
+                i--;
+            }//i is other star customer(s) or i=Head(*Q)
+            if(i>Head(*Q)){
+                //i is not head
+                (*Q).T[i+1]=C;
+            } else {
+                if(IsStar(InfoHead(*Q))){
+                    (*Q).T[i+1]=C;
+                } else {
+                    (*Q).T[i+1]=InfoHead(*Q);
+                    InfoHead(*Q)=C;
+                }
+            }
+            Tail(*Q)++;
 
         } else {
             //normal customer addition
             Tail(*Q)++;
             Info(Tail(*Q)) = C;
         }
-    } //full case -> queue stay as previous
+    } //full queue case -> queue stay as previous
 }
 void DeleteCustomerFromQueue(CQueue *Q,Customer *C){
     /* I.S. Q is defined , maybe empty */
@@ -58,6 +74,12 @@ void DeleteCustomerFromQueue(CQueue *Q,Customer *C){
             //not one element case
             //all elements must be moved
             //which is very very inefficient AF
+            i = Head(*Q);
+            while(i<Tail(*Q)){
+                (*Q).T[i]=(*Q).T[i+1];
+                i++;
+            } //i=Tail(*Q)
+            Tail(*Q)--;
         }
     }
 }
