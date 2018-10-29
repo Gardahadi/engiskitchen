@@ -90,6 +90,8 @@ void Load ();
 
 void AddCust ();
 
+void DelQCust();
+
 void DelCust();
 
 #endif
