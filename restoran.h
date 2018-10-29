@@ -40,6 +40,10 @@ typedef struct {
   int x; //absis
   int y;  //ordinat
   int nRoom; //nomer ruangan
+  //room 1 = 1
+  //room 2 = 3
+  //room 3 = 3
+  //kitchen = 4
 } Posisi;
 
 typedef struct {
@@ -61,6 +65,10 @@ typedef struct {
 
 extern Restoran R;
 extern Rs;
+extern Room Room1;
+extern Room Room2;
+extern Room Room3;
+extern Room Kitchen;
 
 void Move (char* Perintah);
 
