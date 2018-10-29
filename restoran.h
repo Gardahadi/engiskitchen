@@ -98,6 +98,6 @@ void DelQCust();
 
 void DelCust();
 // I.S. Arbitrary
-// F.S. Customer in both queue and restauran deleted
+// F.S. Customer in restaurant with zero patience is 
 
 #endif
