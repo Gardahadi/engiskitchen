@@ -38,4 +38,17 @@ boolean IsEmptyCQ(CQueue Q);
 boolean IsFullCQ(CQueue Q);
 /* I.S. Q is defined */
 /* Return true if Q is full, false otherwise */
-boolean 
+void CreateEmpty (CQueue * Q, int Max);
+/* F.S. Q is defined with max element = Max if allocation success*/
+
+void DeAlokasi(CQueue * Q);
+/* F.S. Q is deallocated */
+void AddCustomerToQueue(CQueue *Q);
+/* I.S. Q is defined-> Q may be full */
+/* F.S. a new customer is added If new customer is star customer, then 
+addition is by priority.
+    If full then Q stayed the same
+*/
+void DeleteCustomerFromQueue(CQueue *Q);
+/* I.S. Q is defined , maybe empty */
+/* */
