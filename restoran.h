@@ -88,4 +88,8 @@ void Save ();
 
 void Load ();
 
+void AddCust ();
+
+void DelCust();
+
 #endif
