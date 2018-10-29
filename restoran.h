@@ -82,16 +82,10 @@ void Save ();
 
 void Load ();
 
-void AddCust();
-// I.S. Arbitrary
-// F.S. Random customer generated :
-// Customer can be either star customer or non-star customer
-// If no customer generated, return a not-valid customer
 
-void DelQCust();
+void UpdateQCust();
 
-void DelCust();
-// I.S. Arbitrary
-// F.S. Customer in restaurant with zero patience is 
+void UpdateCust();
+
 
 #endif
