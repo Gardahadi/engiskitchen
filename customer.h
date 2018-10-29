@@ -1,8 +1,10 @@
+/* Author : Nur Alam Hasabie 13517096 */
+
 #include "restoran.h"
 #include "boolean.h"
 
 #define UndefCustomer -1
-#define EmptyCQ 0
+#define EmptyCQ -1
 typedef int CAddress
 
 //Customer type definition
@@ -16,6 +18,7 @@ typedef struct {
 
 //Customer queue type definition
 //Implementation using dynamic array of customer
+//Empty queue is defined as Head(Q)=EmptyCQ and Tail(!)
 
 typedef struct { 
     Customer * T;   /* tabel penyimpan elemen */
@@ -25,11 +28,18 @@ typedef struct {
 } CQueue;
 
 //Selectors with macros
+//Queue selector
 #define Head(Q) (Q).HEAD
 #define Tail(Q) (Q).TAIL
 #define InfoHead(Q) (Q).T[(Q).HEAD]
 #define InfoTail(Q) (Q).T[(Q).TAIL]
 #define MaxEl(Q) (Q).MaxEl
+
+//Customer selector
+#define Makanan(C) (C).Makanan
+#define Jumlah(C) (C).Jumlah
+#define Kesabaran(C) (C).Kesabaran
+#define IsStar(C) (C).IsStar
 
 /*PREDICATE FUNCTION AND PROCEDURE*/
 boolean IsEmptyCQ(CQueue Q);
@@ -51,4 +61,9 @@ addition is by priority.
 */
 void DeleteCustomerFromQueue(CQueue *Q);
 /* I.S. Q is defined , maybe empty */
-/* */
+/* F.S. Head customer is deleted : Queue maybe empty */
+
+Customer GenerateCustomer();
+/* Return customer */
+/* Customer is generated with random generation */
+/* If undefined customer is returned, it means that no customer is generated */
