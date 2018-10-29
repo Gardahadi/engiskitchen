@@ -88,10 +88,8 @@ void Save ();
 
 void Load ();
 
-void AddCust ();
+void UpdateQCust();
 
-void DelQCust();
-
-void DelCust();
+void UpdateCust();
 
 #endif
