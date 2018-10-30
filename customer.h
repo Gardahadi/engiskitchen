@@ -20,7 +20,7 @@ typedef struct {
 //Implementation using dynamic array of customer
 //Empty queue is defined as Head(Q)=EmptyCQ and Tail(!)
 
-typedef struct { 
+typedef struct {
     Customer * T;   /* tabel penyimpan elemen */
     CAddress HEAD;  /* alamat penghapusan */
     CAddress TAIL;  /* alamat penambahan */
@@ -55,7 +55,7 @@ void DeAlokasi(CQueue * Q);
 /* F.S. Q is deallocated */
 void AddCustomerToQueue(CQueue *Q);
 /* I.S. Q is defined-> Q may be full */
-/* F.S. a new customer is added If new customer is star customer, then 
+/* F.S. a new customer is added If new customer is star customer, then
 addition is by priority.
     If full then Q stayed the same
 */

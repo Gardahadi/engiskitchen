@@ -23,8 +23,17 @@ typedef struct {
 	//Tree of food
 } Resep;
 
-MATRIKS Room; //UBAH ELTYPE MATRIKS JADI CHAR
+typedef struct{
+  MATRIKS RoomBoard; //UBAH ELTYPE MATRIKS JADI CHAR
+  Meja arrayMeja[4];
+} Room
 
+typedef struct{
+  int Kapasitas;
+  Customer C;
+  boolean isFull;
+  Posisi posMeja;
+} Meja
 
 typedef struct {
   char *Nama; //nama food
@@ -49,7 +58,7 @@ typedef struct {
 typedef struct {
   long Money; //uang player
   int Life; //nyawa player
-  Posisi Pos; //posisi player 
+  Posisi Pos; //posisi player
   STACK Hand; //stack of bahan
 } Player;
 
@@ -89,9 +98,6 @@ void Recipe ();
 void Save ();
 
 void Load ();
-
-
-void UpdateQCust();
 
 void UpdateCust();
 
