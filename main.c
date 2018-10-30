@@ -19,17 +19,6 @@ int main () {
   no_simulasi = 0;
   load_success = true;
 
-  //Memuat Data dari file eksternal
-  printf("Memuat Data....\n");
-  load(data,load_success);
-  if (load_success) {
-    printf("Data berhasil di-load silahkan memulai permainan\n");
-  }
-  else {
-    printf("Load Gagal\n");
-    exit;
-  }
-
   //Looping Inti Program yang akan berjalan sampai pengguna melakukan perintah "Exit"
   do {
     do {
@@ -69,6 +58,7 @@ int main () {
         case "EXIT" :
         default : printf("Perintah Salah silahkan mengetik 'help' untuk melihat daftar perintah\n");
       }
+      updateTime();
       while(simulation_running);
     }
 

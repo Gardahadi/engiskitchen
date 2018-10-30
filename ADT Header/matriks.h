@@ -6,14 +6,14 @@
 #include "boolean.h"
 
 /* Ukuran minimum dan maksimum baris dan kolom */
-#define BrsMin 1
+#define BrsMin 0
 #define BrsMax 100
-#define KolMin 1
+#define KolMin 0
 #define KolMax 100
-#define Nil "" //elemen room kosong
+#define Nil ' ' //elemen room kosong
 
 typedef int indeks; /* indeks baris, kolom */
-typedef char* ElType;
+typedef char ElType;
 typedef struct {
 	ElType Mem[BrsMax+1][KolMax+1];
     int NBrsEff; /* banyaknya/ukuran baris yg terdefinisi */

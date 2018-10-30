@@ -4,7 +4,7 @@
    */
 
 #include <stdio.h>
-#include "matriks.h"
+#include "ADT Header/matriks.h"
 #include "boolean.h"
 
 void MakeMATRIKS (int NB, int NK, MATRIKS * M)
@@ -110,7 +110,7 @@ void BacaMATRIKS (MATRIKS * M, int NB, int NK)
   NKolEff(*M) = NK;
   for (i=GetFirstIdxBrs(*M);i<=NB;i++){
     for(j=GetFirstIdxKol(*M);j<=NK;j++){
-      scanf("%d",&X);
+      scanf("%s",&X);
       Elmt(*M,i,j)=X;
     }
   }
@@ -127,16 +127,22 @@ void TulisMATRIKS (MATRIKS M)
 */
 {
   int i,j;
+  //Membuat border a
+
+
   for (i=1;i<=NBrsEff(M);i++) {
+
+
     for (j=1;j<=NKolEff(M);j++) {
+
       if ((j==NKolEff(M)) && (i!=NBrsEff(M))) {
-        printf("%d\n",Elmt(M,i,j));
+        printf(" %c |\n",Elmt(M,i,j));
       }
       else if ((j==NKolEff(M)) && (i==NBrsEff(M))) {
-        printf("%d",Elmt(M,i,j));
+        printf(" %c |",Elmt(M,i,j));
       }
       else {
-        printf("%d ",Elmt(M,i,j));
+        printf("%s ",Elmt(M,i,j));
       }
     }
   }
