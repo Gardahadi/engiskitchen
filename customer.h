@@ -2,13 +2,12 @@
 #ifndef CQUEUE_H
 #define CQUEUE_H
 
-#include "restoran.h"
 #include "boolean.h"
 #include "basetype.h"
 
 #define UndefCustomer -1
 #define EmptyCQ -1
-typedef int CAddress
+typedef int CAddress;
 
 //Tipe queue dengan elemen customer
 //Representasi array dinamik eksplisit rapat kiri
@@ -46,22 +45,23 @@ void CreateEmptyCQ(CQueue * Q, int Max);
 
 void DeAlokasi(CQueue * Q);
 /* F.S. Q is deallocated */
-void AddCustomerToQueue(CQueue *Q);
+void AddCustomerToQueue(CQueue *Q,Customer C);
 /* I.S. Q is defined-> Q may be full */
 /* F.S. a new customer is added If new customer is star customer, then
 addition is by priority.
     If full then Q stayed the same
 */
-void DeleteCustomerFromQueue(CQueue *Q);
+void DeleteCustomerFromQueue(CQueue *Q,Customer *C);
 /* I.S. Q is defined , maybe empty */
 /* F.S. Head customer is deleted : Queue maybe empty */
+/* C adalah customer yang didelete*/
 
-UpdateQueue(CQueue *Q,int *Life);
+void UpdateQueue(CQueue *Q,int *Life);
 /* I.S. Sembarang, Q boleh kosong */
 /* F.S. Seluruh customer dengan kesabaran 1 dihapus , seluruh customer kesabarannya dikurangi 1*/
 /* Life berkurang sejumlah dengan pelanggan yang yang dihapus*/
 
-Customer GenerateCustomer();
+Customer GenerateCustomer(int seed);
 /* Return customer */
 /* Customer is generated with random generation */
 /* If undefined customer is returned, it means that no customer is generated */
