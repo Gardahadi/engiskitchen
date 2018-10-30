@@ -11,7 +11,7 @@ boolean IsEmptyCQ(CQueue Q){
 boolean IsFullCQ(CQueue Q){
     return Tail(Q)==(MaxEl(Q)-1);
 }
-void CreateEmpty (CQueue * Q, int Max){
+void CreateEmptyCQ(CQueue * Q, int Max){
     (*Q).T = (Customer *)malloc(Max*sizeof(Customer));
     if((*Q).T!=NULL){
         //Head and Tail assignment->definition of empty queue
@@ -69,7 +69,7 @@ void DeleteCustomerFromQueue(CQueue *Q,Customer *C){
         //geser
         if(Head(*Q)==Tail(*Q)){
             //one element case
-            CreateEmpty(Q,MaxEl(*Q));
+            CreateEmptyCQ(Q,MaxEl(*Q));
         } else {
             //not one element case
             //all elements must be moved
@@ -80,6 +80,46 @@ void DeleteCustomerFromQueue(CQueue *Q,Customer *C){
                 i++;
             } //i=Tail(*Q)
             Tail(*Q)--;
+        }
+    }
+}
+
+void UpdateQueue(CQueue *Q,int *Life){
+    /* Kamus */
+    CAddress i,j;
+    if(!IsEmptyCQ(*Q)){
+        i = Head(*Q);
+        while(i<Tail(*Q)){
+            if(Kesabaran((*Q).T[i])==1){
+                //Hapus elemen dari queue, majukan seluruh elemen
+                j = i;
+                while(j<Tail(*Q)){
+                    (*Q).T[j]=(*Q).T[j+1];
+                    j++;
+                }//j = Tail(Q)
+                Tail(*Q)--;
+                if(*Life>0){
+                    //Mengurangi nyawa
+                    *Life--;
+                }
+
+            } else {
+                Kesabaran((*Q).T[i])--;
+                i++;
+            }
+        }//i = Tail(Q)
+        //Pengolahan elemen terakhir
+        if(Kesabaran((*Q).T[i])==1){
+            if(Head(*Q)==Tail(*Q)){
+                //kasus satu elemen -> create empty queue
+                CreateEmptyCQ(Q);
+            } else {
+                Tail(*Q)--;
+            }
+            if(*Life>0){
+                //Mengurangi nyawa
+                *Life--;
+            }
         }
     }
 }

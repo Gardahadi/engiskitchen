@@ -1,24 +1,17 @@
 /* Author : Nur Alam Hasabie 13517096 */
+#ifndef CQUEUE_H
+#define CQUEUE_H
 
 #include "restoran.h"
 #include "boolean.h"
+#include "basetype.h"
 
 #define UndefCustomer -1
 #define EmptyCQ -1
 typedef int CAddress
 
-//Customer type definition
-
-typedef struct {
-  Food Makanan; //nama makanan
-  int Jumlah; //jumlah customer
-  int Kesabaran; //tingkat kesabaran
-  boolean IsStar; //true jika star customer
-} Customer;
-
-//Customer queue type definition
-//Implementation using dynamic array of customer
-//Empty queue is defined as Head(Q)=EmptyCQ and Tail(!)
+//Tipe queue dengan elemen customer
+//Representasi array dinamik eksplisit rapat kiri
 
 typedef struct {
     Customer * T;   /* tabel penyimpan elemen */
@@ -48,7 +41,7 @@ boolean IsEmptyCQ(CQueue Q);
 boolean IsFullCQ(CQueue Q);
 /* I.S. Q is defined */
 /* Return true if Q is full, false otherwise */
-void CreateEmpty (CQueue * Q, int Max);
+void CreateEmptyCQ(CQueue * Q, int Max);
 /* F.S. Q is defined with max element = Max if allocation success*/
 
 void DeAlokasi(CQueue * Q);
@@ -63,7 +56,14 @@ void DeleteCustomerFromQueue(CQueue *Q);
 /* I.S. Q is defined , maybe empty */
 /* F.S. Head customer is deleted : Queue maybe empty */
 
+UpdateQueue(CQueue *Q,int *Life);
+/* I.S. Sembarang, Q boleh kosong */
+/* F.S. Seluruh customer dengan kesabaran 1 dihapus , seluruh customer kesabarannya dikurangi 1*/
+/* Life berkurang sejumlah dengan pelanggan yang yang dihapus*/
+
 Customer GenerateCustomer();
 /* Return customer */
 /* Customer is generated with random generation */
 /* If undefined customer is returned, it means that no customer is generated */
+
+#endif
