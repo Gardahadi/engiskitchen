@@ -11,18 +11,18 @@ boolean IsEmptyCQ(CQueue Q){
 boolean IsFullCQ(CQueue Q){
     return Tail(Q)==(MaxEl(Q)-1);
 }
-void CreateEmpty (CQueue * Q, int Max){
+void CreateEmptyCQ(CQueue * Q, int Max){
     (*Q).T = (Customer *)malloc(Max*sizeof(Customer));
     if((*Q).T!=NULL){
         //Head and Tail assignment->definition of empty queue
-        Head(Q)=EmptyCQ;
-        Tail(Q)=EmptyCQ;
-        MaxEl(Q)=Max;
+        Head(*Q)=EmptyCQ;
+        Tail(*Q)=EmptyCQ;
+        MaxEl(*Q)=Max;
     }
 }
 void DeAlokasi(CQueue * Q){
     MaxEl(*Q)=0;
-    free(*Q).T;
+    free((*Q).T);
 }
 void AddCustomerToQueue(CQueue *Q,Customer C){
     /* Dictionary */
@@ -31,7 +31,7 @@ void AddCustomerToQueue(CQueue *Q,Customer C){
         //empty case
         Head(*Q)=0;
         Tail(*Q)=0;
-        (*Q).T = C;
+        (*Q).T[Head(*Q)] = C;
     } else if (!IsFullCQ(*Q)){
         //not full case
         //star customer insertion
@@ -57,19 +57,20 @@ void AddCustomerToQueue(CQueue *Q,Customer C){
         } else {
             //normal customer addition
             Tail(*Q)++;
-            Info(Tail(*Q)) = C;
+            InfoTail(*Q) = C;
         }
     } //full queue case -> queue stay as previous
 }
 void DeleteCustomerFromQueue(CQueue *Q,Customer *C){
     /* I.S. Q is defined , maybe empty */
     /* F.S. Head customer is deleted : Queue maybe empty */
+    CAddress i;
     if(!IsEmptyCQ(*Q)){
         *C = InfoHead(*Q);
         //geser
         if(Head(*Q)==Tail(*Q)){
             //one element case
-            CreateEmpty(Q,MaxEl(*Q));
+            CreateEmptyCQ(Q,MaxEl(*Q));
         } else {
             //not one element case
             //all elements must be moved
@@ -84,7 +85,91 @@ void DeleteCustomerFromQueue(CQueue *Q,Customer *C){
     }
 }
 
-Customer GenerateCustomer();
-/* Return customer */
-/* Customer is generated with random generation */
-/* If undefined customer is returned, it means that no customer is generated */
+void UpdateQueue(CQueue *Q,int *Life){
+    /* Kamus */
+    CAddress i,j;
+    if(!IsEmptyCQ(*Q)){
+        i = Head(*Q);
+        while(i<Tail(*Q)){
+            if(Kesabaran((*Q).T[i])==1){
+                //Hapus elemen dari queue, majukan seluruh elemen
+                j = i;
+                while(j<Tail(*Q)){
+                    (*Q).T[j]=(*Q).T[j+1];
+                    j++;
+                }//j = Tail(Q)
+                Tail(*Q)--;
+                if(*Life>0){
+                    //Mengurangi nyawa
+                    *Life--;
+                }
+            } else {
+                Kesabaran((*Q).T[i])--;
+                i++;
+            }
+        }//i = Tail(Q)
+        //Pengolahan elemen terakhir
+        if(Kesabaran((*Q).T[i])==1){
+            if(Head(*Q)==Tail(*Q)){
+                //kasus satu elemen -> create empty queue
+                int N=MaxEl(*Q);
+                DeAlokasi(Q);
+                CreateEmptyCQ(Q,N);
+            } else {
+                Tail(*Q)--;
+            }
+            if(*Life>0){
+                //Mengurangi nyawa
+                *Life--;
+            }
+        } else {
+            Kesabaran((*Q).T[i])--;
+        }
+    }
+}
+
+Customer GenerateCustomer(int seed){
+    /* Return customer */
+    /* Customer is generated with random generation */
+    /* If undefined customer is returned, it means that no customer is generated */
+    /* Dictionary */
+    int frequency_ratio = 19; //program X times more likely to not generate any customers in one tick time
+    int number_ratio = 10; //program X times more likely to produce guest with 2 seats
+    int star_ratio = 9;//program is X times more likely to generate normal guest instead of star guest
+    int X; //number for placeholder
+    int i;
+    Customer C;
+    /* Algorithm */
+    i=0;
+    X = rand();
+    while(i<seed){
+        X = rand();
+        i++;
+    }
+    if((X%(frequency_ratio+1))==0){
+        //Random guests generated
+        //Determining number of guest
+        if((X%(number_ratio+1))==0){
+            Jumlah(C)=4;
+        } else {
+            Jumlah(C)=2;
+        }
+        //Determining whether guests are star guests or not
+        X = rand();
+        if(X%(star_ratio+1)==0){
+            //Star guest
+            IsStar(C)=true;
+            Kesabaran(C)=20;
+        } else {
+            //normal guest
+            IsStar(C)=false;
+            Kesabaran(C)=30;
+        }
+    } else {
+        //Undefined guest
+        Kesabaran(C) = UndefCustomer;
+        Jumlah(C) = UndefCustomer;
+        IsStar(C) = false;
+    }
+    return C;
+}
