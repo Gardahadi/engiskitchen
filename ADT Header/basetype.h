@@ -9,9 +9,9 @@
 
 //Tipe bentukan food
 typedef struct {
-  char *Nama; //nama food
-  long Harga; //harga food
-} Food;
+  char *nama; //nama food
+  long harga; //harga food
+} FOOD;
 
 //Tipe bentukan posisi
 typedef struct {
@@ -20,7 +20,7 @@ typedef struct {
   int nRoom; //nomer ruangan
   //Definisi ruangan : room 1 = 1
   //room 2 = 3, room 3 = 3 , kitchen = 4
-} Posisi;
+} POSISI;
 
 //Tipe bentukan customer
 typedef struct {
@@ -28,35 +28,35 @@ typedef struct {
   int Jumlah; //jumlah customer
   int Kesabaran; //tingkat kesabaran
   boolean IsStar; //true jika star customer
-} Customer;
+} CUSTOMER;
 
 //Tipe bentukan meja
 typedef struct{
   int Kapasitas;
   Customer C;
-  boolean isFull;
-  Posisi posMeja;
-} Meja;
+  boolean IsFull;
+  Posisi PosMeja;
+} MEJA;
 
 //Tipe bentukan order
 typedef struct {
   char *Nama; //nama food yang diorder
   int Meja; //nomer meja
-} Order;
+} ORDER;
 
 //Tipe bentukan room
 typedef struct{
   MATRIKS RoomBoard; //UBAH ELTYPE MATRIKS JADI CHAR
-  Meja arrayMeja[4];
-} Room;
+  Meja ArrayMeja[4];
+} ROOM;
 
 //Tipe bentukan resep
 typedef struct {
 	//Tree of food
-} Resep;
+} RESEP;
 
 
 
 typedef struct {
-  char *Nama; //nama food yang diorder
-}Bahan;
+  char *nama; //nama food yang diorder
+}BAHAN;

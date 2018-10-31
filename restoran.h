@@ -1,5 +1,5 @@
-/* MODUL RESTORAN */
 
+/* MODUL RESTORAN */
 #ifndef RESTORAN_H
 #define RESTORAN_H
 
@@ -16,7 +16,7 @@
 typedef struct {
   long Money; //uang player
   int Life; //nyawa player
-  POSISI Pos; //posisi player
+  POSISI Posisi; //posisi player
   BSTACK Hand; //stack of bahan
 } PLAYER;
 
