@@ -1,13 +1,13 @@
 
 /* MODUL RESTORAN */
-#ifndef RESTORAN_H
-#define RESTORAN_H
+#ifndef RESTAURANT_H
+#define RESTAURANT_H
 
 #include "ADT header/boolean.h"
 #include "ADT header/customer.h"
 #include "ADT header/basetype.h"
 #include "ADT header/foodstack.h"
-#include "ADT header/bahanstack.h"
+#include "ADT header/supplystack.h"
 #include "ADT header/matrikskar.h"
 
 
@@ -16,7 +16,7 @@
 typedef struct {
   long Money; //uang player
   int Life; //nyawa player
-  POSISI Posisi; //posisi player
+  POSITION Position; //posisi player
   BSTACK Hand; //stack of bahan
 } PLAYER;
 
@@ -28,18 +28,18 @@ typedef struct {
   CQUEUE CustQueue; //queue of customer
   OQUEUE OrderQueue; //queue of order
   PLAYER P; //player P
-} RESTORAN;
+} RESTAURANT;
 
 /*FUNGSI PROSEDUR*/
 
-extern Restoran R;
+extern Restaurant R;
 extern Rs;
 extern Room Room1;
 extern Room Room2;
 extern Room Room3;
 extern Room Kitchen;
 
-void Move (char* Perintah);
+void Move (char* Command);
 
 void GetOrder ();
 
@@ -47,7 +47,7 @@ void Put ();
 
 void Take ();
 
-void Buang (char* Perintah);
+void Buang (char* Command);
 
 void Place ();
 

@@ -9,8 +9,8 @@
 
 //Tipe bentukan food
 typedef struct {
-  char *nama; //nama food
-  long harga; //harga food
+  char *Nama; //nama food
+  long Harga; //harga food
 } FOOD;
 
 //Tipe bentukan posisi
@@ -36,18 +36,18 @@ typedef struct{
   Customer C;
   boolean IsFull;
   Posisi PosMeja;
-} MEJA;
+} TABLE;
 
 //Tipe bentukan order
 typedef struct {
-  char *Nama; //nama food yang diorder
-  int Meja; //nomer meja
+  char *Name; //nama food yang diorder
+  int TableNumber; //nomer meja
 } ORDER;
 
 //Tipe bentukan room
 typedef struct{
   MATRIKS RoomBoard; //UBAH ELTYPE MATRIKS JADI CHAR
-  Meja ArrayMeja[4];
+  TABLE TableArray[4];
 } ROOM;
 
 //Tipe bentukan resep
@@ -58,5 +58,5 @@ typedef struct {
 
 
 typedef struct {
-  char *nama; //nama food yang diorder
+  char *Name; //nama food yang diorder
 }BAHAN;
