@@ -7,7 +7,7 @@
 
 #include "boolean.h"
 
-typedef struct { 
+typedef struct {
 	float X; /* absis   */
 	float Y; /* ordinat */
 } POINT;
@@ -15,29 +15,29 @@ typedef struct {
 /* *** Notasi Akses: Selektor POINT *** */
 #define Absis(P) (P).X
 #define Ordinat(P) (P).Y
-        
+
 /* *** DEFINISI PROTOTIPE PRIMITIF *** */
 /* *** Konstruktor membentuk POINT *** */
 POINT MakePOINT (float X, float Y);
 /* Membentuk sebuah POINT dari komponen-komponennya */
 
-/* *** KELOMPOK Interaksi dengan I/O device, BACA/TULIS  *** */                                                 
-void BacaPOINT (POINT * P); 
-/* Membaca nilai absis dan ordinat dari keyboard dan membentuk 
+/* *** KELOMPOK Interaksi dengan I/O device, BACA/TULIS  *** */
+void BacaPOINT (POINT * P);
+/* Membaca nilai absis dan ordinat dari keyboard dan membentuk
    POINT P berdasarkan dari nilai absis dan ordinat tersebut */
 /* Komponen X dan Y dibaca dalam 1 baris, dipisahkan 1 buah spasi */
-/* Contoh: 1 2 
+/* Contoh: 1 2
    akan membentuk POINT <1,2> */
 /* I.S. Sembarang */
 /* F.S. P terdefinisi */
 void TulisPOINT (POINT P);
-/* Nilai P ditulis ke layar dengan format "(X,Y)" 
-   tanpa spasi, enter, atau karakter lain di depan, belakang, 
-   atau di antaranya 
+/* Nilai P ditulis ke layar dengan format "(X,Y)"
+   tanpa spasi, enter, atau karakter lain di depan, belakang,
+   atau di antaranya
    Output X dan Y harus dituliskan dalam bilangan riil dengan 2 angka di belakang koma.
 */
 /* I.S. P terdefinisi */
-/* F.S. P tertulis di layar dengan format "(X,Y)" */                
+/* F.S. P tertulis di layar dengan format "(X,Y)" */
 
 /* *** Kelompok operasi relasional terhadap POINT *** */
 boolean EQ (POINT P1, POINT P2);
@@ -57,9 +57,9 @@ int Kuadran (POINT P);
 /* Prekondisi : P bukan titik origin, */
 /*              dan P tidak terletak di salah satu sumbu */
 
-/* *** KELOMPOK OPERASI LAIN TERHADAP TYPE *** */                           
+/* *** KELOMPOK OPERASI LAIN TERHADAP TYPE *** */
 POINT NextX (POINT P);
-/* Mengirim salinan P dengan absis ditambah satu */              
+/* Mengirim salinan P dengan absis ditambah satu */
 POINT NextY (POINT P);
 /* Mengirim salinan P dengan ordinat ditambah satu */
 POINT PlusDelta (POINT P, float deltaX, float deltaY);

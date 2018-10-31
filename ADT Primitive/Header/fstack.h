@@ -1,26 +1,26 @@
-/* File : stackt.h */
-/* deklarasi stack yang diimplementasi dengan tabel kontigu dan ukuran sama */
+/* File : fstack.h */
+/* deklarasi stack of Food yang diimplementasi dengan tabel kontigu dan ukuran sama */
 /* TOP adalah alamat elemen puncak */
 /* Implementasi dalam bahasa C dengan alokasi statik */
 #ifndef stackt_H
 #define stackt_H
 
 #include "boolean.h"
-
+#include "basetype.h"
 #define Nil 0
 #define MaxEl 10
 /* Nil adalah stack dengan elemen kosong . */
 /* Karena indeks dalam bhs C dimulai 0 maka tabel dg indeks 0 tidak dipakai */
 
-typedef int infotype;
+
 typedef int address;   /* indeks tabel */
 
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
-typedef struct { 
-	infotype T[MaxEl+1]; /* tabel penyimpan elemen */
+typedef struct {
+	Food T[MaxEl+1]; /* tabel penyimpan elemen */
 	address TOP;  /* alamat TOP: elemen puncak */
-} Stack;
+} FStack;
 /* Definisi stack S kosong : S.TOP = Nil */
 /* Elemen yang dipakai menyimpan nilai Stack T[1]..T[MaxEl] */
 /* Jika S adalah Stack maka akses elemen : */

@@ -22,7 +22,7 @@ typedef struct {
   //room 2 = 3, room 3 = 3 , kitchen = 4
 } Posisi;
 
-//Tipe bentukan customer 
+//Tipe bentukan customer
 typedef struct {
   Food Makanan; //nama makanan
   int Jumlah; //jumlah customer
@@ -55,12 +55,8 @@ typedef struct {
 	//Tree of food
 } Resep;
 
-//Tipe bentukan player
+
+
 typedef struct {
-  long Money; //uang player
-  int Life; //nyawa player
-  Posisi Pos; //posisi player
-  STACK Hand; //stack of bahan
-} Player;
-
-
+  char *Nama; //nama food yang diorder
+}Bahan;
