@@ -17,7 +17,7 @@ typedef struct {
     CAddress HEAD;  /* alamat penghapusan */
     CAddress TAIL;  /* alamat penambahan */
     int MaxEl;     /* Max elemen queue */
-} CQueue;
+} CQUEUE;
 
 //Selectors with macros
 //Queue selector

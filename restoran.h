@@ -4,13 +4,11 @@
 #define RESTORAN_H
 
 #include "ADT header/boolean.h"
-#include "ADT header/array.h"
-#include "ADT header/mesinkata.h"
 #include "ADT header/customer.h"
-#include "ADT header/tree.h"
-#include "ADT header/graph.h"
 #include "ADT header/basetype.h"
-#include "ADT header/fstack.h"
+#include "ADT header/foodstack.h"
+#include "ADT header/bahanstack.h"
+#include "ADT header/matrikskar.h"
 
 
 
@@ -18,19 +16,19 @@
 typedef struct {
   long Money; //uang player
   int Life; //nyawa player
-  Posisi Pos; //posisi player
-  BStack Hand; //stack of bahan
-} Player;
+  POSISI Pos; //posisi player
+  BSTACK Hand; //stack of bahan
+} PLAYER;
 
 
 /* Definisi elemen dan koleksi objek */
 typedef struct {
   int Time; //waktu permainan
-  FStack Tray; //stack of food
-  CQueue CustQueue; //queue of customer
-  OQueue OrderQueue; //queue of order
-  Player P; //player P
-} Restoran;
+  FSTACK Tray; //stack of food
+  CQUEUE CustQueue; //queue of customer
+  OQUEUE OrderQueue; //queue of order
+  PLAYER P; //player P
+} RESTORAN;
 
 /*FUNGSI PROSEDUR*/
 

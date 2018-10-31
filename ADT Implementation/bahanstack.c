@@ -5,7 +5,7 @@
 
 
 #include <stdio.h>
-#include "bstack.h"
+#include "bahanstack.h"
 
 
 /* ************ Prototype ************ */
@@ -22,18 +22,18 @@ void CreateEmptyBS (BSTACK *S) {
 
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty (BSTACK S) {
+boolean IsEmptyBS (BSTACK S) {
 /* Mengirim true jika BSTACK kosong: lihat definisi di atas */
   return (Top(S)==Nil);
 }
-boolean IsFull (BSTACK S)
+boolean IsFullBS (BSTACK S)
 /* Mengirim true jika tabel penampung nilai elemen BSTACK penuh */
 {
   return (Top(S) == MaxEl);
 }
 
 /* ************ Menambahkan sebuah elemen ke BSTACK ************ */
-void Push (BSTACK * S, infotype X)
+void PushBS (BSTACK * S, infotype X)
 /* Menambahkan X sebagai elemen BSTACK S. */
 /* I.S. S mungkin kosong, tabel penampung elemen BSTACK TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
@@ -42,7 +42,7 @@ void Push (BSTACK * S, infotype X)
     InfoTop(*S) = X;
 }
 /* ************ Menghapus sebuah elemen BSTACK ************ */
-void Pop (BSTACK * S, infotype* X)
+void PopBS (BSTACK * S, infotype* X)
 /* Menghapus X dari BSTACK S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
