@@ -53,7 +53,7 @@ typedef struct {
 
 //Tipe bentukan room
 typedef struct{
-  MATRIKS RoomBoard; 
+  MATRIKS RoomBoard;
   TABLE TableArray[4];
   KITCHENSET KitchenArray[16];
 } ROOM;

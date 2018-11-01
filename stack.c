@@ -19,7 +19,7 @@ void Take (){
 	//KAMUS
 	int abs;
 	int ord;
-	int i; 
+	int i;
 	//ALGORITMA
 
 
@@ -48,12 +48,12 @@ void Take (){
 			abs = absis()-1;
 			ord = ordinat();
 		}
-		
+
 		if(Room(player().nRoom, absis(), ordinat()+1)=='M'){
 			abs = absis();
 			ord = ordinat()+1;
 		}
-		
+
 		if(Room(player().nRoom, absis(), ordinat()-1)=='M'){
 			abs = absis();
 			ord = ordinat()-1;
@@ -61,22 +61,22 @@ void Take (){
 
 		if ((abs!=-1)&&(ord!=-1)){
 			//bersebelahan dengan pemain
-			
-			//menaruh makanan 
+
+			//menaruh makanan
 			i = 0;
 
 			while ((PosKitchenArray(i).x != abs) && (PosKitchenArray(i).y != ord)) {
 				i++;
 			}
 
-			Push (&hand, InfoKitchenArray(i));
+			PushBS(&hand, InfoKitchenArray(i));
 
-		} 
+		}
 		else{
 			printf("Bahan tidak bersebelahan dengan pemain\n");
 		}
 	}
-	
+
 }
 
 void Buang (char* Perintah){
@@ -94,7 +94,7 @@ void Buang (char* Perintah){
 
 void Give (){
 	//KAMUS
-	FOOD food; 
+	FOOD food;
 	int i;
 	boolean found;
 	//ALGORITMA
@@ -119,20 +119,20 @@ void Give (){
 		abs = absis()-1;
 		ord = ordinat();
 	}
-	
+
 	if(Room(player().nRoom, absis(), ordinat()+1)=='C'){
 		abs = absis();
 		ord = ordinat()+1;
 	}
-	
+
 	if(Room(player().nRoom, absis(), ordinat()-1)=='C'){
 		abs = absis();
 		ord = ordinat()-1;
 	}
-	
+
 	if ((abs!=-1)&&(ord!=-1)){
 		//bersebelahan dengan pemain
-		
+
 		//cek apakah pesanan sesuai
 		Pop(&tray, &food)
 
@@ -160,7 +160,7 @@ void Give (){
 			if(!found){
 				i++;
 			}
-			
+
 		}
 
 		if (food.Name == InfoTableArray(player().nRoom, i)){
@@ -176,12 +176,12 @@ void Give (){
 			printf("Pesanan tidak sesuai\n");
 			Push(&tray, food)
 		}
-		
 
-	} 
+
+	}
 	else{
 		printf("Pelanggan tidak bersebelahan dengan pemain\n");
 	}
 
-	
+
 }

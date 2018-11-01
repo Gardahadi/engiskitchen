@@ -7,7 +7,7 @@
 #include "ADT header/customer.h"
 #include "ADT header/basetype.h"
 #include "ADT header/foodstack.h"
-#include "ADT header/supplystack.h"
+#include "ADT header/bahanstack.h"
 #include "ADT header/matrikskar.h"
 
 
@@ -37,27 +37,27 @@ extern Restaurant R;
 extern Rs;
 extern Room [5]; //indeks [1..4]
 
-void Move (char* Command);
+void Move (char* Command); //Garda
 
-void GetOrder ();
+void GetOrder (); //Badur
 
-void Put ();
+void Put (); //Badur
 
-void Take ();
+void Take (); //Done
 
-void Buang (char* Command);
+void Buang (char* Command); //Done
 
-void Place ();
+void Place (); //Lukas
 
-void Give ();
+void Give (); //Done
 
-void Recipe ();
+void Recipe (); //Lukas
 
-void Save ();
+void Save (); //Alam
 
-void Load ();
+void Load (); //Alam
 
-void UpdateCust();
+void UpdateCust(); //Alam
 
 
 #endif
