@@ -6,10 +6,11 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "stackt.h"
+#include "mesinkata.h" //Mesin kata untuk tipe kata dan mesin kata untuk pembacaan file
 
 //Tipe bentukan food
 typedef struct {
-  char *Nama; //nama food
+  Kata Nama; //nama food
   long Harga; //harga food
 } FOOD;
 
@@ -40,7 +41,7 @@ typedef struct{
 
 //Tipe bentukan order
 typedef struct {
-  char *Name; //nama food yang diorder
+  Kata Name; //nama food yang diorder
   int TableNumber; //nomer meja
 } ORDER;
 
@@ -58,5 +59,5 @@ typedef struct {
 
 
 typedef struct {
-  char *Name; //nama food yang diorder
+  Kata Name; //nama food yang diorder
 }BAHAN;

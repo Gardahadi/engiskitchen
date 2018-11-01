@@ -33,7 +33,7 @@ typedef struct {
 /*FUNGSI PROSEDUR*/
 
 extern Restaurant R;
-extern Rs;
+extern Rs; //WTF is this ? for what purpose ?
 extern Room Room1;
 extern Room Room2;
 extern Room Room3;
