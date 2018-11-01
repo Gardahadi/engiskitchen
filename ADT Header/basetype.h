@@ -20,7 +20,7 @@ typedef struct {
   int y;  //ordinat
   int nRoom; //nomer ruangan
   //Definisi ruangan : room 1 = 1
-  //room 2 = 3, room 3 = 3 , kitchen = 4
+  //room 2 = 2, room 3 = 3 , kitchen = 4
 } POSISI;
 
 //Tipe bentukan customer
@@ -39,6 +39,13 @@ typedef struct{
   Posisi PosMeja;
 } TABLE;
 
+//Tipe bentukan menyimpan object dapur
+
+typedef struct{
+  char *Name;
+  Posisi Pos;
+} KITCHENSET;
+
 //Tipe bentukan order
 typedef struct {
   Kata Name; //nama food yang diorder
@@ -47,16 +54,15 @@ typedef struct {
 
 //Tipe bentukan room
 typedef struct{
-  MATRIKS RoomBoard; //UBAH ELTYPE MATRIKS JADI CHAR
+  MATRIKS RoomBoard; 
   TABLE TableArray[4];
+  KITCHENSET KitchenArray[16];
 } ROOM;
 
 //Tipe bentukan resep
 typedef struct {
 	//Tree of food
 } RESEP;
-
-
 
 typedef struct {
   Kata Name; //nama food yang diorder

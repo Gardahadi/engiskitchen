@@ -18,26 +18,24 @@ typedef struct {
   int Life; //nyawa player
   POSITION Position; //posisi player
   BSTACK Hand; //stack of bahan
+  FSTACK Tray; //stack of food
 } PLAYER;
 
 
 /* Definisi elemen dan koleksi objek */
 typedef struct {
   int Time; //waktu permainan
-  FSTACK Tray; //stack of food
   CQUEUE CustQueue; //queue of customer
-  OQUEUE OrderQueue; //queue of order
+  ORDERTAB OrderTab; //queue of order
   PLAYER P; //player P
+  GRAPH RoomGraph;
 } RESTAURANT;
 
 /*FUNGSI PROSEDUR*/
 
 extern Restaurant R;
-extern Rs; //WTF is this ? for what purpose ?
-extern Room Room1;
-extern Room Room2;
-extern Room Room3;
-extern Room Kitchen;
+extern Rs;
+extern Room [5]; //indeks [1..4]
 
 void Move (char* Command);
 
