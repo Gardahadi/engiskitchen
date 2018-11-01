@@ -13,7 +13,7 @@ typedef int CAddress;
 //Representasi array dinamik eksplisit rapat kiri
 
 typedef struct {
-    Customer * T;   /* tabel penyimpan elemen */
+    CUSTOMER * T;   /* tabel penyimpan elemen */
     CAddress HEAD;  /* alamat penghapusan */
     CAddress TAIL;  /* alamat penambahan */
     int MaxEl;     /* Max elemen queue */
