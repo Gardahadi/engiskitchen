@@ -2,9 +2,16 @@
    Nama : Gardahadi
    Nama file : matriks.c
    */
+/*
+0 : kosong
+1 : Player
+2 : Kursi Kosong
+3 : Kursi Terisi
+4 : Penanda Meja
 
+*/
 #include <stdio.h>
-#include "../ADT Header/matrikskar.h"
+#include "../ADT Header/matriksroom.h"
 #include "../ADT Header/boolean.h"
 
 void MakeMATRIKS (int NB, int NK, MATRIKS * M)

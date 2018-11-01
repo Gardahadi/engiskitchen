@@ -26,8 +26,9 @@ typedef struct {
   int Time; //waktu permainan
   FSTACK Tray; //stack of food
   CQUEUE CustQueue; //queue of customer
-  OQUEUE OrderQueue; //queue of order
+  ORDERTAB OrderTab; //queue of order
   PLAYER P; //player P
+  GRAPH RoomGraph;
 } RESTAURANT;
 
 /*FUNGSI PROSEDUR*/
