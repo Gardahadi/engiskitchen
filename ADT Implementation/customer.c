@@ -5,14 +5,14 @@
 #include "stdlib.h"
 
 /*PREDICATE FUNCTION AND PROCEDURE*/
-boolean IsEmptyCQ(CQueue Q){
+boolean IsEmptyCQ(CQUEUE Q){
     return (Head(Q)==EmptyCQ)&&(Tail(Q)==EmptyCQ);
 }
-boolean IsFullCQ(CQueue Q){
+boolean IsFullCQ(CQUEUE Q){
     return Tail(Q)==(MaxEl(Q)-1);
 }
-void CreateEmptyCQ(CQueue * Q, int Max){
-    (*Q).T = (Customer *)malloc(Max*sizeof(Customer));
+void CreateEmptyCQ(CQUEUE * Q, int Max){
+    (*Q).T = (CUSTOMER *)malloc(Max*sizeof(CUSTOMER));
     if((*Q).T!=NULL){
         //Head and Tail assignment->definition of empty queue
         Head(*Q)=EmptyCQ;
@@ -20,11 +20,11 @@ void CreateEmptyCQ(CQueue * Q, int Max){
         MaxEl(*Q)=Max;
     }
 }
-void DeAlokasi(CQueue * Q){
+void DeAlokasi(CQUEUE * Q){
     MaxEl(*Q)=0;
     free((*Q).T);
 }
-void AddCustomerToQueue(CQueue *Q,Customer C){
+void AddCustomerToQueue(CQUEUE *Q,CUSTOMER C){
     /* Dictionary */
     CAddress i;
     if(IsEmptyCQ(*Q)){
@@ -61,7 +61,7 @@ void AddCustomerToQueue(CQueue *Q,Customer C){
         }
     } //full queue case -> queue stay as previous
 }
-void DeleteCustomerFromQueue(CQueue *Q,Customer *C){
+void DeleteCustomerFromQueue(CQUEUE *Q,CUSTOMER *C){
     /* I.S. Q is defined , maybe empty */
     /* F.S. Head customer is deleted : Queue maybe empty */
     CAddress i;
@@ -85,7 +85,7 @@ void DeleteCustomerFromQueue(CQueue *Q,Customer *C){
     }
 }
 
-void UpdateQueue(CQueue *Q,int *Life){
+void UpdateQueue(CQUEUE *Q,int *Life){
     /* Kamus */
     CAddress i,j;
     if(!IsEmptyCQ(*Q)){
@@ -128,7 +128,7 @@ void UpdateQueue(CQueue *Q,int *Life){
     }
 }
 
-Customer GenerateCustomer(int seed){
+CUSTOMER GenerateCustomer(int seed){
     /* Return customer */
     /* Customer is generated with random generation */
     /* If undefined customer is returned, it means that no customer is generated */
@@ -138,7 +138,7 @@ Customer GenerateCustomer(int seed){
     int star_ratio = 9;//program is X times more likely to generate normal guest instead of star guest
     int X; //number for placeholder
     int i;
-    Customer C;
+    CUSTOMER C;
     /* Algorithm */
     i=0;
     X = rand();

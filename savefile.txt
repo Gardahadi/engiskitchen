@@ -1,0 +1,30 @@
+//File untuk save
+//Komen harus dihapus ketika file diload
+//Bagian pertama waktu (belum dibahas formatnya)
+//WAKTU->waktu komputer
+//Bagian dua: load data player
+//MONEY
+//LIFE
+//POSISI
+    //Format : x y nruangan
+//HAND
+    //MaxEL of Bahan
+    //Number of Bahan
+    //Bahan per baris : Konvensi bahan di bawah stack di baris pertama
+    //Baris : (Nama_Bahan)
+//Bagian tiga : data restoran 
+//TIME->Jumlah tick
+//TRAY
+    //MaxEL of food
+    //Number of food
+    //Food per baris : Konvensi food di bawah stack di baris pertama
+    //Baris : (Nama_Makanan) (Harga)
+//CUSTOMER QUEUE
+    //MaxEL of QUEUE
+    //Number of CUSTOMER
+    //Customer per baris : (Kesabaran) (Jumlah) (Makanan) (0/1)->1 kalau bintang, 0 kalau nggak bintang 
+        //Konvensi : Baris paling atas adalah pelanggan di queue paling depan
+//ORDER QUEUE
+    //MaxEL of Array
+    //Number of ORDER
+    //Order per baris :(indeks) (Nama_Makanan) (Nomor meja)
