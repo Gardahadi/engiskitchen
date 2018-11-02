@@ -10,7 +10,7 @@ void IgnoreBlank()
 	 F.S. : CC ≠ BLANK atau CC = MARK */
 {
  // ALgoritma
- while ((CC == BLANK) && (CC != MARK)) {
+ while ((CC == BLANK) && (CC != MARK) && (CC!='\n')) {
    ADV();
  }
 }
@@ -61,7 +61,7 @@ void SalinKata()
   i = 1;
   CKata.TabKata[i] = CC;
   ADV();
-  while((CC!=BLANK) && (CC != MARK) && (i<NMax)) {
+  while((CC!=BLANK) && (CC != MARK) && (i<NMax) && (CC!='\n')) {
     i++;
     CKata.TabKata[i] = CC;
     ADV();
