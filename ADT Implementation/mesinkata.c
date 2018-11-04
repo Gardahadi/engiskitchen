@@ -69,3 +69,44 @@ void SalinKata()
   CKata.Length=i;
   IgnoreBlank();
 }
+
+boolean IsKataSama(Kata K1,K2) {
+  //Function untuk mengecek apakah ada dua kata yang sama
+  //Bila iya maka return true, kalau tidak sama return false
+	if(K1.Length!=K2.Length){
+    	return false;
+  	} else {
+    	int i=1;
+    	while((i<K1.Length)&&(K1.TabKata[i]==K2.TabKata[i])){
+    		i++;
+    	} //i= Length or ada huruf yang tidak sama
+		if(K1.TabKata[i]==K2.TabKata[i]){
+			return true;
+		} else {
+			return false;
+		}
+  	}
+}
+
+void PrintKata(Kata K){
+	//Print kata, TIDAK DIAKHIRI OLEH NEWLINE
+	i=1;
+	while(i<=K.Length){
+		printf("%c\n",K.TabKata[i]);
+		i++;
+	}
+}
+
+Kata StringToKata(char *s){
+	//Kamus
+	int i;
+	Kata K;
+	//Algoritma
+	i = 1;
+	while((s[i-1]!='\0')&&(i<=NMax)){
+		K.TabKata[i]=s[i-1];
+		K.Length++;
+		i++;
+	}
+	return K;
+}
