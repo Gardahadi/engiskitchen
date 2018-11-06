@@ -1,1 +1,12 @@
 //File eksternal untuk pengisian meja dan ruangan
+<per ruangan>
+<nroom>
+<isi matriks, per baris>
+<berhenti ketika Kata = "EndRoom">
+<harus sama jumlah char setiap baris. Kalau ada yang kosong diisi dengan CharUndef>
+<Kata Kitchen untuk memulai pembacaan kitchen>
+<MATRIKS kitchen. Pembacaaan sama seperti pembacaaan ruangan. N ruangan otomatis diisi 4>
+<ARRAY of KITCHENSET>
+<N_kitchenset>
+<Per kitcehnset> : Nama x y nroom 
+

@@ -12,7 +12,9 @@
     //Number of Bahan
     //Bahan per baris : Konvensi bahan di bawah stack di baris pertama
     //Baris : (Nama_Bahan)
+
 //Bagian tiga : data restoran 
+//RESEP -> tree of resep which is not implemented yet AF
 //TIME->Jumlah tick
 //TRAY
     //MaxEL of food
@@ -28,4 +30,7 @@
     //MaxEL of Array
     //Number of ORDER
     //Order per baris :(indeks) (Nama_Makanan) (Nomor meja)
-//
+//TABLE -> menyimpan data customer yang sedang berada di dalam restoran
+    //N_table
+    //Per meja : <Kapasitas> <Kesabaran> <Jumlah> <Makanan> <0/1>(isstar) <0/1>(isfull) <x> <y> <nroom>
+    
