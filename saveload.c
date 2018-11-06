@@ -64,6 +64,7 @@ void LoadOrderArray();
 
 void Load(){
     STARTKATA();
+    LoadMap();
     LoadTime();
     LoadDataPlayer();
     LoadDataRestoran();
