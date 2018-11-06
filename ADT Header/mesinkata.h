@@ -54,6 +54,8 @@ boolean IsKataSama(Kata K1,K2);
 void PrintKata(Kata K);
 //Print kata, TIDAK DIAKHIRI OLEH NEWLINE
 
+int KataToInt(Kata K);
+
 Kata StringToKata(char *s);
 //konversi string ke kata, karena gk boleh pakai string.h
 
