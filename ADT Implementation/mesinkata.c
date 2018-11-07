@@ -10,7 +10,7 @@ void IgnoreBlank()
 	 F.S. : CC ≠ BLANK atau CC = MARK */
 {
  // ALgoritma
- while ((CC == BLANK) && (CC != MARK) && (CC!='\n')) {
+ while (((CC == BLANK)||(CC == '\n')) && (CC != MARK)) {
    ADV();
  }
 }
@@ -70,7 +70,7 @@ void SalinKata()
   IgnoreBlank();
 }
 
-boolean IsKataSama(Kata K1,K2) {
+boolean IsKataSama(Kata K1, Kata K2) {
   //Function untuk mengecek apakah ada dua kata yang sama
   //Bila iya maka return true, kalau tidak sama return false
 	if(K1.Length!=K2.Length){
@@ -90,24 +90,26 @@ boolean IsKataSama(Kata K1,K2) {
 
 void PrintKata(Kata K){
 	//Print kata, TIDAK DIAKHIRI OLEH NEWLINE
+    int i;
 	i=1;
 	while(i<=K.Length){
-		printf("%c\n",K.TabKata[i]);
+		printf("%c",K.TabKata[i]);
 		i++;
 	}
 }
 
-Kata StringToKata(char *s){
+Kata StringToKata(char s[]){
 	//Kamus
 	int i;
 	Kata K;
 	//Algoritma
 	i = 1;
 	while((s[i-1]!='\0')&&(i<=NMax)){
-		K.TabKata[i]=s[i-1];
+		K.TabKata[i]= s[i-1];
 		K.Length++;
 		i++;
 	}
+    
 	return K;
 }
 
@@ -117,47 +119,47 @@ int KataToInt(Kata K) {
     //Bila kata mengandung huruf maka mengembalikan 0 (error flag)
     //Kamus
     int i,angka;
-    boolean negative, err_flag;
+    boolean negative_flag, err_flag;
     //Algoritma
     i=1;
     angka=0;
     err_flag = false;
     if(K.TabKata[i]=='-'){
-        negative_flag = true
+        negative_flag = true;
         i++;
     } else {
         negative_flag = false;
     }
     while((i<=K.Length)&&(!err_flag)){
-        case(K.TabKata[i]){
-            '0':
+        switch (K.TabKata[i]){
+            case '0':
                 angka = angka*10+0;
                 break;
-            '1':
+            case '1':
                 angka = angka*10+1;
                 break;
-            '2':
+            case '2':
                 angka = angka*10+2;
                 break;
-           '3':
+            case '3':
                 angka = angka*10+3;
                 break;
-            '4':
+            case '4':
                 angka = angka*10+4;
                 break;
-            '5':
+            case '5':
                 angka = angka*10+5;
                 break;
-            '6':
+            case '6':
                 angka = angka*10+6;
                 break;
-            '7':
+            case '7':
                 angka = angka*10+7;
                 break;
-            '8':
+            case '8':
                 angka = angka*10+8;
                 break;
-            '9':
+            case '9':
                 angka = angka*10+9;
                 break;
             default : 
