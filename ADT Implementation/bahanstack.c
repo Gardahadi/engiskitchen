@@ -15,6 +15,7 @@ void CreateEmptyBS (BSTACK *S) {
 /* F.S. Membuat sebuah BSTACK S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 1.. MaxEl+1 karena 0 tidak dipakai */
 /* Ciri BSTACK kosong : TOP bernilai Nil */
+
   Top(*S) = Nil;
 }
 

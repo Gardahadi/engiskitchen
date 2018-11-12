@@ -3,12 +3,11 @@
 #ifndef RESTAURANT_H
 #define RESTAURANT_H
 
-#include "ADT header/boolean.h"
-#include "ADT header/customer.h"
-#include "ADT header/basetype.h"
-#include "ADT header/foodstack.h"
-#include "ADT header/bahanstack.h"
-#include "ADT header/matrikskar.h"
+#include "ADT Header/boolean.h"
+#include "ADT Header/basetype.h"
+#include "ADT Header/foodstack.h"
+#include "ADT Header/bahanstack.h"
+#include "ADT Header/matriksroom.h"
 
 
 

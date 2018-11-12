@@ -2,8 +2,8 @@
 /* deklarasi Stack of Bahan yang diimplementasi dengan tabel kontigu dan ukuran sama */
 /* TOP adalah alamat elemen puncak */
 /* Implementasi dalam bahasa C dengan alokasi statik */
-#ifndef bahanstack_H
-#define bahanstack_H
+#ifndef FSTACK_H
+#define FSTACK_H
 
 #include "boolean.h"
 #include "basetype.h"

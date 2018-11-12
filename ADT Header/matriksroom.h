@@ -10,7 +10,7 @@
 #define BrsMax 100
 #define KolMin 0
 #define KolMax 100
-#define Nil ' ' //elemen room kosong
+#define KOSONG ' ' //elemen room kosong
 
 typedef int indeks; /* indeks baris, kolom */
 typedef char ElType;
