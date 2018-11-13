@@ -36,6 +36,7 @@ typedef struct {
 extern Restaurant R;
 extern Rs;
 extern Room [5]; //indeks [1..4]
+/* EXTERN PLAYER ADA TIDAK ? */
 
 void Move (char* Command); //Garda
 

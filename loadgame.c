@@ -18,8 +18,32 @@ void Load ();
 
 
 /*PENCACAHAN FUNGSI UNTUK MODULARITAS PROGRAM*/
+void LoadTray();
 
-void LoadTime();
+void LoadCustomerQueue();
+
+void LoadOrderArray();
+
+/*IMPLEMENTATION*/
+
+void Load(){
+    LoadNomorSimulasi();
+    LoadTime();
+    LoadDataPlayer();
+    LoadDataRestoran();
+}
+
+void LoadNomorSimulasi(){
+    STARTKATA();
+    //NS
+    int Nomor_simulasi = KataToInt(CKata);
+}
+
+void LoadTime(){
+    ADVKATA();
+    R.Time = KataToInt(CKata);
+}
+
 void LoadDataPlayer(){
     //Money
     ADVKATA();
@@ -39,33 +63,34 @@ void LoadDataPlayer(){
     R.P.Position.nRoom = KataToInt(CKata);   
     LoadHand();
 }
-void LoadHand();
+
+void LoadHand(){
+    //EKstern player blm ada
+    //Asumsi nama ekstern p
+    PLAYER p;
+    //Empty stack
+    CreateEmptyBS(&(P.Hand));
+    ADVKATA();
+    //Number of bahan
+    int N = KataToInt(CKata);
+    int i=0;
+    BAHAN b;
+    while(i<N){
+        ADVKATA();
+        b.Name = CKata();
+        PushBS(&(P.Hand),b);
+        i++;
+    } //i=N, reading bahan selesai
+}
 
 void LoadDataRestoran(){
-    //Time tick load
-    ADVKATA();
-    R.Time = KataToInt(CKata);
+    LoadTickTime();
     LoadTray();
     LoadCustomerQueue();
     LoadOrderArray();
-
-
 }
 
-void LoadTray();
-
-void LoadCustomerQueue();
-
-void LoadOrderArray();
-
-
-
-/*IMPLEMENTATION*/
-
-void Load(){
-    STARTKATA();
-    LoadMap();
-    LoadTime();
-    LoadDataPlayer();
-    LoadDataRestoran();
+void LoadTickTime(){
+    ADVKATA();
+    
 }
