@@ -1,7 +1,7 @@
 /* File: mesinkar.c */
 /* Implementasi Mesin Karakter */
 
-#include "mesinkar.h"
+#include "../ADT Header/mesinkar.h"
 #include <stdio.h>
 
 char CC;

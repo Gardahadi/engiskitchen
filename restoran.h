@@ -24,14 +24,17 @@ typedef struct {
 /* Definisi elemen dan koleksi objek */
 typedef struct {
   int Time; //waktu permainan
-  CQUEUE CustQueue; //queue of customer
-  ORDERTAB OrderTab; //queue of order
+  //CQUEUE CustQueue; //queue of customer
+  //ORDERTAB OrderTab; //queue of order
   PLAYER P; //player P
-  GRAPH RoomGraph;
+  //GRAPH RoomGraph;
 } RESTAURANT;
 
 /*FUNGSI PROSEDUR*/
 
+extern RESTAURANT R;
+//extern Rs;
+extern ROOM Room [5]; //indeks [1..4]
 extern Restaurant R;
 extern Rs;
 
@@ -52,6 +55,7 @@ extern Room [5]; //indeks [1..4]
 #define InfoTableArray(n, X) Room[n].TableArray[(X)].C.Makanan.Nama
 #define PosTableArray(n, X) Room[(n)].TableArray[(X)].PosMeja
 
+>>>>>>> master
 
 void Move (char* Command); //Garda
 

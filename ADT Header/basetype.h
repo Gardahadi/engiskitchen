@@ -24,7 +24,7 @@ typedef struct {
   int nRoom; //nomer ruangan
   //Definisi ruangan : room 1 = 1
   //room 2 = 2, room 3 = 3 , kitchen = 4
-} POSISI;
+} POSITION;
 
 //Tipe bentukan customer
 typedef struct {
@@ -39,14 +39,14 @@ typedef struct{
   int Kapasitas;
   CUSTOMER C;
   boolean IsFull;
-  POSISI PosMeja;
+  POSITION PosMeja;
 } TABLE;
 
 //Tipe bentukan menyimpan object dapur
 
 typedef struct{
   char *Name;
-  POSISI Pos;
+  POSITION Pos;
 } KITCHENSET;
 
 //Tipe bentukan order
