@@ -90,8 +90,8 @@ void CopyMATRIKS (MATRIKS MIn, MATRIKS * MHsl)
   int i,j;
   NBrsEff(*MHsl) = NBrsEff(MIn);
   NKolEff(*MHsl) = NKolEff(MIn);
-  for (i=1;i<=NBrsEff(MIn);i++){
-    for (j=1;j<=NKolEff(MIn);j++){
+  for (i=0;i<=NBrsEff(MIn);i++){
+    for (j=0;j<=NKolEff(MIn);j++){
       Elmt(*MHsl,i,j) = Elmt(MIn,i,j);
     }
   }
@@ -111,15 +111,18 @@ void BacaMATRIKS (MATRIKS * M, int NB, int NK)
 8 9 10
 */
 {
-  int i,j,X;
+  int i,j;
+  char X;
+  i=1;
   MakeMATRIKS(NB,NK,M);
-  NBrsEff(*M) = NB;
-  NKolEff(*M) = NK;
-  for (i=GetFirstIdxBrs(*M);i<=NB;i++){
-    for(j=GetFirstIdxKol(*M);j<=NK;j++){
-      scanf("%s",&X);
+  while(i<=NBrsEff(*M)){
+    j=1;
+    while(j<=NKolEff(*M)){
+      scanf(" %c",&X);
       Elmt(*M,i,j)=X;
+      j++;
     }
+  i++;
   }
 }
 void TulisMATRIKS (MATRIKS M)
@@ -135,21 +138,14 @@ void TulisMATRIKS (MATRIKS M)
 {
   int i,j;
   //Membuat border a
-
-
   for (i=1;i<=NBrsEff(M);i++) {
-
-
     for (j=1;j<=NKolEff(M);j++) {
 
-      if ((j==NKolEff(M)) && (i!=NBrsEff(M))) {
+      if ((j==NKolEff(M)))  {
         printf(" %c |\n",Elmt(M,i,j));
       }
-      else if ((j==NKolEff(M)) && (i==NBrsEff(M))) {
-        printf(" %c |",Elmt(M,i,j));
-      }
       else {
-        printf("%s ",Elmt(M,i,j));
+        printf(" %c |",Elmt(M,i,j));
       }
     }
   }

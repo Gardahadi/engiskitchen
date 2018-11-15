@@ -1,14 +1,14 @@
 /* ********** Definisi TYPE MATRIKS dengan indeks dan elemen integer ********** */
 
-#ifndef MATRIKS_H
-#define MATRIKS_H
+#ifndef MATRIKSROOM_H
+#define MATRIKSROOM_H
 
 #include "boolean.h"
 
 /* Ukuran minimum dan maksimum baris dan kolom */
-#define BrsMin 0
+#define BrsMin 1
 #define BrsMax 100
-#define KolMin 0
+#define KolMin 1
 #define KolMax 100
 #define KOSONG ' ' //elemen room kosong
 
