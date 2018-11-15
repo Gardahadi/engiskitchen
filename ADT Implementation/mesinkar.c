@@ -10,7 +10,7 @@ boolean EOP;
 static FILE * pita;
 static int retval;
 
-void START() {
+void START(int i) {
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    I.S. : sembarang
@@ -18,7 +18,13 @@ void START() {
           Jika CC = MARK maka EOP akan menyala (true) */
 
 	/* Algoritma */
-	pita = fopen("save.txt","r");
+      if(i==0){
+            //If 0 open mapfile
+            pita = fopen("matriks.txt");
+      } else {
+            //if else open savefile
+	      pita = fopen("save.txt","r");
+      }
 	ADV();
 }
 

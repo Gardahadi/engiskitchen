@@ -10,13 +10,17 @@
 
 //Included Libraries
 #include <stdio.h>
-#include "restoran.h"
+// #include "restoran.h"
 #include <ncurses.h>
+#include "ADT Header/matriksroom.h"
+
+
+
 
 //KAMUS GLOBAL
 WINDOW* BoxTop1, *BoxTop2, *BoxTop3, *BoxTop4;
 WINDOW* Box1, *Box2, *Box3, *Box4;
-WINDOW* BoxBot, MapBox;
+WINDOW* BoxBot, *MapBox;
 
 
 void PrintText(WINDOW *Box);
@@ -51,7 +55,7 @@ void CreateUI(){
   wrefresh(BoxTop4);
 
 
-  //Make middle zone
+  //Make middle-left/right zone
   Box1 = newwin(LINES/2-LINES/12,COLS/4,LINES/12,0);
   Box2 = newwin((LINES/2-LINES/6),COLS/4,LINES/2,0);
   Box3 = newwin(LINES/2-LINES/12,COLS/4,LINES/12,COLS-COLS/4);
@@ -76,9 +80,10 @@ void CreateUI(){
   wrefresh(Box4);
 
 
-
-
-
+  //Make Grid Zone
+  MapBox = newwin(LINES-LINES/4-LINES/32,COLS/2,LINES/2-LINES/4-LINES/8-LINES/16-LINES/32,COLS/2-COLS/4);
+  box(MapBox,0,0);
+  wrefresh(MapBox);
 
   //Make Bottom Zone
   BoxBot = newwin(LINES/6,COLS,LINES-LINES/6,0);
@@ -89,16 +94,52 @@ void CreateUI(){
 
 }
 
+printBoard() {
+  px=1;
+  py=1;
+  for (i=1;i<=NBrsEff(X);i++) {
+    for (j=1;j<=NKolEff(X);j++) {
+
+      if ((j==NKolEff(X)))  {
+        mvwprintw(MapBox,py,px," X |");
+        wrefresh(MapBox);
+        px=1;
+        py++;
+
+      }
+      else {
+        mvwprintw(MapBox,py,px," X |");
+          wrefresh(MapBox);
+          px=px+5;
+      }
+    }
+  }
+}
 
 
 int main () {
 
   //kamus
+  int i,j,px,py;
+  MATRIKS X;
+  int count = 1;
+  MakeMATRIKS(3,3,&X);
+
+  for (i=1;i<=NBrsEff(X);i++){
+    for(j=1;j<=NKolEff(X);j++){
+        Elmt(X,i,j)=count;
+        count++;
+    }
+  }
+
+  printBoard();
 
   CreateUI();
+
+  wrefresh(BoxBot);
+
   char cmd[10];
 
-  while()
   wgetstr(BoxBot,cmd);
   CreateUI();
   wgetstr(BoxBot,cmd);

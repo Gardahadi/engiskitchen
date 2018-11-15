@@ -17,13 +17,13 @@ void IgnoreBlank()
 
 
 
-void STARTKATA()
+void STARTKATA(int i)
 /* I.S. : CC sembarang
    F.S. : EndKata = true, dan CC = MARK;
           atau EndKata = false, CKata adalah kata yang sudah diakuisisi,
           CC karakter pertama sesudah karakter terakhir kata */
 {
-  START();
+  START(i);
   IgnoreBlank();
   if(CC == MARK) {
     EndKata = true;
