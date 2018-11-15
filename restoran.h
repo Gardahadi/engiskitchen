@@ -8,7 +8,7 @@
 #include "ADT Header/foodstack.h"
 #include "ADT Header/bahanstack.h"
 #include "ADT Header/matriksroom.h"
-
+#include "ADT Header/customer.h"
 
 
 //Tipe bentukan player
@@ -34,7 +34,7 @@ typedef struct {
 
 extern RESTAURANT R;
 //extern Rs;
-extern ROOM Room [5]; //indeks [1..4]
+extern ROOM ArrRoom[5]; //indeks [1..4]
 extern RESTAURANT R;
 //extern Rs;
 
