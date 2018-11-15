@@ -14,6 +14,49 @@
 #define InfoTableArray(n, X) Room[n].TableArray[(X)].C.Makanan.Nama
 #define PosTableArray(n, X) Room[(n)].TableArray[(X)].PosMeja
 
+//DUplicate type jangan sampe ada
+
+/* Implementasi prosedur dan fungsi trekait Move */
+void Move (char Dir) {
+
+	switch (Dir) {
+		case "U":
+			ordinat()++;
+			break;
+		case "D" :
+			ordinat()--;
+		case "L" :
+			absis() --;
+			break;
+		case "R" :
+			absis()++;
+			break;
+	}
+
+
+
+}
+
+
+
+
+
+// void GetOrder (); //Badur
+//
+// void Put (); //Badur
+//
+//
+// void Place (); //Lukas
+
+//
+// void Recipe (); //Lukas
+//
+// void Save (); //Alam
+//
+// void Load (); //Alam
+//
+// void UpdateCust(); //Alam
+
 
 void Take (){
 	//KAMUS
