@@ -18,7 +18,7 @@ typedef int address;   /* indeks tabel */
 /* Contoh deklarasi variabel bertype BSTACK dengan ciri TOP : */
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
 typedef struct {
-	Bahan T[MaxEl+1]; /* tabel penyimpan elemen */
+	BAHAN T[MaxEl+1]; /* tabel penyimpan elemen */
 	address TOP;  /* alamat TOP: elemen puncak */
 } BSTACK;
 /* Definisi BSTACK S kosong : S.TOP = Nil */
@@ -46,13 +46,13 @@ boolean IsFullBS (BSTACK S);
 /* Mengirim true jika tabel penampung nilai elemen BSTACK penuh */
 
 /* ************ Menambahkan sebuah elemen ke BSTACK ************ */
-void PushBS (BSTACK * S, infotype X);
+void PushBS (BSTACK * S, BAHAN X);
 /* Menambahkan X sebagai elemen BSTACK S. */
 /* I.S. S mungkin kosong, tabel penampung elemen BSTACK TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen BSTACK ************ */
-void PopBS (BSTACK * S, infotype* X);
+void PopBS (BSTACK * S, BAHAN* X);
 /* Menghapus X dari BSTACK S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */

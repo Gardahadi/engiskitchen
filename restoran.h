@@ -8,6 +8,7 @@
 #include "ADT Header/foodstack.h"
 #include "ADT Header/bahanstack.h"
 #include "ADT Header/matriksroom.h"
+#include "ADT Header/customer.h"
 
 
 //Tipe bentukan player
