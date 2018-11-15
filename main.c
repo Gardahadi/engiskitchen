@@ -12,8 +12,7 @@
 #include <stdio.h>
 // #include "restoran.h"
 #include <ncurses.h>
-#include "/ADT Header/matriksroom.h"
-
+#include "restoran.h"
 
 
 
@@ -101,6 +100,7 @@ void CreateUI(){
 int main () {
 
   //kamus
+
 
   CreateUI();
   wmove(MapBox,LINES/2,COLS/2);

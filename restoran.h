@@ -37,6 +37,21 @@ extern Rs;
 extern Room [5]; //indeks [1..4]
 /* EXTERN PLAYER ADA TIDAK ? */
 
+
+/* Definisi akses dengan Selektor : Get */
+#define hand() R.P.Hand
+#define tray() R.P.Tray
+#define absis() R.P.Pos.x
+#define ordinat() R.P.Pos.y
+#define player() R.P
+#define Room(n, x, y) Room[(n)].RoomBoard.Mem[(x)][(y)]
+#define GetKitchenArray(X) Room[4].KitchenArray[(X)]
+#define InfoKitchenArray(X) Room[4].KitchenArray[(X)].Name
+#define PosKitchenArray(X) Room[4].KitchenArray[(X)].Pos
+#define InfoTableArray(n, X) Room[n].TableArray[(X)].C.Makanan.Nama
+#define PosTableArray(n, X) Room[(n)].TableArray[(X)].PosMeja
+
+
 void Move (char* Command); //Garda
 
 void GetOrder (); //Badur
