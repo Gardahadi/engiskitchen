@@ -20,7 +20,7 @@ void START(int i) {
 	/* Algoritma */
       if(i==0){
             //If 0 open mapfile
-            pita = fopen("matriks.txt");
+            pita = fopen("map.txt","r");
       } else {
             //if else open savefile
 	      pita = fopen("save.txt","r");

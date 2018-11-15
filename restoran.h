@@ -10,7 +10,6 @@
 #include "ADT Header/matriksroom.h"
 
 
-
 //Tipe bentukan player
 typedef struct {
   long Money; //uang player
