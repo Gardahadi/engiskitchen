@@ -12,7 +12,7 @@
 #include <stdio.h>
 // #include "restoran.h"
 #include <ncurses.h>
-#include "restoran.h"
+#include "ADT Header/matriksroom.h"
 
 
 
@@ -94,16 +94,50 @@ void CreateUI(){
 
 }
 
+printBoard() {
+  px=1;
+  py=1;
+  for (i=1;i<=NBrsEff(X);i++) {
+    for (j=1;j<=NKolEff(X);j++) {
 
+      if ((j==NKolEff(X)))  {
+        mvwprintw(MapBox,py,px," X |");
+        wrefresh(MapBox);
+        px=1;
+        py++;
+
+      }
+      else {
+        mvwprintw(MapBox,py,px," X |");
+          wrefresh(MapBox);
+          px=px+5;
+      }
+    }
+  }
+}
 
 
 int main () {
 
   //kamus
+  int i,j,px,py;
+  MATRIKS X;
+  int count = 1;
+  MakeMATRIKS(3,3,&X);
 
+  for (i=1;i<=NBrsEff(X);i++){
+    for(j=1;j<=NKolEff(X);j++){
+        Elmt(X,i,j)=count;
+        count++;
+    }
+  }
+
+  printBoard();
 
   CreateUI();
-  wmove(MapBox,LINES/2,COLS/2);
+
+  wrefresh(BoxBot);
+
   char cmd[10];
 
   wgetstr(BoxBot,cmd);

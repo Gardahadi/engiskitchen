@@ -34,7 +34,7 @@ typedef struct {
 
 extern Restaurant R;
 extern Rs;
-extern Room [5]; //indeks [1..4]
+extern Room[5]; //indeks [1..4]
 
 
 /* Definisi akses dengan Selektor : Get */
