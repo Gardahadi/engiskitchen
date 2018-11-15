@@ -88,9 +88,34 @@ void LoadDataRestoran(){
     LoadTray();
     LoadCustomerQueue();
     LoadOrderArray();
+    LoadTable();
 }
 
 void LoadTickTime(){
     ADVKATA();
     
+}
+
+void LoadTray(){
+
+
+
+}
+
+void LoadCustomerQueue(){
+
+}
+
+void LoadOrderArray(){
+
+
+}
+
+void LoadTable(){
+
+}
+
+int main(){
+    Load()
+    return 0;
 }
