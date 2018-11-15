@@ -12,7 +12,7 @@
 #include <stdio.h>
 // #include "restoran.h"
 #include <ncurses.h>
-#include "ADT Header/matriksroom.h"
+#include "restoran.h"
 
 
 
@@ -94,7 +94,8 @@ void CreateUI(){
 
 }
 
-printBoard() {
+void printBoard(MATRIKS X) {
+  int px,py,i,j;
   px=1;
   py=1;
   for (i=1;i<=NBrsEff(X);i++) {
@@ -120,7 +121,7 @@ printBoard() {
 int main () {
 
   //kamus
-  int i,j,px,py;
+  int i,j;
   MATRIKS X;
   int count = 1;
   MakeMATRIKS(3,3,&X);
@@ -132,7 +133,7 @@ int main () {
     }
   }
 
-  printBoard();
+  printBoard(X);
 
   CreateUI();
 

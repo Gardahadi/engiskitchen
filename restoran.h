@@ -35,11 +35,9 @@ typedef struct {
 extern RESTAURANT R;
 //extern Rs;
 extern ROOM Room [5]; //indeks [1..4]
-extern Restaurant R;
-extern Rs;
+extern RESTAURANT R;
+//extern Rs;
 
-extern Room [5]; //indeks [1..4]
-/* EXTERN PLAYER ADA TIDAK ? */
 
 
 /* Definisi akses dengan Selektor : Get */
@@ -55,7 +53,6 @@ extern Room [5]; //indeks [1..4]
 #define InfoTableArray(n, X) Room[n].TableArray[(X)].C.Makanan.Nama
 #define PosTableArray(n, X) Room[(n)].TableArray[(X)].PosMeja
 
->>>>>>> master
 
 void Move (char* Command); //Garda
 

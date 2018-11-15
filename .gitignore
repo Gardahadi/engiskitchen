@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 .gitignore
 .vscode
 *.out
-=======
 .vscode
 .a.out
->>>>>>> master
