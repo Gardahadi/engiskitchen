@@ -12,8 +12,8 @@
 /* *** Konstruktor/Kreator *** */
 void CreateEmptyFS (FSTACK *S) {
 /* I.S. sembarang; */
-/* F.S. Membuat sebuah FSTACK S yang kosong berkapasitas MaxEl */
-/* jadi indeksnya antara 1.. MaxEl+1 karena 0 tidak dipakai */
+/* F.S. Membuat sebuah FSTACK S yang kosong berkapasitas MaxElFS */
+/* jadi indeksnya antara 1.. MaxElFS+1 karena 0 tidak dipakai */
 /* Ciri FSTACK kosong : fTop bernilai Nil */
   fTop(*S) = Nil;
 }
@@ -29,7 +29,7 @@ boolean IsEmptyFS (FSTACK S) {
 boolean IsFullFS (FSTACK S)
 /* Mengirim true jika tabel penampung nilai elemen FSTACK penuh */
 {
-  return (fTop(S) == MaxEl);
+  return (fTop(S) == MaxElFS);
 }
 
 /* ************ Menambahkan sebuah elemen ke FSTACK ************ */

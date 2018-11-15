@@ -8,7 +8,7 @@
 #include "boolean.h"
 #include "basetype.h"
 #define Nil 0
-#define MaxEl 10
+#define MaxElFS 10
 /* Nil adalah FSTACK dengan elemen kosong . */
 /* Karena indeks dalam bhs C dimulai 0 maka tabel dg indeks 0 tidak dipakai */
 
@@ -18,11 +18,11 @@ typedef int address;   /* indeks tabel */
 /* Contoh deklarasi variabel bertype FSTACK dengan ciri fTop : */
 /* Versi I : dengan menyimpan tabel dan alamat fTop secara eksplisit*/
 typedef struct {
-	finfotype T[MaxEl+1]; /* tabel penyimpan elemen */
+	finfotype T[MaxElFS+1]; /* tabel penyimpan elemen */
 	address fTOP;  /* alamat fTop: elemen puncak */
 } FSTACK;
 /* Definisi FSTACK S kosong : S.fTop = Nil */
-/* Elemen yang dipakai menyimpan nilai FSTACK T[1]..T[MaxEl] */
+/* Elemen yang dipakai menyimpan nilai FSTACK T[1]..T[MaxElFS] */
 /* Jika S adalah FSTACK maka akses elemen : */
    /* S.T[(S.fTop)] untuk mengakses elemen fTop */
    /* S.fTop adalah alamat elemen fTop */
@@ -34,8 +34,8 @@ typedef struct {
 /* *** Konstruktor/Kreator *** */
 void CreateEmptyFS (FSTACK *S);
 /* I.S. sembarang; */
-/* F.S. Membuat sebuah FSTACK S yang kosong berkapasitas MaxEl */
-/* jadi indeksnya antara 1.. MaxEl+1 karena 0 tidak dipakai */
+/* F.S. Membuat sebuah FSTACK S yang kosong berkapasitas MaxElFS */
+/* jadi indeksnya antara 1.. MaxElFS+1 karena 0 tidak dipakai */
 /* Ciri FSTACK kosong : fTop bernilai Nil */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */

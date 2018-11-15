@@ -3,3 +3,4 @@
 *.out
 .vscode
 .a.out
+tester.c

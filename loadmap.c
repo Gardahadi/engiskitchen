@@ -1,6 +1,5 @@
 #include "restoran.h"
 
-
 void loadMap(){
     STARTKATA(0);
     int i,j,k;

@@ -21,7 +21,7 @@
 WINDOW* BoxTop1, *BoxTop2, *BoxTop3, *BoxTop4;
 WINDOW* Box1, *Box2, *Box3, *Box4;
 WINDOW* BoxBot, *MapBox;
-
+ROOM ArrRoom[5];
 
 void PrintText(WINDOW *Box);
 
@@ -105,7 +105,7 @@ void printBoard(MATRIKS X) {
         mvwprintw(MapBox,py,px," X |");
         wrefresh(MapBox);
         px=1;
-        py++;
+        py=py+2;
 
       }
       else {
@@ -122,28 +122,30 @@ int main () {
 
   //kamus
   int i,j;
-  MATRIKS X;
-  int count = 1;
-  MakeMATRIKS(3,3,&X);
+  // MATRIKS X;
+  // int count = 1;
+  //MakeMATRIKS(3,3,&X);
 
-  for (i=1;i<=NBrsEff(X);i++){
-    for(j=1;j<=NKolEff(X);j++){
-        Elmt(X,i,j)=count;
-        count++;
-    }
-  }
+  // for (i=1;i<=NBrsEff(X);i++){
+  //   for(j=1;j<=NKolEff(X);j++){
+  //       Elmt(X,i,j)=count;
+  //       count++;
+  //   }
+  // }
+  loadMap();
 
-  printBoard(X);
 
   CreateUI();
+
+  printBoard(ArrRoom[1].RoomBoard);
 
   wrefresh(BoxBot);
 
   char cmd[10];
-
   wgetstr(BoxBot,cmd);
   CreateUI();
   wgetstr(BoxBot,cmd);
+
 
   wgetch(BoxBot);
   endwin();

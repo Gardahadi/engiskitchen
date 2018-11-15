@@ -35,8 +35,6 @@ typedef struct {
 extern RESTAURANT R;
 //extern Rs;
 extern ROOM ArrRoom[5]; //indeks [1..4]
-extern RESTAURANT R;
-//extern Rs;
 
 
 
