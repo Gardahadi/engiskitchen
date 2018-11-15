@@ -39,14 +39,14 @@ typedef struct{
   int Kapasitas;
   CUSTOMER C;
   boolean IsFull;
-  POSISI PosMeja;
+  POSITION PosMeja;
 } TABLE;
 
 //Tipe bentukan menyimpan object dapur
 
 typedef struct{
   char *Name;
-  POSISI Pos;
+  POSITION Pos;
 } KITCHENSET;
 
 //Tipe bentukan order

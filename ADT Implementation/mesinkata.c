@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "mesinkata.h"
+#include "../ADT Header/mesinkata.h"
 
 boolean EndKata;
 Kata CKata;

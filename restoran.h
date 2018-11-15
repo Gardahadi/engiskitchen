@@ -24,17 +24,19 @@ typedef struct {
 /* Definisi elemen dan koleksi objek */
 typedef struct {
   int Time; //waktu permainan
-  CQUEUE CustQueue; //queue of customer
-  ORDERTAB OrderTab; //queue of order
+  //CQUEUE CustQueue; //queue of customer
+  //ORDERTAB OrderTab; //queue of order
   PLAYER P; //player P
-  GRAPH RoomGraph;
+  //GRAPH RoomGraph;
 } RESTAURANT;
 
 /*FUNGSI PROSEDUR*/
 
-extern Restaurant R;
-extern Rs;
+extern RESTAURANT R;
+//extern Rs;
 extern ROOM ArrRoom[5]; //indeks [1..4]
+extern RESTAURANT R;
+//extern Rs;
 
 
 
