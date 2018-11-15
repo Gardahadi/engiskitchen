@@ -27,6 +27,7 @@ void LoadOrderArray();
 /*IMPLEMENTATION*/
 
 void Load(){
+    STARTKATA(1);
     LoadNomorSimulasi();
     LoadTime();
     LoadDataPlayer();
@@ -34,8 +35,6 @@ void Load(){
 }
 
 void LoadNomorSimulasi(){
-    STARTKATA();
-    //NS
     int Nomor_simulasi = KataToInt(CKata);
 }
 
