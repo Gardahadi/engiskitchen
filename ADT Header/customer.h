@@ -34,34 +34,34 @@ typedef struct {
 #define IsStar(C) (C).IsStar
 
 /*PREDICATE FUNCTION AND PROCEDURE*/
-boolean IsEmptyCQ(CQueue Q);
+boolean IsEmptyCQ(CQUEUE Q);
 /* I.S. Q is defined */
 /* Return true if Q is empty, false otherwise */
-boolean IsFullCQ(CQueue Q);
+boolean IsFullCQ(CQUEUE Q);
 /* I.S. Q is defined */
 /* Return true if Q is full, false otherwise */
-void CreateEmptyCQ(CQueue * Q, int Max);
+void CreateEmptyCQ(CQUEUE * Q, int Max);
 /* F.S. Q is defined with max element = Max if allocation success*/
 
-void DeAlokasi(CQueue * Q);
+void DeAlokasi(CQUEUE * Q);
 /* F.S. Q is deallocated */
-void AddCustomerToQueue(CQueue *Q,Customer C);
+void AddCustomerToQueue(CQUEUE *Q,CUSTOMER C);
 /* I.S. Q is defined-> Q may be full */
 /* F.S. a new customer is added If new customer is star customer, then
 addition is by priority.
     If full then Q stayed the same
 */
-void DeleteCustomerFromQueue(CQueue *Q,Customer *C);
+void DeleteCustomerFromQueue(CQUEUE *Q,CUSTOMER *C);
 /* I.S. Q is defined , maybe empty */
 /* F.S. Head customer is deleted : Queue maybe empty */
 /* C adalah customer yang didelete*/
 
-void UpdateQueue(CQueue *Q,int *Life);
+void UpdateQueue(CQUEUE *Q,int *Life);
 /* I.S. Sembarang, Q boleh kosong */
 /* F.S. Seluruh customer dengan kesabaran 1 dihapus , seluruh customer kesabarannya dikurangi 1*/
 /* Life berkurang sejumlah dengan pelanggan yang yang dihapus*/
 
-Customer GenerateCustomer(int seed);
+CUSTOMER GenerateCustomer(int seed);
 /* Return customer */
 /* Customer is generated with random generation */
 /* If undefined customer is returned, it means that no customer is generated */

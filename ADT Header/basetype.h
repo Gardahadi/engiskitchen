@@ -1,12 +1,15 @@
 //File definisi dasar berbagai tipe bentukan
 //Tipe bentukan semuanya dibutuhkan untuk proses di restoran
 //Library
-#include "matriks.h" //MATRIKS untuk bentukan Room
+#include "matriksroom.h" //MATRIKS untuk bentukan Room
 #include "boolean.h" //Boolean
 #include "stdio.h"
 #include "stdlib.h"
-#include "stackt.h"
 #include "mesinkata.h" //Mesin kata untuk tipe kata dan mesin kata untuk pembacaan file
+
+#ifndef BASETYPE_H
+#define BASETYPE_H
+
 
 //Tipe bentukan food
 typedef struct {
@@ -25,7 +28,7 @@ typedef struct {
 
 //Tipe bentukan customer
 typedef struct {
-  Food Makanan; //nama makanan
+  FOOD Makanan; //nama makanan
   int Jumlah; //jumlah customer
   int Kesabaran; //tingkat kesabaran
   boolean IsStar; //true jika star customer
@@ -34,16 +37,16 @@ typedef struct {
 //Tipe bentukan meja
 typedef struct{
   int Kapasitas;
-  Customer C;
+  CUSTOMER C;
   boolean IsFull;
-  Posisi PosMeja;
+  POSISI PosMeja;
 } TABLE;
 
 //Tipe bentukan menyimpan object dapur
 
 typedef struct{
   char *Name;
-  Posisi Pos;
+  POSISI Pos;
 } KITCHENSET;
 
 //Tipe bentukan order
@@ -67,3 +70,5 @@ typedef struct {
 typedef struct {
   Kata Name; //nama food yang diorder
 }BAHAN;
+
+#endif
