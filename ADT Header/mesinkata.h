@@ -47,7 +47,7 @@ void SalinKata();
           CC adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
-boolean IsKataSama(Kata K1,K2);
+boolean IsKataSama(Kata K1, Kata K2);
 //Function untuk mengecek apakah ada dua kata yang sama
 //Bila iya maka return true, kalau tidak sama return false
 

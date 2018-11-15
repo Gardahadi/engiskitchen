@@ -5,7 +5,7 @@
     2.
     4.
     5. Gardahadi - 13517144
-    6.
+    6. Rika Dewi - 13517147
 */
 
 //Included Libraries
