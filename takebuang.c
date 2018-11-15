@@ -1,46 +1,4 @@
-/*Implementasi dari procedure Take, Buang, dan Give*/
 #include "restoran.h"
-
-
-
-//DUplicate type jangan sampe ada
-
-/* Implementasi prosedur dan fungsi trekait Move */
-void Move (char Dir) {
-	switch (Dir) {
-		case "U":
-			ordinat()++;
-			break;
-		case "D" :
-			ordinat()--;
-		case "L" :
-			absis() --;
-			break;
-		case "R" :
-			absis()++;
-			break;
-	}
-}
-
-
-
-
-
-// void GetOrder (); //Badur
-//
-// void Put (); //Badur
-//
-//
-// void Place (); //Lukas
-
-//
-// void Recipe (); //Lukas
-//
-// void Save (); //Alam
-//
-// void Load (); //Alam
-//
-// void UpdateCust(); //Alam
 
 
 void Take (){

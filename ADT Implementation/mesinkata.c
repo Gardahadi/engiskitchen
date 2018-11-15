@@ -104,12 +104,13 @@ Kata StringToKata(char s[]){
 	Kata K;
 	//Algoritma
 	i = 1;
+  K.Length = 0;
 	while((s[i-1]!='\0')&&(i<=NMax)){
 		K.TabKata[i]= s[i-1];
 		K.Length++;
 		i++;
 	}
-    
+
 	return K;
 }
 
@@ -162,7 +163,7 @@ int KataToInt(Kata K) {
             case '9':
                 angka = angka*10+9;
                 break;
-            default : 
+            default :
                 err_flag = true;
                 break;
         }

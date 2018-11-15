@@ -15,7 +15,7 @@
 typedef struct {
   long Money; //uang player
   int Life; //nyawa player
-  POSITION Position; //posisi player
+  POSITION Pos; //posisi player
   BSTACK Hand; //stack of bahan
   FSTACK Tray; //stack of food
 } PLAYER;
@@ -44,6 +44,7 @@ extern ROOM ArrRoom[5]; //indeks [1..4]
 #define absis() R.P.Pos.x
 #define ordinat() R.P.Pos.y
 #define player() R.P
+#define RN R.P.Pos.nRoom
 #define Room(n, x, y) Room[(n)].RoomBoard.Mem[(x)][(y)]
 #define GetKitchenArray(X) Room[4].KitchenArray[(X)]
 #define InfoKitchenArray(X) Room[4].KitchenArray[(X)].Name
@@ -51,8 +52,7 @@ extern ROOM ArrRoom[5]; //indeks [1..4]
 #define InfoTableArray(n, X) Room[n].TableArray[(X)].C.Makanan.Nama
 #define PosTableArray(n, X) Room[(n)].TableArray[(X)].PosMeja
 
-
-void Move (char* Command); //Garda
+void Move (int Dir); //Garda
 
 void GetOrder (); //Badur
 

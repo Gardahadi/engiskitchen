@@ -22,6 +22,8 @@ WINDOW* BoxTop1, *BoxTop2, *BoxTop3, *BoxTop4;
 WINDOW* Box1, *Box2, *Box3, *Box4;
 WINDOW* BoxBot, *MapBox;
 ROOM ArrRoom[5];
+RESTAURANT R;
+char cmd[10];
 
 void PrintText(WINDOW *Box);
 
@@ -51,7 +53,7 @@ void CreateUI(){
   wrefresh(BoxTop2);
   mvwprintw(BoxTop3,1,1,"Lives :");
   wrefresh(BoxTop3);
-  mvwprintw(BoxTop4,1,1,"Time : ");
+  mvwprintw(BoxTop4,1,1,"Time : %s", cmd);
   wrefresh(BoxTop4);
 
 
@@ -101,15 +103,29 @@ void printBoard(MATRIKS X) {
   for (i=1;i<=NBrsEff(X);i++) {
     for (j=1;j<=NKolEff(X);j++) {
 
-      if ((j==NKolEff(X)))  {
-        mvwprintw(MapBox,py,px," X |");
+      if (i==absis() && j == ordinat()){
+        mvwprintw(MapBox,py,px," P ");
+        wrefresh(MapBox);
+        px=px+5;
+      }
+
+      else if ((j==NKolEff(X)))  {
+        mvwprintw(MapBox,py,px," _ |");
         wrefresh(MapBox);
         px=1;
         py=py+2;
 
       }
+
+      else if ((j==1))  {
+        mvwprintw(MapBox,py,px,"| _ ");
+        wrefresh(MapBox);
+        px=px+5;
+
+      }
+
       else {
-        mvwprintw(MapBox,py,px," X |");
+        mvwprintw(MapBox,py,px," _ ");
           wrefresh(MapBox);
           px=px+5;
       }
@@ -132,22 +148,44 @@ int main () {
   //       count++;
   //   }
   // }
+
+  absis() = 5;
+  ordinat() = 5;
+  RN = 1;
   loadMap();
 
-
   CreateUI();
-
   printBoard(ArrRoom[1].RoomBoard);
-
   wrefresh(BoxBot);
 
-  char cmd[10];
-  wgetstr(BoxBot,cmd);
-  CreateUI();
   wgetstr(BoxBot,cmd);
 
+  //Looping Utama Program
+  while(!(IsKataSama(StringToKata("Exit\0"),StringToKata(cmd)))){
 
-  wgetch(BoxBot);
+    if(IsKataSama(StringToKata(cmd),StringToKata("GU\0"))){
+      Move(1);
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("GD\0"))){
+      Move(3);
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("GL\0"))){
+      Move(2);
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("GR\0"))){
+      Move(4);
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
+
+    CreateUI();
+    printBoard(ArrRoom[RN].RoomBoard);
+
+    wgetstr(BoxBot,cmd);
+
+  }
   endwin();
 
   // int no_simulasi;
