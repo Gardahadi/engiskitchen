@@ -34,14 +34,8 @@ typedef struct {
 
 extern Restaurant R;
 extern Rs;
-<<<<<<< HEAD
 extern ROOM ArrRoom[5]; //indeks [1..4]
 
-=======
-
-extern Room [5]; //indeks [1..4]
-/* EXTERN PLAYER ADA TIDAK ? */
->>>>>>> 46bef0fbedc6fcb09c2ee82d65e51d3ce99d255a
 
 
 /* Definisi akses dengan Selektor : Get */
