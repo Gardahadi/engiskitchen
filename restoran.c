@@ -1,24 +1,12 @@
 /*Implementasi dari procedure Take, Buang, dan Give*/
 #include "restoran.h"
 
-/* Definisi akses dengan Selektor : Get */
-#define hand() R.P.Hand
-#define tray() R.P.Tray
-#define absis() R.P.Pos.x
-#define ordinat() R.P.Pos.y
-#define player() R.P
-#define Room(n, x, y) Room[(n)].RoomBoard.Mem[(x)][(y)]
-#define GetKitchenArray(X) Room[4].KitchenArray[(X)]
-#define InfoKitchenArray(X) Room[4].KitchenArray[(X)].Name
-#define PosKitchenArray(X) Room[4].KitchenArray[(X)].Pos
-#define InfoTableArray(n, X) Room[n].TableArray[(X)].C.Makanan.Nama
-#define PosTableArray(n, X) Room[(n)].TableArray[(X)].PosMeja
+
 
 //DUplicate type jangan sampe ada
 
 /* Implementasi prosedur dan fungsi trekait Move */
 void Move (char Dir) {
-
 	switch (Dir) {
 		case "U":
 			ordinat()++;
@@ -32,9 +20,6 @@ void Move (char Dir) {
 			absis()++;
 			break;
 	}
-
-
-
 }
 
 
