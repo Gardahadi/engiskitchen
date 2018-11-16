@@ -45,7 +45,7 @@ typedef struct{
 //Tipe bentukan menyimpan object dapur
 
 typedef struct{
-  char *Name;
+  Kata Name;
   POSITION Pos;
 } KITCHENSET;
 

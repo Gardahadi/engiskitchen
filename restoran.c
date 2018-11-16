@@ -4,8 +4,8 @@
 /* Definisi akses dengan Selektor : Get */
 #define hand() R.P.Hand
 #define tray() R.P.Tray
-#define absis() R.P.Pos.x
-#define ordinat() R.P.Pos.y
+#define absis() R.P.Position.x
+#define ordinat() R.P.Position.y
 #define player() R.P
 #define Room(n, x, y) Room[(n)].RoomBoard.Mem[(x)][(y)]
 #define GetKitchenArray(X) Room[4].KitchenArray[(X)]
@@ -13,6 +13,7 @@
 #define PosKitchenArray(X) Room[4].KitchenArray[(X)].Pos
 #define InfoTableArray(n, X) Room[n].TableArray[(X)].C.Makanan.Nama
 #define PosTableArray(n, X) Room[(n)].TableArray[(X)].PosMeja
+#define TableArray(n, X) Room[(n)].TableArray[(X)]
 
 
 void Take (){
@@ -20,10 +21,11 @@ void Take (){
 	int abs;
 	int ord;
 	int i;
+	BAHAN bhn;
 	//ALGORITMA
 
 
-	if (player().nRoom != 4){
+	if (player().Position.nRoom != 4){
 		printf("Anda sedang tidak berada di dapur\n");
 	}
 	else{
@@ -34,27 +36,27 @@ void Take (){
 		abs = -1;
 		ord = -1;
 
-		if(Room(player().nRoom, absis(), ordinat())=='M'){
+		if(Room(player().Position.nRoom, absis(), ordinat())=='M'){
 			abs = absis();
 			ord = ordinat();
 		}
 
-		if(Room(player().nRoom, absis()+1, ordinat())=='M'){
+		if(Room(player().Position.nRoom, absis()+1, ordinat())=='M'){
 			abs = absis()+1;
 			ord = ordinat();
 		}
 
-		if(Room(player().nRoom, absis()-1, ordinat())=='M'){
+		if(Room(player().Position.nRoom, absis()-1, ordinat())=='M'){
 			abs = absis()-1;
 			ord = ordinat();
 		}
 
-		if(Room(player().nRoom, absis(), ordinat()+1)=='M'){
+		if(Room(player().Position.nRoom, absis(), ordinat()+1)=='M'){
 			abs = absis();
 			ord = ordinat()+1;
 		}
 
-		if(Room(player().nRoom, absis(), ordinat()-1)=='M'){
+		if(Room(player().Position.nRoom, absis(), ordinat()-1)=='M'){
 			abs = absis();
 			ord = ordinat()-1;
 		}
@@ -68,8 +70,8 @@ void Take (){
 			while ((PosKitchenArray(i).x != abs) && (PosKitchenArray(i).y != ord)) {
 				i++;
 			}
-
-			PushBS(&hand, InfoKitchenArray(i));
+			bhn.Name = InfoKitchenArray(i);
+			PushBS(&hand(), bhn);
 
 		}
 		else{
@@ -79,16 +81,16 @@ void Take (){
 
 }
 
-void Buang (char* Perintah){
+void Buang (Kata Perintah){
 	//KAMUS
 	//ALGORITMA
 
-	if (Perintah[1] == 'H'){
+	if (Perintah.TabKata[1] == 'H'){
 		//perintah CH
 		CreateEmptyBS (&hand());
 	}else{
 		//perintah CT
-		CreateEmpty (&tray());
+		CreateEmptyFS (&tray());
 	}
 }
 
@@ -96,36 +98,38 @@ void Give (){
 	//KAMUS
 	FOOD food;
 	int i;
+	int abs; //posisi x customer
+	int ord; //posisi y customer
 	boolean found;
 	//ALGORITMA
-	Pop(&tray, &food);
+	PopFS(&tray(), &food);
 
 	//cek apakah ada pengunjung bertetanggaan
 
 	abs = -1;
 	ord = -1;
 
-	if(Room(player().nRoom, absis(), ordinat())=='C'){
+	if(Room(player().Position.nRoom, absis(), ordinat())=='C'){
 		abs = absis();
 		ord = ordinat();
 	}
 
-	if(Room(player().nRoom, absis()+1, ordinat())=='C'){
+	if(Room(player().Position.nRoom, absis()+1, ordinat())=='C'){
 		abs = absis()+1;
 		ord = ordinat();
 	}
 
-	if(Room(player().nRoom, absis()-1, ordinat())=='C'){
+	if(Room(player().Position.nRoom, absis()-1, ordinat())=='C'){
 		abs = absis()-1;
 		ord = ordinat();
 	}
 
-	if(Room(player().nRoom, absis(), ordinat()+1)=='C'){
+	if(Room(player().Position.nRoom, absis(), ordinat()+1)=='C'){
 		abs = absis();
 		ord = ordinat()+1;
 	}
 
-	if(Room(player().nRoom, absis(), ordinat()-1)=='C'){
+	if(Room(player().Position.nRoom, absis(), ordinat()-1)=='C'){
 		abs = absis();
 		ord = ordinat()-1;
 	}
@@ -134,26 +138,26 @@ void Give (){
 		//bersebelahan dengan pemain
 
 		//cek apakah pesanan sesuai
-		Pop(&tray, &food)
+		PopFS(&tray(), &food);
 
 		i = 0;
 		found = false;
 
 		while (!found) {
 
-			if ((PosTableArray(player().nRoom, i).x + 1 == abs) && (PosTableArray(player().nRoom, i).y == ord)){
+			if ((PosTableArray(player().Position.nRoom, i).x + 1 == abs) && (PosTableArray(player().Position.nRoom, i).y == ord)){
 				found = true;
 			}
 
-			if ((PosTableArray(player().nRoom, i).x - 1 == abs) && (PosTableArray(player().nRoom, i).y == ord)){
+			if ((PosTableArray(player().Position.nRoom, i).x - 1 == abs) && (PosTableArray(player().Position.nRoom, i).y == ord)){
 				found = true;
 			}
 
-			if ((PosTableArray(player().nRoom, i).x == abs) && (PosTableArray(player().nRoom, i).y + 1 == ord)){
+			if ((PosTableArray(player().Position.nRoom, i).x == abs) && (PosTableArray(player().Position.nRoom, i).y + 1 == ord)){
 				found = true;
 			}
 
-			if ((PosTableArray(player().nRoom, i).x == abs) && (PosTableArray(player().nRoom, i).y - 1 == ord)){
+			if ((PosTableArray(player().Position.nRoom, i).x == abs) && (PosTableArray(player().Position.nRoom, i).y - 1 == ord)){
 				found = true;
 			}
 
@@ -163,18 +167,13 @@ void Give (){
 
 		}
 
-		if (food.Name == InfoTableArray(player().nRoom, i)){
+		if (IsKataSama(food.Nama, InfoTableArray(player().Position.nRoom, i))){
 			// pesanan sesuai
-
-			Room(player().nRoom, x+1, y) = 'X';
-			Room(player().nRoom, x-1, y) = 'X';
-			Room(player().nRoom, x, y+1) = 'X';
-			Room(player().nRoom, x, y-1) = 'X';
-
+			TableArray(player().Position.nRoom, i).IsFull = false;
 			player().Money += food.Harga;
 		}else{
 			printf("Pesanan tidak sesuai\n");
-			Push(&tray, food)
+			PushFS(&tray(), food);
 		}
 
 

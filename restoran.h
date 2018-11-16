@@ -36,7 +36,7 @@ extern RESTAURANT R;
 //extern Rs;
 extern ROOM Room [5]; //indeks [1..4]
 
-void Move (char* Command); //Garda
+void Move (Kata Command); //Garda
 
 void GetOrder (); //Badur
 
@@ -44,7 +44,7 @@ void Put (); //Badur
 
 void Take (); //Done
 
-void Buang (char* Command); //Done
+void Buang (Kata Command); //Done
 
 void Place (); //Lukas
 
