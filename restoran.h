@@ -10,6 +10,8 @@
 #include "ADT Header/matriksroom.h"
 #include "ADT Header/customer.h"
 #include "ADT Header/treeresep.h"
+#include "ADT Header/Order.h"
+
 
 
 //Tipe bentukan player
@@ -26,7 +28,7 @@ typedef struct {
 typedef struct {
   int Time; //waktu permainan
   //CQUEUE CustQueue; //queue of customer
-  //ORDERTAB OrderTab; //queue of order
+  TabOrder TabOfOrder; // Sebuah Array of Order
   PLAYER P; //player P
   //GRAPH RoomGraph;
 } RESTAURANT;
@@ -60,6 +62,7 @@ extern ROOM ArrRoom[5]; //indeks [1..4]
 #define InfoTableArray(n, X) ArrRoom[n].TableArray[(X)].C.Makanan.Nama
 #define PosTableArray(n, X) ArrRoom[(n)].TableArray[(X)].PosMeja
 #define TableArray(n, X) ArrRoom[(n)].TableArray[(X)]
+#define OrderResto R.TabOfOrder.TOrd
 
 void Move (int Dir); //Garda
 

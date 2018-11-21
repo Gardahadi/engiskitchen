@@ -22,7 +22,7 @@ void Put()
   FOOD F;
 
   /*Algoritma*/
-  if (RN() != 4){
+  if (RN != 4){
     printf("Anda sedang tidak berada di dapur\n");
   }
   else /*Player berada di dapur*/
@@ -32,27 +32,27 @@ void Put()
 		abs = -1;
 		ord = -1;
 
-		if(Room(RN(), absis(), ordinat())=='T'){
+		if(Room(RN, absis(), ordinat())=='T'){
 			abs = absis();
 			ord = ordinat();
 		}
 
-		if(Room(RN(), absis()+1, ordinat())=='T'){
+		if(Room(RN, absis()+1, ordinat())=='T'){
 			abs = absis()+1;
 			ord = ordinat();
 		}
 
-		if(Room(RN(), absis()-1, ordinat())=='T'){
+		if(Room(RN, absis()-1, ordinat())=='T'){
 			abs = absis()-1;
 			ord = ordinat();
 		}
 
-		if(Room(RN(), absis(), ordinat()+1)=='T'){
+		if(Room(RN, absis(), ordinat()+1)=='T'){
 			abs = absis();
 			ord = ordinat()+1;
 		}
 
-		if(Room(RN(), absis(), ordinat()-1)=='T'){
+		if(Room(RN, absis(), ordinat()-1)=='T'){
 			abs = absis();
 			ord = ordinat()-1;
 		}

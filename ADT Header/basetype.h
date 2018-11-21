@@ -62,6 +62,18 @@ typedef struct{
   KITCHENSET KitchenArray[16];
 } ROOM;
 
+/* Definisi elemen dan koleksi objek */
+typedef int IdxTypeOrder;  /* type indeks */
+typedef struct {
+	FOOD CustomerOrder; /* Menyimpan  */
+	int NomorMeja; /*Menyimpan Nomor meja yang memesan */
+} Orderan;
+
+typedef struct {
+	Orderan TOrd[100+1]; /* memori tempat penyimpan elemen (container) */
+	int NeffOrder; /* >=0, banyaknya elemen efektif */
+} TabOrder;
+
 //Tipe bentukan resep
 typedef struct {
 	Kata Name;

@@ -23,6 +23,7 @@ WINDOW* Box1, *Box2, *Box3, *Box4;
 WINDOW* BoxBot, *MapBox;
 ROOM ArrRoom[5];
 RESTAURANT R;
+TREEPACKAGE Rs;
 char cmd[10];
 
 void PrintText(WINDOW *Box);

@@ -8,22 +8,14 @@
 #define ARRAY_H
 
 #include "boolean.h"
-
-/*  Kamus Umum */
-#define IdxMaxOrder 100
-/* Indeks maksimum array, sekaligus ukuran maksimum array dalam C */
-#define IdxMinOrder 1
+#include "basetype.h"
+// /*  Kamus Umum */
+// #define IdxMinOrder 1
 /* Indeks minimum array */
 #define IdxUndef -999
 /* Indeks tak terdefinisi*/
+#define int IdxTypeOrder
 
-/* Definisi elemen dan koleksi objek */
-typedef int IdxTypeOrder;  /* type indeks */
-
-typedef struct {
-	TABLE TOrd[IdxMaxOrder+1]; /* memori tempat penyimpan elemen (container) */
-	int NeffOrder; /* >=0, banyaknya elemen efektif */
-} TabOrder;
 /* Indeks yang digunakan [IdxMin..IdxMax] */
 /* Jika T adalah TabOrder, cara deklarasi dan akses: */
 /* Deklarasi : T : TabOrder */
@@ -39,45 +31,36 @@ typedef struct {
 /* ********** SELEKTOR ********** */
 #define NeffOrd(T)(T).NeffOrder
 #define TOrd(T)   (T).TOrd
-#define Elmt(T,i) (T).TOrd[(i)]
+#define ElmtO(T,i) (T).TOrd[(i)]
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create tabel kosong  */
-void MakeEmptyOrder (TabOrder * T)
-{
-    NeffOrd(*T) = 0;
-}
+void MakeEmptyOrder (TabOrder * T);
+/* I.S. T sembarang */
+/* F.S. Terbentuk tabel T kosong dengan kapasitas IdxMax-IdxMin+1 */
 
 /* ********** SELEKTOR (TAMBAHAN) ********** */
 /* *** Banyaknya elemen *** */
-int NbElmtOrder (TabOrder T)
+int NbElmtOrder (TabOrder T);
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
-{
-    return NeffOrd(T);
-}
+
 /* *** Selektor INDEKS *** */
-IdxTypeOrder GetFirstIdxOrder (TabOrder T)
+IdxTypeOrder GetFirstIdxOrder (TabOrder T);
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen T pertama */
-{
-    return IdxMinOrder;
-}
-IdxTypeOrder GetLastIdxOrder (TabOrder T)
+IdxTypeOrder GetLastIdxOrder (TabOrder T);
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen T terakhir */
-{
-    return NeffOrd(T);
-}
+
+/* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
-boolean IsEmptyOrder (TabOrder T)
+boolean IsEmptyOrder (TabOrder T);
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
-{
-    return (NeffOrd(T) == 0);
-}
 /* *** Test tabel penuh *** */
-boolean IsFullOrder (TabOrder T)
+boolean IsFullOrder (TabOrder T);
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
-{
-    return ((NeffOrd(T)) == IdxMaxOrder);
-}
+
+/* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
+/* *** Mendefinisikan isi tabel dari pembacaan *** */
+#endif
