@@ -64,7 +64,7 @@ typedef struct{
 
 //Tipe bentukan resep
 typedef struct {
-	//Tree of food
+	Kata Name;
 } RESEP;
 
 typedef struct {
