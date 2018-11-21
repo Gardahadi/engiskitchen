@@ -9,23 +9,19 @@
 void Move (int Dir) {
 	switch (Dir) {
 		case 1:
-			ordinat()++;
+			ordinat()--;
 			break;
 		case 2 :
-			ordinat()--;
+			absis()--;
+			break;
 		case 3 :
-			absis() --;
+			ordinat() ++;
 			break;
 		case 4 :
 			absis()++;
 			break;
 	}
 }
-
-
-
-
-
 // void GetOrder (); //Badur
 //
 // void Put (); //Badur

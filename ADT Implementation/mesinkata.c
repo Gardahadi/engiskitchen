@@ -21,7 +21,7 @@ void STARTKATA(int i)
 /* I.S. : CC sembarang
    F.S. : EndKata = true, dan CC = MARK;
           atau EndKata = false, CKata adalah kata yang sudah diakuisisi,
-          CC karakter pertama sesudah karakter terakhir kata */
+          CC karakter pertama sesudah karakter terakhir kata   */
 {
   START(i);
   IgnoreBlank();

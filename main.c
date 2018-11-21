@@ -96,21 +96,38 @@ void CreateUI(){
 
 }
 
+char GetChar(int x, int y){
+
+  if(Room(RN,x,y) == '#') {
+    return 'X';
+  }
+  else {
+    return '_';
+  }
+}
+
 void printBoard(MATRIKS X) {
+
+  //Kamus Lokal
   int px,py,i,j;
+
+  //Inisialisasi
   px=1;
   py=1;
+
+  //Algoritma
+
   for (i=1;i<=NBrsEff(X);i++) {
     for (j=1;j<=NKolEff(X);j++) {
 
-      if (i==absis() && j == ordinat()){
+      if (j==absis() && i == ordinat()){
         mvwprintw(MapBox,py,px," P ");
         wrefresh(MapBox);
         px=px+5;
       }
 
       else if ((j==NKolEff(X)))  {
-        mvwprintw(MapBox,py,px," _ |");
+        mvwprintw(MapBox,py,px," %c ",GetChar(i,j));
         wrefresh(MapBox);
         px=1;
         py=py+2;
@@ -118,14 +135,14 @@ void printBoard(MATRIKS X) {
       }
 
       else if ((j==1))  {
-        mvwprintw(MapBox,py,px,"| _ ");
+        mvwprintw(MapBox,py,px," %c ",GetChar(i,j));
         wrefresh(MapBox);
         px=px+5;
 
       }
 
       else {
-        mvwprintw(MapBox,py,px," _ ");
+        mvwprintw(MapBox,py,px," %c ",GetChar(i,j));
           wrefresh(MapBox);
           px=px+5;
       }
@@ -136,31 +153,23 @@ void printBoard(MATRIKS X) {
 
 int main () {
 
-  //kamus
+  //kamus lokal
   int i,j;
-  // MATRIKS X;
-  // int count = 1;
-  //MakeMATRIKS(3,3,&X);
 
-  // for (i=1;i<=NBrsEff(X);i++){
-  //   for(j=1;j<=NKolEff(X);j++){
-  //       Elmt(X,i,j)=count;
-  //       count++;
-  //   }
-  // }
-
+  //Kalo Program udah jadi gaperlu
   absis() = 5;
   ordinat() = 5;
   RN = 1;
-  loadMap();
 
+  //Inisialisasi Peta
+  loadMap();
   CreateUI();
   printBoard(ArrRoom[1].RoomBoard);
   wrefresh(BoxBot);
 
-  wgetstr(BoxBot,cmd);
-
   //Looping Utama Program
+
+  wgetstr(BoxBot,cmd);
   while(!(IsKataSama(StringToKata("Exit\0"),StringToKata(cmd)))){
 
     if(IsKataSama(StringToKata(cmd),StringToKata("GU\0"))){
@@ -182,7 +191,6 @@ int main () {
 
     CreateUI();
     printBoard(ArrRoom[RN].RoomBoard);
-
     wgetstr(BoxBot,cmd);
 
   }

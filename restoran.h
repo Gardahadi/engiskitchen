@@ -36,8 +36,6 @@ extern RESTAURANT R;
 //extern Rs;
 extern ROOM ArrRoom[5]; //indeks [1..4]
 
-
-
 /* Definisi akses dengan Selektor : Get */
 #define hand() R.P.Hand
 #define tray() R.P.Tray
@@ -45,12 +43,12 @@ extern ROOM ArrRoom[5]; //indeks [1..4]
 #define ordinat() R.P.Pos.y
 #define player() R.P
 #define RN R.P.Pos.nRoom
-#define Room(n, x, y) Room[(n)].RoomBoard.Mem[(x)][(y)]
-#define GetKitchenArray(X) Room[4].KitchenArray[(X)]
-#define InfoKitchenArray(X) Room[4].KitchenArray[(X)].Name
-#define PosKitchenArray(X) Room[4].KitchenArray[(X)].Pos
-#define InfoTableArray(n, X) Room[n].TableArray[(X)].C.Makanan.Nama
-#define PosTableArray(n, X) Room[(n)].TableArray[(X)].PosMeja
+#define Room(n, x, y) ArrRoom[(n)].RoomBoard.Mem[(x)][(y)]
+#define GetKitchenArray(X) ArrRoom[4].KitchenArray[(X)]
+#define InfoKitchenArray(X) ArrRoom[4].KitchenArray[(X)].Name
+#define PosKitchenArray(X) ArrRoom[4].KitchenArray[(X)].Pos
+#define InfoTableArray(n, X) ArrRoom[n].TableArray[(X)].C.Makanan.Nama
+#define PosTableArray(n, X) ArrRoom[(n)].TableArray[(X)].PosMeja
 
 void Move (int Dir); //Garda
 
