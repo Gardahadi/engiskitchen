@@ -1,15 +1,18 @@
+/*Implementasi dari procedure Take, Buang, dan Give*/
 #include "restoran.h"
 
+/* Definisi akses dengan Selektor : Get */
 
 void Take (){
 	//KAMUS
 	int abs;
 	int ord;
 	int i;
+	BAHAN bhn;
 	//ALGORITMA
 
 
-	if (player().nRoom != 4){
+	if (RN != 4){
 		printf("Anda sedang tidak berada di dapur\n");
 	}
 	else{
@@ -20,27 +23,27 @@ void Take (){
 		abs = -1;
 		ord = -1;
 
-		if(Room(player().nRoom, absis(), ordinat())=='M'){
+		if(Room(RN, absis(), ordinat())=='M'){
 			abs = absis();
 			ord = ordinat();
 		}
 
-		if(Room(player().nRoom, absis()+1, ordinat())=='M'){
+		if(Room(RN, absis()+1, ordinat())=='M'){
 			abs = absis()+1;
 			ord = ordinat();
 		}
 
-		if(Room(player().nRoom, absis()-1, ordinat())=='M'){
+		if(Room(RN, absis()-1, ordinat())=='M'){
 			abs = absis()-1;
 			ord = ordinat();
 		}
 
-		if(Room(player().nRoom, absis(), ordinat()+1)=='M'){
+		if(Room(RN, absis(), ordinat()+1)=='M'){
 			abs = absis();
 			ord = ordinat()+1;
 		}
 
-		if(Room(player().nRoom, absis(), ordinat()-1)=='M'){
+		if(Room(RN, absis(), ordinat()-1)=='M'){
 			abs = absis();
 			ord = ordinat()-1;
 		}
@@ -54,8 +57,8 @@ void Take (){
 			while ((PosKitchenArray(i).x != abs) && (PosKitchenArray(i).y != ord)) {
 				i++;
 			}
-
-			PushBS(&hand, InfoKitchenArray(i));
+			bhn.Name = InfoKitchenArray(i);
+			PushBS(&hand(), bhn);
 
 		}
 		else{
@@ -65,16 +68,16 @@ void Take (){
 
 }
 
-void Buang (char* Perintah){
+void Buang (Kata Perintah){
 	//KAMUS
 	//ALGORITMA
 
-	if (Perintah[1] == 'H'){
+	if (Perintah.TabKata[1] == 'H'){
 		//perintah CH
 		CreateEmptyBS (&hand());
 	}else{
 		//perintah CT
-		CreateEmpty (&tray());
+		CreateEmptyFS (&tray());
 	}
 }
 
@@ -82,36 +85,38 @@ void Give (){
 	//KAMUS
 	FOOD food;
 	int i;
+	int abs; //posisi x customer
+	int ord; //posisi y customer
 	boolean found;
 	//ALGORITMA
-	Pop(&tray, &food);
+	PopFS(&tray(), &food);
 
 	//cek apakah ada pengunjung bertetanggaan
 
 	abs = -1;
 	ord = -1;
 
-	if(Room(player().nRoom, absis(), ordinat())=='C'){
+	if(Room(RN, absis(), ordinat())=='C'){
 		abs = absis();
 		ord = ordinat();
 	}
 
-	if(Room(player().nRoom, absis()+1, ordinat())=='C'){
+	if(Room(RN, absis()+1, ordinat())=='C'){
 		abs = absis()+1;
 		ord = ordinat();
 	}
 
-	if(Room(player().nRoom, absis()-1, ordinat())=='C'){
+	if(Room(RN, absis()-1, ordinat())=='C'){
 		abs = absis()-1;
 		ord = ordinat();
 	}
 
-	if(Room(player().nRoom, absis(), ordinat()+1)=='C'){
+	if(Room(RN, absis(), ordinat()+1)=='C'){
 		abs = absis();
 		ord = ordinat()+1;
 	}
 
-	if(Room(player().nRoom, absis(), ordinat()-1)=='C'){
+	if(Room(RN, absis(), ordinat()-1)=='C'){
 		abs = absis();
 		ord = ordinat()-1;
 	}
@@ -120,26 +125,26 @@ void Give (){
 		//bersebelahan dengan pemain
 
 		//cek apakah pesanan sesuai
-		Pop(&tray, &food)
+		PopFS(&tray(), &food);
 
 		i = 0;
 		found = false;
 
 		while (!found) {
 
-			if ((PosTableArray(player().nRoom, i).x + 1 == abs) && (PosTableArray(player().nRoom, i).y == ord)){
+			if ((PosTableArray(RN, i).x + 1 == abs) && (PosTableArray(RN, i).y == ord)){
 				found = true;
 			}
 
-			if ((PosTableArray(player().nRoom, i).x - 1 == abs) && (PosTableArray(player().nRoom, i).y == ord)){
+			if ((PosTableArray(RN, i).x - 1 == abs) && (PosTableArray(RN, i).y == ord)){
 				found = true;
 			}
 
-			if ((PosTableArray(player().nRoom, i).x == abs) && (PosTableArray(player().nRoom, i).y + 1 == ord)){
+			if ((PosTableArray(RN, i).x == abs) && (PosTableArray(RN, i).y + 1 == ord)){
 				found = true;
 			}
 
-			if ((PosTableArray(player().nRoom, i).x == abs) && (PosTableArray(player().nRoom, i).y - 1 == ord)){
+			if ((PosTableArray(RN, i).x == abs) && (PosTableArray(RN, i).y - 1 == ord)){
 				found = true;
 			}
 
@@ -149,18 +154,13 @@ void Give (){
 
 		}
 
-		if (food.Name == InfoTableArray(player().nRoom, i)){
+		if (IsKataSama(food.Nama, InfoTableArray(RN, i))){
 			// pesanan sesuai
-
-			Room(player().nRoom, x+1, y) = 'X';
-			Room(player().nRoom, x-1, y) = 'X';
-			Room(player().nRoom, x, y+1) = 'X';
-			Room(player().nRoom, x, y-1) = 'X';
-
+			TableArray(RN, i).IsFull = false;
 			player().Money += food.Harga;
 		}else{
 			printf("Pesanan tidak sesuai\n");
-			Push(&tray, food)
+			PushFS(&tray(), food);
 		}
 
 

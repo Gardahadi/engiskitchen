@@ -52,13 +52,14 @@ extern ROOM ArrRoom[5]; //indeks [1..4]
 #define absis() R.P.Pos.x
 #define ordinat() R.P.Pos.y
 #define player() R.P
-#define RN() R.P.Pos.nRoom
+#define RN R.P.Pos.nRoom
 #define Room(n, x, y) ArrRoom[(n)].RoomBoard.Mem[(x)][(y)]
 #define GetKitchenArray(X) ArrRoom[4].KitchenArray[(X)]
 #define InfoKitchenArray(X) ArrRoom[4].KitchenArray[(X)].Name
 #define PosKitchenArray(X) ArrRoom[4].KitchenArray[(X)].Pos
 #define InfoTableArray(n, X) ArrRoom[n].TableArray[(X)].C.Makanan.Nama
 #define PosTableArray(n, X) ArrRoom[(n)].TableArray[(X)].PosMeja
+#define TableArray(n, X) ArrRoom[(n)].TableArray[(X)]
 
 void Move (int Dir); //Garda
 
@@ -68,7 +69,7 @@ void Put (); //Badur
 
 void Take (); //Done
 
-void Buang (char* Command); //Done
+void Buang (Kata Command); //Done
 
 void Place (); //Lukas
 
