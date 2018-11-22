@@ -21,9 +21,11 @@ void START(int i) {
       if(i==0){
             //If 0 open mapfile
             pita = fopen("map.txt","r");
-      } else {
+      } else if (i==1) {
             //if else open savefile
 	      pita = fopen("save.txt","r");
+      } else {
+            pita = fopen("defaultsave.txt","r");
       }
 	ADV();
 }

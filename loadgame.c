@@ -23,12 +23,17 @@ void LoadCustomerQueue();
 void LoadOrderArray();
 void LoadTable();
 void LoadResep();
+/*PROSEDUR UNTUK MELAKUKAN PENGOSONGAN SEMUA DATA PADA GAME*/
+void CreateEmptyAll();
 
 
 /*IMPLEMENTATION*/
 
-void Load(){
-    STARTKATA(1);
+void Load(int N){
+    //Load file -> 1 if load from save
+    //Load file -> 2 if load from default
+    CreateEmptyAll();
+    STARTKATA(N);
     LoadNomorSimulasi();
     LoadTime();
     LoadDataPlayer();
@@ -200,5 +205,12 @@ void LoadResep(){
         printf("\n");
         i++;
     }
+
+}
+
+void CreateEmptyAll(){
+    //Empty hand
+    CreateEmptyBS(&(hand()));
+
 
 }
