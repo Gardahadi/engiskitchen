@@ -1,8 +1,11 @@
 //File untuk save
 //Komen harus dihapus ketika file diload
+
 //NO-SIMULASI-> Nomor simulasi haruslah unik untuk setiap simulasi
 //WAKTU->waktu komputer
-//Bagian dua: load data player
+
+<Bagian dua: load data player>
+
 //MONEY
 //LIFE
 //POSISI
@@ -10,7 +13,9 @@
 //HAND
     //Number of Bahan
     //Bahan dalam satu baru : Bahan di bawah stack ditulis paling awal
-//Bagian tiga : data restoran
+
+<Bagian tiga : data restoran>
+
 //RESEP -> tree of resep which is not implemented yet AF
 //TIME->Jumlah tick
 //TRAY

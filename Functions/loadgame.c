@@ -61,6 +61,7 @@ void LoadDataPlayer(){
     //Y
     ADVKATA();
     ordinat() = KataToInt(CKata);
+    printf("ordinat Pemain : %d  \n",ordinat());
     //nRoom
     ADVKATA();
     RN = KataToInt(CKata);
