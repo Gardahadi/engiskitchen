@@ -10,7 +10,7 @@
 //HAND
     //Number of Bahan
     //Bahan dalam satu baru : Bahan di bawah stack ditulis paling awal
-//Bagian tiga : data restoran 
+//Bagian tiga : data restoran
 //RESEP -> tree of resep which is not implemented yet AF
 //TIME->Jumlah tick
 //TRAY
@@ -20,7 +20,7 @@
 //CUSTOMER QUEUE
     //MaxEL of QUEUE
     //Number of CUSTOMER
-    //Customer per baris : (Kesabaran) (Jumlah) (Makanan) (0/1)->1 kalau bintang, 0 kalau nggak bintang 
+    //Customer per baris : (Kesabaran) (Jumlah) (Makanan) (0/1)->1 kalau bintang, 0 kalau nggak bintang
         //Konvensi : Baris paling atas adalah pelanggan di queue paling depan
 //ORDER ARRAY
     //MaxEL of Array
@@ -29,4 +29,3 @@
 //TABLE -> menyimpan data customer yang sedang berada di dalam restoran
     //N_table
     //Per meja : <Kapasitas> <Kesabaran> <Jumlah> <Makanan> <0/1>(isstar) <0/1>(isfull) <x> <y> <nroom>
-    

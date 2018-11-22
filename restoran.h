@@ -68,6 +68,8 @@ extern ROOM ArrRoom[5]; //indeks [1..4]
 
 void Move (int Dir); //Garda
 
+void loadMap();
+
 void GetOrder (); //Badur
 
 void Put (); //Done

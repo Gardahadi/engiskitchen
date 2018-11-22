@@ -2,7 +2,7 @@
 //File saveload.c
 //Function to save and load data dari file eksternal
 
-#include "restoran.h"
+#include "../restoran.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -48,19 +48,23 @@ void LoadDataPlayer(){
     //Money
     ADVKATA();
     player().Money = KataToInt(CKata);
+    printf("Uang Pemain : %ld \n",player().Money);
     //Life
     ADVKATA();
     player().Life = KataToInt(CKata);
+    printf("Nyawa Pemain : %d  \n",player().Life);
     //Posisi
     //X
     ADVKATA();
     absis() = KataToInt(CKata);
+    printf("absis Pemain : %d  \n",absis());
     //Y
     ADVKATA();
     ordinat() = KataToInt(CKata);
     //nRoom
     ADVKATA();
-    RN() = KataToInt(CKata);
+    RN = KataToInt(CKata);
+    printf("RN : %d\n",RN);
     LoadHand();
 }
 
@@ -200,5 +204,4 @@ void LoadResep(){
         printf("\n");
         i++;
     }
-
 }

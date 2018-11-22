@@ -23,7 +23,7 @@ void START(int i) {
             pita = fopen("map.txt","r");
       } else {
             //if else open savefile
-	      pita = fopen("save.txt","r");
+	      pita = fopen("defaultsave.txt","r");
       }
 	ADV();
 }
