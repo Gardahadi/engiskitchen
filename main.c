@@ -156,15 +156,14 @@ int main () {
   //kamus lokal
   int i,j;
 
-  //Kalo Program udah jadi gaperlu
-  absis() = 5;
-  ordinat() = 5;
-  RN = 1;
+
 
   //Inisialisasi Peta
-  loadMap();
-  CreateUI();
-  printBoard(ArrRoom[1].RoomBoard);
+  Load();
+  loadMap(); //Loading Map dari mapfile.txt
+  
+  CreateUI(); //Membuat Window2 beserta isinya
+  printBoard(ArrRoom[1].RoomBoard); // Print Petak Ruangan
   wrefresh(BoxBot);
 
   //Looping Utama Program
@@ -195,57 +194,4 @@ int main () {
   }
   endwin();
 
-  // int no_simulasi;
-  // boolean simulation_running, load_success;
-  // char *command;
-
-  //Inisialisasi
-  // simulation_running = false;
-  // no_simulasi = 0;
-  // load_success = true;
-
-  //Looping Inti Program yang akan berjalan sampai pengguna melakukan perintah "Exit"
-  // do {
-  //   do {
-  //     printf(">"); refresh();
-  //     scanf("%s",command);
-  //     switch(command) {
-  //       case "new game" : break;
-  //       case "start game" : break;
-  //       case "load game" : break;
-  //       case "exit" : break;
-  //       default : printf("Perintah Salah silahkan mengetik 'help' untuk melihat daftar perintah\n"); refresh();
-  //     }
-  //     while (simulation_running = false);
-  //   }
-  //
-  //
-  //   do {
-  //     printf(">>");
-  //     scanf("%s",&command);
-  //     switch(command){
-  //       case "GU" :
-  //       case "GD" :
-  //       case "GL" :
-  //       case "GL" :
-  //       case "GR" :
-  //       case "GL" :
-  //       case "ORDER" :
-  //       case "PUT"  :gc
-  //       case "TAKE" :
-  //       case "CH"   :
-  //       case "CT"   :
-  //       case "PLACE":
-  //       case "GIVE" :
-  //       case "RECIPE" :
-  //       case "SAVE" :
-  //       case "LOAD" :
-  //       case "EXIT" :
-  //       default : printf("Perintah Salah silahkan mengetik 'help' untuk melihat daftar perintah\n");
-  //     }
-  //     updateTime();
-  //     while(simulation_running);
-  //   }
-  //
-  // }
 }
