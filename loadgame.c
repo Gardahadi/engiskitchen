@@ -3,26 +3,27 @@
 //Function to save and load data dari file eksternal
 
 #include "restoran.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /**FUNGSI DAN PROSEDUR IMPLEMENTASI****/
-
-void Save (); 
 //Procedure untuk menyimpan data ke file eksternal
 //Format file eksternal ada di readme
-
 void Load ();
-//Procedure untuk mengambil data dari file eksternal
-//Format file eksternal ada di readme
-
 /**FUNGSI DAN PROSEDUR PEMBANTU**/
-
-
 /*PENCACAHAN FUNGSI UNTUK MODULARITAS PROGRAM*/
+void LoadNomorSimulasi();
+void LoadTime();
+void LoadDataPlayer();
+void LoadHand();
+void LoadDataRestoran();
+void LoadTickTime();
 void LoadTray();
-
 void LoadCustomerQueue();
-
 void LoadOrderArray();
+void LoadTable();
+void LoadResep();
+
 
 /*IMPLEMENTATION*/
 
@@ -35,51 +36,47 @@ void Load(){
 }
 
 void LoadNomorSimulasi(){
-    int Nomor_simulasi = KataToInt(CKata);
+    printf("Nomor simulasi : %d\n",KataToInt(CKata));
 }
 
 void LoadTime(){
     ADVKATA();
-    R.Time = KataToInt(CKata);
+    printf("Waktu : %d\n",KataToInt(CKata));
 }
 
 void LoadDataPlayer(){
     //Money
     ADVKATA();
-    R.P.Money = KataToInt(CKata);
+    player().Money = KataToInt(CKata);
     //Life
     ADVKATA();
-    R.P.Life = KataToInt(CKata);
+    player().Life = KataToInt(CKata);
     //Posisi
     //X
     ADVKATA();
-    R.P.Position.x = KataToInt(CKata);
+    absis() = KataToInt(CKata);
     //Y
     ADVKATA();
-    R.P.Position.y = KataToInt(CKata);
+    ordinat() = KataToInt(CKata);
     //nRoom
     ADVKATA();
-    R.P.Position.nRoom = KataToInt(CKata);   
+    RN() = KataToInt(CKata);
     LoadHand();
 }
 
 void LoadHand(){
-    //EKstern player blm ada
-    //Asumsi nama ekstern p
-    PLAYER p;
-    //Empty stack
-    CreateEmptyBS(&(P.Hand));
     ADVKATA();
     //Number of bahan
     int N = KataToInt(CKata);
     int i=0;
-    BAHAN b;
+    //BAHAN b;
     while(i<N){
         ADVKATA();
-        b.Name = CKata;
-        PushBS(&(P.Hand),b);
+        printf("Bahan ke-%d : ",(i+1));
+        PrintKata(CKata);
+        printf("\n");
         i++;
-    } //i=N, reading bahan selesai
+    }//i=N, reading bahan selesai
 }
 
 void LoadDataRestoran(){
@@ -88,33 +85,125 @@ void LoadDataRestoran(){
     LoadCustomerQueue();
     LoadOrderArray();
     LoadTable();
+    LoadResep();
 }
 
 void LoadTickTime(){
     ADVKATA();
-    
+    printf("Waktu Tick : %d\n",KataToInt(CKata));
 }
 
 void LoadTray(){
-
-
+    ADVKATA();
+    int N = KataToInt(CKata);
+    int i=0;
+    while(i<N){
+        ADVKATA();
+        printf("Nama Makanan ke-%d :",(i+1));
+        PrintKata(CKata);
+        ADVKATA();
+        printf(" Harga : %d\n",KataToInt(CKata));
+        i++;
+    }
 
 }
 
 void LoadCustomerQueue(){
-
+    ADVKATA();
+    printf("MaxEL of Queue : %d\n",KataToInt(CKata));
+    ADVKATA();
+    int N = KataToInt(CKata);
+    int i=0;
+    while(i<N){
+        printf("Data Customer ke-%d : ",(i+1));
+        ADVKATA();
+        printf("Kesabaran(%d) ",KataToInt(CKata));
+        ADVKATA();
+        printf("Jumlah(%d) ",KataToInt(CKata));
+        ADVKATA();
+        PrintKata(CKata);
+        ADVKATA();
+        if(KataToInt(CKata)==1){
+            printf(" IsStar");
+        }
+        printf("\n");
+        i++;
+    }
 }
 
 void LoadOrderArray(){
-
-
+    int indeks;
+    Kata K_makanan;
+    int nomor;
+    ADVKATA();
+    printf("MaxEl Order : %d\n",KataToInt(CKata));
+    ADVKATA();
+    printf("Number of Orders : %d\n",KataToInt(CKata));
+    int N = KataToInt(CKata);
+    int i=0;
+    while(i<N){
+        ADVKATA();
+        indeks = KataToInt(CKata);
+        ADVKATA();
+        K_makanan = CKata;
+        ADVKATA();
+        nomor = KataToInt(CKata);
+        printf("Data order ke-%d : indeks = %d makanan = ",(i+1),indeks);
+        PrintKata(K_makanan);
+        printf(" nomor = %d\n",nomor);
+        i++;
+    }
 }
 
 void LoadTable(){
+    int N;
+    ADVKATA();
+    N = KataToInt(CKata);
+    printf("Number of meja = %d\n",N);
+    int i=0;
+    while(i<N){
+        ADVKATA();
+        printf("Kapasitas : %d |",KataToInt(CKata));
+        ADVKATA();
+        printf("Kesabaran : %d |",KataToInt(CKata));
+        ADVKATA();
+        printf("Jumlah orang : %d |",KataToInt(CKata));
+        ADVKATA();
+        PrintKata(CKata);
+        ADVKATA();
+        if(KataToInt(CKata)==1){
+            printf("|IsStar");
+        }
+        ADVKATA();
+        if(KataToInt(CKata)==1){
+            printf("|IsFull");
+        }
+        ADVKATA();
+        printf("| X = %d",KataToInt(CKata));
+        ADVKATA();
+        printf("| Y = %d",KataToInt(CKata));
+        ADVKATA();
+        printf("| n_room = %d\n",KataToInt(CKata));
+        i++;
+    }
+}
+
+void LoadResep(){
+    int N,i;
+    ADVKATA();
+    N = KataToInt(CKata);
+    printf("Ada %d resep : \n",N);
+    i=0;
+    while(i<N){
+        ADVKATA();
+        PrintKata(CKata);
+        printf("\n");
+        i++;
+    }
 
 }
 
 int main(){
-    Load()
+    Load();
     return 0;
 }
