@@ -23,10 +23,9 @@
     //Customer per baris : (Kesabaran) (Jumlah) (Makanan) (0/1)->1 kalau bintang, 0 kalau nggak bintang 
         //Konvensi : Baris paling atas adalah pelanggan di queue paling depan
 //ORDER ARRAY
-    //MaxEL of Array
     //Number of ORDER
     //Order per baris :(indeks) (Nama_Makanan) (Nomor meja)
 //TABLE -> menyimpan data customer yang sedang berada di dalam restoran
     //N_table
-    //Per meja : <Kapasitas> <Kesabaran> <Jumlah> <Makanan> <0/1>(isstar) <0/1>(isfull) <x> <y> <nroom>
+    //Per meja : <nomor meja> <Kapasitas> <Kesabaran> <Jumlah> <Makanan> <0/1>(isstar) <0/1>(isfull) <x> <y> <nroom>
     

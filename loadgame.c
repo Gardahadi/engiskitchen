@@ -70,6 +70,7 @@ void LoadDataPlayer(){
 }
 
 void LoadHand(){
+    BAHAN btemp;
     ADVKATA();
     //Number of bahan
     int N = KataToInt(CKata);
@@ -77,9 +78,8 @@ void LoadHand(){
     //BAHAN b;
     while(i<N){
         ADVKATA();
-        printf("Bahan ke-%d : ",(i+1));
-        PrintKata(CKata);
-        printf("\n");
+        btemp.Name = CKata;
+        PushBS(&hand(),btemp);
         i++;
     }//i=N, reading bahan selesai
 }
@@ -95,13 +95,14 @@ void LoadDataRestoran(){
 
 void LoadTickTime(){
     ADVKATA();
-    printf("Waktu Tick : %d\n",KataToInt(CKata));
+    R.Time = KataToInt(CKata);
 }
 
 void LoadTray(){
     ADVKATA();
     int N = KataToInt(CKata);
     int i=0;
+    //HARGA MAKANAN BELUM DIKETAHUI CARA PENENTUANNYA!!!!!!!!!!!!
     while(i<N){
         ADVKATA();
         printf("Nama Makanan ke-%d :",(i+1));
@@ -114,65 +115,73 @@ void LoadTray(){
 }
 
 void LoadCustomerQueue(){
+    CUSTOMER Ctemp;
     ADVKATA();
-    printf("MaxEL of Queue : %d\n",KataToInt(CKata));
+    //Make queue
+    CreateEmptyCQ(&QCustomer,KataToInt(CKata));
+    //Isi Queue
     ADVKATA();
     int N = KataToInt(CKata);
     int i=0;
     while(i<N){
-        printf("Data Customer ke-%d : ",(i+1));
         ADVKATA();
-        printf("Kesabaran(%d) ",KataToInt(CKata));
+        Kesabaran(Ctemp) = KataToInt(CKata);
         ADVKATA();
-        printf("Jumlah(%d) ",KataToInt(CKata));
+        Jumlah(Ctemp) = KataToInt(CKata);
         ADVKATA();
-        PrintKata(CKata);
+        Makanan(Ctemp).Nama = CKata();
+        //Harga belum ada!!!!!!!!!!!!!!!!
         ADVKATA();
         if(KataToInt(CKata)==1){
-            printf(" IsStar");
+           IsStar(Ctemp) = true;
+        } else {
+            IsStar(Ctemp) = false;
         }
-        printf("\n");
+        //Add to Queue
+        AddCustomerToQueue(&QCustomer,Ctemp);
         i++;
     }
 }
 
 void LoadOrderArray(){
     int indeks;
-    Kata K_makanan;
+    Orderan Orderan_temp;
     int nomor;
+    //number of orders
     ADVKATA();
-    printf("MaxEl Order : %d\n",KataToInt(CKata));
-    ADVKATA();
-    printf("Number of Orders : %d\n",KataToInt(CKata));
     int N = KataToInt(CKata);
-    int i=0;
-    while(i<N){
+    int i=1;
+    while(i<=N){
+        //Get index
         ADVKATA();
         indeks = KataToInt(CKata);
         ADVKATA();
-        K_makanan = CKata;
+        //Food name
+        Orderan_temp.FOOD.Nama = CKata;
+        //!!!!HARGA BELUM DITENTUKAN
         ADVKATA();
-        nomor = KataToInt(CKata);
-        printf("Data order ke-%d : indeks = %d makanan = ",(i+1),indeks);
-        PrintKata(K_makanan);
-        printf(" nomor = %d\n",nomor);
+        Orderan_temp.NomorMeja = KataToInt(CKata);
+        OrderResto[indeks] = Orderan_temp;
         i++;
     }
 }
 
 void LoadTable(){
     int N;
+    TABLE table_temp;
     ADVKATA();
     N = KataToInt(CKata);
     printf("Number of meja = %d\n",N);
     int i=0;
     while(i<N){
         ADVKATA();
-        printf("Kapasitas : %d |",KataToInt(CKata));
+        table_temp.Nomor = KataToInt(CKata);
         ADVKATA();
-        printf("Kesabaran : %d |",KataToInt(CKata));
+        table_temp.Kapasitas = KataToInt(CKata);
         ADVKATA();
-        printf("Jumlah orang : %d |",KataToInt(CKata));
+        Kesabaran(table_temp.C) = KataToInt(CKata);
+        ADVKATA();
+        Jumlah(table_temp.C) = KataToInt(CKata);
         ADVKATA();
         PrintKata(CKata);
         ADVKATA();
@@ -211,6 +220,9 @@ void LoadResep(){
 void CreateEmptyAll(){
     //Empty hand
     CreateEmptyBS(&(hand()));
+    //Empty stack
+    CreateEmptyFS(&tray());
+    MakeEmptyOrder()
 
 
 }
