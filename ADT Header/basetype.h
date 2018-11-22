@@ -39,14 +39,14 @@ typedef struct{
   int Kapasitas;
   CUSTOMER C;
   boolean IsFull;
-  POSISI PosMeja;
+  POSITION PosMeja;
 } TABLE;
 
 //Tipe bentukan menyimpan object dapur
 
 typedef struct{
-  char *Name;
-  POSISI Pos;
+  Kata Name;
+  POSITION Pos;
 } KITCHENSET;
 
 //Tipe bentukan order
@@ -62,9 +62,21 @@ typedef struct{
   KITCHENSET KitchenArray[16];
 } ROOM;
 
+/* Definisi elemen dan koleksi objek */
+typedef int IdxTypeOrder;  /* type indeks */
+typedef struct {
+	FOOD CustomerOrder; /* Menyimpan  */
+	int NomorMeja; /*Menyimpan Nomor meja yang memesan */
+} Orderan;
+
+typedef struct {
+	Orderan TOrd[100+1]; /* memori tempat penyimpan elemen (container) */
+	int NeffOrder; /* >=0, banyaknya elemen efektif */
+} TabOrder;
+
 //Tipe bentukan resep
 typedef struct {
-	//Tree of food
+	Kata Name;
 } RESEP;
 
 typedef struct {

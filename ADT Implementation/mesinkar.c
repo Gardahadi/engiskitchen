@@ -1,7 +1,7 @@
 /* File: mesinkar.c */
 /* Implementasi Mesin Karakter */
 
-#include "mesinkar.h"
+#include "../ADT Header/mesinkar.h"
 #include <stdio.h>
 
 char CC;
@@ -29,10 +29,10 @@ void START(int i) {
 }
 
 void ADV() {
-/* Pita dimajukan satu karakter. 
-   I.S. : Karakter pada jendela = 
+/* Pita dimajukan satu karakter.
+   I.S. : Karakter pada jendela =
           CC, CC != MARK
-   F.S. : CC adalah karakter berikutnya dari CC yang lama, 
+   F.S. : CC adalah karakter berikutnya dari CC yang lama,
           CC mungkin = MARK.
 		  Jika  CC = MARK maka EOP akan menyala (true) */
 

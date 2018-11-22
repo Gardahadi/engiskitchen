@@ -1,2 +1,6 @@
+.gitignore
+.vscode
+*.out
 .vscode
 .a.out
+tester.c

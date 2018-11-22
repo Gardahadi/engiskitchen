@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "mesinkata.h"
+#include "../ADT Header/mesinkata.h"
 
 boolean EndKata;
 Kata CKata;
@@ -21,7 +21,7 @@ void STARTKATA(int i)
 /* I.S. : CC sembarang
    F.S. : EndKata = true, dan CC = MARK;
           atau EndKata = false, CKata adalah kata yang sudah diakuisisi,
-          CC karakter pertama sesudah karakter terakhir kata */
+          CC karakter pertama sesudah karakter terakhir kata   */
 {
   START(i);
   IgnoreBlank();
@@ -104,12 +104,13 @@ Kata StringToKata(char s[]){
 	Kata K;
 	//Algoritma
 	i = 1;
+  K.Length = 0;
 	while((s[i-1]!='\0')&&(i<=NMax)){
 		K.TabKata[i]= s[i-1];
 		K.Length++;
 		i++;
 	}
-    
+
 	return K;
 }
 
@@ -162,7 +163,7 @@ int KataToInt(Kata K) {
             case '9':
                 angka = angka*10+9;
                 break;
-            default : 
+            default :
                 err_flag = true;
                 break;
         }

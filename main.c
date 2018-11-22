@@ -5,14 +5,14 @@
     2.
     4.
     5. Gardahadi - 13517144
-    6.
+    6. Rika Dewi - 13517147
 */
 
 //Included Libraries
 #include <stdio.h>
 // #include "restoran.h"
 #include <ncurses.h>
-#include "ADT Header/matriksroom.h"
+#include "restoran.h"
 
 
 
@@ -21,7 +21,10 @@
 WINDOW* BoxTop1, *BoxTop2, *BoxTop3, *BoxTop4;
 WINDOW* Box1, *Box2, *Box3, *Box4;
 WINDOW* BoxBot, *MapBox;
-
+ROOM ArrRoom[5];
+RESTAURANT R;
+TREEPACKAGE Rs;
+char cmd[10];
 
 void PrintText(WINDOW *Box);
 
@@ -51,7 +54,7 @@ void CreateUI(){
   wrefresh(BoxTop2);
   mvwprintw(BoxTop3,1,1,"Lives :");
   wrefresh(BoxTop3);
-  mvwprintw(BoxTop4,1,1,"Time : ");
+  mvwprintw(BoxTop4,1,1,"Time : %s", cmd);
   wrefresh(BoxTop4);
 
 
@@ -94,21 +97,53 @@ void CreateUI(){
 
 }
 
-printBoard() {
+char GetChar(int x, int y){
+
+  if(Room(RN,x,y) == '#') {
+    return 'X';
+  }
+  else {
+    return '_';
+  }
+}
+
+void printBoard(MATRIKS X) {
+
+  //Kamus Lokal
+  int px,py,i,j;
+
+  //Inisialisasi
   px=1;
   py=1;
+
+  //Algoritma
+
   for (i=1;i<=NBrsEff(X);i++) {
     for (j=1;j<=NKolEff(X);j++) {
 
-      if ((j==NKolEff(X)))  {
-        mvwprintw(MapBox,py,px," X |");
+      if (j==absis() && i == ordinat()){
+        mvwprintw(MapBox,py,px," P ");
+        wrefresh(MapBox);
+        px=px+5;
+      }
+
+      else if ((j==NKolEff(X)))  {
+        mvwprintw(MapBox,py,px," %c ",GetChar(i,j));
         wrefresh(MapBox);
         px=1;
-        py++;
+        py=py+2;
 
       }
+
+      else if ((j==1))  {
+        mvwprintw(MapBox,py,px," %c ",GetChar(i,j));
+        wrefresh(MapBox);
+        px=px+5;
+
+      }
+
       else {
-        mvwprintw(MapBox,py,px," X |");
+        mvwprintw(MapBox,py,px," %c ",GetChar(i,j));
           wrefresh(MapBox);
           px=px+5;
       }
@@ -119,32 +154,47 @@ printBoard() {
 
 int main () {
 
-  //kamus
-  int i,j,px,py;
-  MATRIKS X;
-  int count = 1;
-  MakeMATRIKS(3,3,&X);
+  //kamus lokal
+  int i,j;
 
-  for (i=1;i<=NBrsEff(X);i++){
-    for(j=1;j<=NKolEff(X);j++){
-        Elmt(X,i,j)=count;
-        count++;
-    }
-  }
+  //Kalo Program udah jadi gaperlu
+  absis() = 5;
+  ordinat() = 5;
+  RN = 1;
 
-  printBoard();
-
+  //Inisialisasi Peta
+  loadMap();
   CreateUI();
-
+  printBoard(ArrRoom[1].RoomBoard);
   wrefresh(BoxBot);
 
-  char cmd[10];
+  //Looping Utama Program
 
   wgetstr(BoxBot,cmd);
-  CreateUI();
-  wgetstr(BoxBot,cmd);
+  while(!(IsKataSama(StringToKata("Exit\0"),StringToKata(cmd)))){
 
-  wgetch(BoxBot);
+    if(IsKataSama(StringToKata(cmd),StringToKata("GU\0"))){
+      Move(1);
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("GD\0"))){
+      Move(3);
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("GL\0"))){
+      Move(2);
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("GR\0"))){
+      Move(4);
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
+
+    CreateUI();
+    printBoard(ArrRoom[RN].RoomBoard);
+    wgetstr(BoxBot,cmd);
+
+  }
   endwin();
 
   // int no_simulasi;
