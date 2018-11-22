@@ -1,4 +1,4 @@
-#include "restoran.h"
+#include "../restoran.h"
 
 void Masak(BSTACK S, FOOD *F,boolean *valid);
 /*Mengecek isi Stack di hand sesuai dengan resep tree. Jika valid maka akan menghasilkan FOOD*/

@@ -97,11 +97,16 @@ void CreateUI(){
 
 }
 
-char GetChar(int x, int y){
+char GetChar(int y, int x){
 
-  if(Room(RN,x,y) == '#') {
+  if(Room(RN,y,x) == '#') {
     return 'X';
   }
+
+  else if (y == ordinat() && x == absis()){
+    return 'G';
+  }
+
   else {
     return '_';
   }
@@ -121,13 +126,7 @@ void printBoard(MATRIKS X) {
   for (i=1;i<=NBrsEff(X);i++) {
     for (j=1;j<=NKolEff(X);j++) {
 
-      if (j==absis() && i == ordinat()){
-        mvwprintw(MapBox,py,px," P ");
-        wrefresh(MapBox);
-        px=px+5;
-      }
-
-      else if ((j==NKolEff(X)))  {
+      if ((j==NKolEff(X)))  {
         mvwprintw(MapBox,py,px," %c ",GetChar(i,j));
         wrefresh(MapBox);
         px=1;
@@ -169,7 +168,6 @@ int main () {
   wrefresh(BoxBot);
 
   //Looping Utama Program
-
   wgetstr(BoxBot,cmd);
   while(!(IsKataSama(StringToKata("Exit\0"),StringToKata(cmd)))){
 
