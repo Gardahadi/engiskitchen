@@ -1,4 +1,4 @@
-#include "restoran.h"
+#include "../restoran.h"
 
 void loadMap(){
     STARTKATA(0);

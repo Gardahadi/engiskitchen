@@ -1,5 +1,5 @@
 /*Implementasi dari procedure Take, Buang, dan Give*/
-#include "restoran.h"
+#include "../restoran.h"
 
 
 

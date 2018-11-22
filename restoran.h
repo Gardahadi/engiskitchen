@@ -5,12 +5,12 @@
 
 #include "ADT Header/boolean.h"
 #include "ADT Header/basetype.h"
+#include "ADT Header/Order.h"
 #include "ADT Header/foodstack.h"
 #include "ADT Header/bahanstack.h"
 #include "ADT Header/matriksroom.h"
 #include "ADT Header/customer.h"
 #include "ADT Header/treeresep.h"
-#include "ADT Header/Order.h"
 
 
 
@@ -27,7 +27,7 @@ typedef struct {
 /* Definisi elemen dan koleksi objek */
 typedef struct {
   int Time; //waktu permainan
-  //CQUEUE CustQueue; //queue of customer
+  CQUEUE CustQueue; //queue of customer
   TabOrder TabOfOrder; // Sebuah Array of Order
   PLAYER P; //player P
   //GRAPH RoomGraph;
@@ -63,18 +63,20 @@ extern ROOM ArrRoom[5]; //indeks [1..4]
 #define PosTableArray(n, X) ArrRoom[(n)].TableArray[(X)].PosMeja
 #define TableArray(n, X) ArrRoom[(n)].TableArray[(X)]
 #define OrderResto R.TabOfOrder.TOrd
+#define QCustomer R.CustQueue
+
 
 void Move (int Dir); //Garda
 
 void GetOrder (); //Badur
 
-void Put (); //Badur
+void Put (); //Done
 
 void Take (); //Done
 
 void Buang (Kata Command); //Done
 
-void Place (); //Lukas
+void Place (); //Done
 
 void Give (); //Done
 

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "restoran.h"
+#include "../restoran.h"
 
 void AddOrder(int j)
 {
