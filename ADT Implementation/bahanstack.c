@@ -34,7 +34,7 @@ boolean IsFullBS (BSTACK S)
 }
 
 /* ************ Menambahkan sebuah elemen ke BSTACK ************ */
-void PushBS (BSTACK * S, infotype X)
+void PushBS (BSTACK * S, BAHAN X)
 /* Menambahkan X sebagai elemen BSTACK S. */
 /* I.S. S mungkin kosong, tabel penampung elemen BSTACK TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
@@ -43,7 +43,7 @@ void PushBS (BSTACK * S, infotype X)
     InfoTop(*S) = X;
 }
 /* ************ Menghapus sebuah elemen BSTACK ************ */
-void PopBS (BSTACK * S, infotype* X)
+void PopBS (BSTACK * S, BAHAN* X)
 /* Menghapus X dari BSTACK S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */

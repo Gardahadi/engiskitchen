@@ -24,6 +24,7 @@ typedef struct {
 /* Definisi elemen dan koleksi objek */
 typedef struct {
   int Time; //waktu permainan
+  int Tick;
   CQUEUE CustQueue; //queue of customer
   ORDERTAB OrderTab; //queue of order
   PLAYER P; //player P

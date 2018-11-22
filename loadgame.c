@@ -76,7 +76,7 @@ void LoadHand(){
     BAHAN b;
     while(i<N){
         ADVKATA();
-        b.Name = CKata();
+        b.Name = CKata;
         PushBS(&(P.Hand),b);
         i++;
     } //i=N, reading bahan selesai
