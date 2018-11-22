@@ -46,6 +46,7 @@ void LoadNomorSimulasi(){
 }
 
 void LoadTime(){
+    ////ERRRORRRO
     ADVKATA();
     printf("Waktu : %d\n",KataToInt(CKata));
 }
