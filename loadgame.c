@@ -202,8 +202,3 @@ void LoadResep(){
     }
 
 }
-
-int main(){
-    Load();
-    return 0;
-}
