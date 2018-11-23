@@ -83,12 +83,8 @@ void CreateUI(){
   mvwprintw(Box3,1,1,"Food Stack");
   wrefresh(Box3);
   mvwprintw(Box4,1,1,"Hand");
-  wrefresh(Box4);
-  mvwprintw(Box4,2,1,"");
-  wrefresh(Box4);
-  printf("%s\n","Hey Tayo");
-  printf("%s\n", "Hey Tayo");
-  printf("%s\n", "Dia Bis Kecil Ramah");
+
+
 
 
   //Make Grid Zone
