@@ -93,7 +93,7 @@ void AddDaunResep(BinTree *P, resinfotype X, resinfotype Y)
   }
 }
 
-BinTree BuildTreeResepRec(int n,resinfotype TabResep[25], int *idx)
+BinTree BuildTreeResepRec(int n,resinfotype *TabResep, int *idx)
 /* Menghasilkan sebuah balanced tree dengan n node, nilai setiap node dibaca */
 /*Jika sebuah akar hanya mempunya satu buah daun, maka daun tersebut ada di sebelah kiri (IsUnerLeft)*/
 /* Untuk tubes ini n= 23 untuk membuat resep dengan Balance (kecuali Spaghetti Bolognese).
@@ -103,6 +103,7 @@ BinTree BuildTreeResepRec(int n,resinfotype TabResep[25], int *idx)
   resinfotype X;
   BinTree L,R;
   int nL,nR;
+  // printf("rec\n");
 
   if(n==0)
   {
@@ -117,7 +118,7 @@ BinTree BuildTreeResepRec(int n,resinfotype TabResep[25], int *idx)
     {
       nL = n/2;
       nR = n-nL-1;
-      (*idx++);
+      (*idx)++;
       L = BuildTreeResepRec(nL,TabResep,idx);
       R = BuildTreeResepRec(nR,TabResep,idx);
       Left(P) = L;
@@ -128,10 +129,11 @@ BinTree BuildTreeResepRec(int n,resinfotype TabResep[25], int *idx)
   }
 }
 
-BinTree BuildTreeResep(int n,resinfotype TabResep[25], int *idx)
+BinTree BuildTreeResep(int n,resinfotype *TabResep, int *idx)
 /* Di Akhir fungsi menambahkan resep ke 24 (Spaghetti Bolognese) menggunakan AddDaunResep*/
 {
   BinTree T;
+  // printf("test");
   T = BuildTreeResepRec(n,TabResep,idx); /*Isi Tree hanya 23 resep, kurang 1*/
   AddDaunResep(&T,TabResep[21],TabResep[*idx]); /*Pemrosesan khusus pada resep ke-24*/
   return T;
@@ -183,7 +185,7 @@ A
 {
 
   PrintTreeResepRec(P,0,h);
-  
+
 }
 
 /*Untuk mengetahui kedalaman dibutuhkan parameter tambahan*/
@@ -196,6 +198,7 @@ void PrintTreeResepRec(BinTree P, int kedalaman,int h)
         printf("-");
       }
       PrintKata(Akar(P).Name);
+      printf("\n");
       PrintTreeResepRec(Left(P),kedalaman+1,h);
       PrintTreeResepRec(Right(P),kedalaman+1,h);
   }

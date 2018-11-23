@@ -20,9 +20,9 @@ Stroberi
 Sundae
 Nasi
 Telur
-Nasi_telur dadar
+Nasi_telur_dadar
 Ayam_Goreng
-Nasi_Ayam Goreng
+Nasi_Ayam_Goreng
 Garpu
 Roti
 Patty
