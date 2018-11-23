@@ -149,11 +149,11 @@ void SaveTable(){
     int i=1;
     while(i<=3){
         //Number room
-        fprintf(output_file,"%d\n",i);
+        fprintf(output_file,"%d %d\n",i,4);
         int j=0;
         //4 tables
         while(j<4){
-            fprintf(output_file,"%d %d ",((i-1)*4+(j+1)),ArrRoom[i].TableArray[j].Kapasitas);
+            fprintf(output_file,"%d %d ",TableArray(i,j).Nomor,ArrRoom[i].TableArray[j].Kapasitas);
             //Kesabaran dan Jumlah
             fprintf(output_file,"%d %d ",Kesabaran(ArrRoom[i].TableArray[j].C),Jumlah(ArrRoom[i].TableArray[j].C));
             KataToFile(output_file,Makanan(ArrRoom[i].TableArray[j].C).Nama);
