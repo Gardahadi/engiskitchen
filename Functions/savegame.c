@@ -30,7 +30,7 @@ void Save(){
     SaveNomorSimulasi();
     SaveTime();
     SaveDataPlayer();
-    // SaveDataRestoran();
+    SaveDataRestoran();
     fprintf(output_file,"\n."); //Mark
     fclose(output_file);
 }
@@ -39,8 +39,9 @@ void SaveNomorSimulasi(){
     fprintf(output_file,"%d\n",R.Simulasi);
 }
 void SaveTime(){
-    // // time_t current_time = time(NULL);
-    // fprintf(output_file,"%ld\n",current_time/186400);
+
+    fprintf(output_file,"%d\n",186400);
+
 }
 
 void SaveDataPlayer(){
@@ -58,12 +59,17 @@ void SaveHand(){
     //Save number of bahan in stack
     //Save all bahan -> item in bottom of stack is written first
     int i=1;
-    while(i<=bTop(hand())){
-        KataToFile(output_file,hand().T[i].Name);
-        PrintSpace(output_file);
-        i++;
+    if(IsEmptyBS(hand())){
+        fprintf(output_file,"%d\n",0);
+    } else {
+        fprintf(output_file,"%d\n",bTop(hand()));
+        while(i<=bTop(hand())){
+            KataToFile(output_file,hand().T[i].Name);
+            PrintSpace(output_file);
+            i++;
+        }
+        PrintNewline(output_file);
     }
-    PrintNewline(output_file);
 }
 
 void SaveDataRestoran(){
@@ -83,6 +89,10 @@ void SaveDataRestoran(){
     SaveKitchenSet();
 
 }
+
+void SaveTickTime(){
+    fprintf(output_file,"%d\n",R.Tick);
+}
 void SaveTray(){
     if(IsEmptyFS(tray())){
         fprintf(output_file,"%d\n",0);
@@ -93,7 +103,9 @@ void SaveTray(){
         while(i<=fTop(tray())){
             KataToFile(output_file,tray().T[i].Nama);
             i++;
+            PrintSpace(output_file);
         }
+        PrintNewline(output_file);
     }
 }
 
@@ -153,22 +165,24 @@ void SaveTable(){
         int j=0;
         //4 tables
         while(j<4){
-            fprintf(output_file,"%d %d ",TableArray(i,j).Nomor,ArrRoom[i].TableArray[j].Kapasitas);
+            fprintf(output_file,"%d %d ",TableArray(i,j).Nomor,TableArray(i,j).Kapasitas);
             //Kesabaran dan Jumlah
-            fprintf(output_file,"%d %d ",Kesabaran(ArrRoom[i].TableArray[j].C),Jumlah(ArrRoom[i].TableArray[j].C));
-            KataToFile(output_file,Makanan(ArrRoom[i].TableArray[j].C).Nama);
+            fprintf(output_file,"%d %d ",Kesabaran(TableArray(i,j).C),Jumlah(TableArray(i,j).C));
+            KataToFile(output_file,Makanan(TableArray(i,j).C).Nama);
             PrintSpace(output_file);
-            if(IsStar(ArrRoom[i].TableArray[j].C)){
+            if(IsStar(TableArray(i,j).C)){
                 fprintf(output_file,"%d ",1);
             } else {
                 fprintf(output_file,"%d ",0);
             }
 
-            if(ArrRoom[i].TableArray[j].IsFull){
-                fprintf(output_file,"%d\n",1);
+            if(TableArray(i,j).IsFull){
+                fprintf(output_file,"%d ",1);
             } else {
-                fprintf(output_file,"%d\n",0);
+                fprintf(output_file,"%d ",0);
             }
+
+            fprintf(output_file,"%d %d\n",PosTableArray(i,j).x,PosTableArray(i,j).y);
             j++;
         }
         i++;
@@ -191,7 +205,8 @@ void SaveKitchenSet(){
     fprintf(output_file,"%d\n",16);
     while(i<16){
         KataToFile(output_file,InfoKitchenArray(i));
-        PrintNewline(output_file);
+        PrintSpace(output_file);
+        fprintf(output_file,"%d %d\n",PosKitchenArray(i).x,PosKitchenArray(i).y);
         i++;
     }
 }
