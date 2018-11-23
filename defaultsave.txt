@@ -1,0 +1,39 @@
+0
+0
+0
+10
+<x_awal, y_awal, nroom_awal>
+0
+0
+0
+100
+0
+100
+0
+<N_meja dan data tiap meja minta dong wkwkwkwkw>
+24
+Piring
+Sendok
+Eskrim
+Pisang
+Banana_Split
+Stroberi
+Sundae
+Nasi
+Telur
+Nasi_telur dadar
+Ayam_Goreng
+Nasi_Ayam Goreng
+Garpu
+Roti
+Patty
+Burger
+Sosis
+Hot_Dog
+Spaghetti
+Bolognese
+Keju
+Carbonara
+Spaghetti_Carbonara
+Spaghetti_Bolognese .
+    

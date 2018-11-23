@@ -3,12 +3,14 @@
 #ifndef RESTAURANT_H
 #define RESTAURANT_H
 
-#include "ADT header/boolean.h"
-#include "ADT header/customer.h"
-#include "ADT header/basetype.h"
-#include "ADT header/foodstack.h"
-#include "ADT header/bahanstack.h"
-#include "ADT header/matrikskar.h"
+#include "ADT Header/boolean.h"
+#include "ADT Header/basetype.h"
+#include "ADT Header/Order.h"
+#include "ADT Header/foodstack.h"
+#include "ADT Header/bahanstack.h"
+#include "ADT Header/matriksroom.h"
+#include "ADT Header/customer.h"
+#include "ADT Header/treeresep.h"
 
 
 
@@ -16,7 +18,7 @@
 typedef struct {
   long Money; //uang player
   int Life; //nyawa player
-  POSITION Position; //posisi player
+  POSITION Pos; //posisi player
   BSTACK Hand; //stack of bahan
   FSTACK Tray; //stack of food
 } PLAYER;
@@ -26,28 +28,55 @@ typedef struct {
 typedef struct {
   int Time; //waktu permainan
   CQUEUE CustQueue; //queue of customer
-  ORDERTAB OrderTab; //queue of order
+  TabOrder TabOfOrder; // Sebuah Array of Order
   PLAYER P; //player P
-  GRAPH RoomGraph;
+  //GRAPH RoomGraph;
 } RESTAURANT;
+
+/* Definisi elemen dan koleksi objek */
+typedef struct {
+  RESEP TabResep[25]; //array of resep
+  BinTree TResep; // tree of resep
+} TREEPACKAGE;
+
 
 /*FUNGSI PROSEDUR*/
 
-extern Restaurant R;
-extern Rs;
-extern Room [5]; //indeks [1..4]
+extern RESTAURANT R;
+extern TREEPACKAGE Rs;
+extern ROOM ArrRoom[5]; //indeks [1..4]
 
-void Move (char* Command); //Garda
+/* Definisi akses dengan Selektor : Get */
+#define hand() R.P.Hand
+#define tray() R.P.Tray
+#define arrResep(i) Rs.TabResep[(i)]
+#define pohonresep() Rs.TResep
+#define absis() R.P.Pos.x
+#define ordinat() R.P.Pos.y
+#define player() R.P
+#define RN R.P.Pos.nRoom
+#define Room(n, x, y) ArrRoom[(n)].RoomBoard.Mem[(x)][(y)]
+#define GetKitchenArray(X) ArrRoom[4].KitchenArray[(X)]
+#define InfoKitchenArray(X) ArrRoom[4].KitchenArray[(X)].Name
+#define PosKitchenArray(X) ArrRoom[4].KitchenArray[(X)].Pos
+#define InfoTableArray(n, X) ArrRoom[n].TableArray[(X)].C.Makanan.Nama
+#define PosTableArray(n, X) ArrRoom[(n)].TableArray[(X)].PosMeja
+#define TableArray(n, X) ArrRoom[(n)].TableArray[(X)]
+#define OrderResto R.TabOfOrder.TOrd
+#define QCustomer R.CustQueue
+
+
+void Move (int Dir); //Garda
 
 void GetOrder (); //Badur
 
-void Put (); //Badur
+void Put (); //Done
 
 void Take (); //Done
 
-void Buang (char* Command); //Done
+void Buang (Kata Command); //Done
 
-void Place (); //Lukas
+void Place (); //Done
 
 void Give (); //Done
 
