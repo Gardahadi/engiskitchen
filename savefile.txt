@@ -17,7 +17,7 @@
 //TIME->Jumlah tick
 //TRAY
     //Number of food
-    //Food per baris : Konvensi food di bawah stack di baris pertama
+    //Food Konvensi food di bawah stack di baris pertama
     //Baris : (Nama_Makanan)
 //CUSTOMER QUEUE
     //MaxEL of QUEUE
@@ -29,8 +29,7 @@
     //Order per baris :(indeks) (Nama_Makanan) (Nomor meja)
 //TABLE -> menyimpan data customer yang sedang berada di dalam restoran
     //Berapa roomnya. Per tiap room :
-    //room nomor Berapa
-    //N_table per room tersebut
+    //room nomor Berapa, N_table per room tersebut
     //Per meja : <nomor meja> <Kapasitas> <Kesabaran> <Jumlah> <Makanan> <0/1>(isstar) <0/1>(isfull) <x> <y>
 //RESEP
     //N_resep

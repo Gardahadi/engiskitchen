@@ -1,5 +1,6 @@
 #include "../restoran.h"
 #include <stdio.h>
+#include <time.h>
 
 //Global save variables
 FILE* output_file;
@@ -38,7 +39,8 @@ void SaveNomorSimulasi(){
     fprintf(output_file,"%d\n",R.Simulasi);
 }
 void SaveTime(){
-    // fprintf(output_file,"%d\n",Waktu);
+    time_t current_time = time(NULL);
+    fprintf(output_file,"%ld\n",current_time/186400);
 }
 
 void SaveDataPlayer(){
@@ -66,6 +68,7 @@ void SaveHand(){
 
 void SaveRestoran(){
     //Save tick
+    SaveTickTime();
     //Save TRAY
     SaveTray();
     //Save customer Queue
@@ -81,7 +84,17 @@ void SaveRestoran(){
 
 }
 void SaveTray(){
-
+    if(IsEmptyFS(tray())){
+        fprintf(output_file,"%d\n",0);
+    } else {
+        int i;
+        fprintf(output_file,"%d\n",fTop(tray()));
+        i=1;
+        while(i<=fTop(tray())){
+            KataToFile(output_file,tray().T[i].Nama);
+            i++;
+        }
+    }
 }
 
 void SaveCustomerQueue(){
@@ -136,11 +149,11 @@ void SaveTable(){
     int i=1;
     while(i<=3){
         //Number room
-        fprintf(output_file,"%d\n",i);
+        fprintf(output_file,"%d %d\n",i,4);
         int j=0;
         //4 tables
         while(j<4){
-            fprintf(output_file,"%d %d ",((i-1)*4+(j+1)),ArrRoom[i].TableArray[j].Kapasitas);
+            fprintf(output_file,"%d %d ",TableArray(i,j).Nomor,ArrRoom[i].TableArray[j].Kapasitas);
             //Kesabaran dan Jumlah
             fprintf(output_file,"%d %d ",Kesabaran(ArrRoom[i].TableArray[j].C),Jumlah(ArrRoom[i].TableArray[j].C));
             KataToFile(output_file,Makanan(ArrRoom[i].TableArray[j].C).Nama);

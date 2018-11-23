@@ -48,7 +48,7 @@ void LoadNomorSimulasi(){
 void LoadTime(){
     ////ERRRORRRO
     ADVKATA();
-    printf("Waktu : %d\n",KataToInt(CKata));
+    printf("Waktu : %d ekon wkwkwkwk\n",KataToInt(CKata));
 }
 
 void LoadDataPlayer(){
