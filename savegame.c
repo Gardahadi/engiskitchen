@@ -71,7 +71,7 @@ void SaveRestoran(){
     //Save customer Queue
     SaveCustomerQueue();
     //Save array of order
-    SaveOrder();
+    SaveOrderArray();
     //Save table data
     SaveTable();
     //Save Resep
@@ -116,8 +116,17 @@ void SaveCustomerQueue(){
     }
 }
 
-void SaveOrder(){
-
+void SaveOrderArray(){
+    //Number of Neff
+    fprintf(output_file,"%d\n",NbElmtOrder(R.TabOfOrder));
+    i=1;
+    while(i<=NbElmtOrder(R.TabOfOrder)){
+        fprintf(output_file,"%d ",i);
+        KataToFile(output_file,OrderResto[i].CustomerOrder.Nama);
+        PrintSpace(output_file);
+        fprintf(output_file,"&d\n",OrderResto[i].NomorMeja);
+        i++;
+    }
 }
 
 void SaveTable(){
