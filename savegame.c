@@ -56,7 +56,7 @@ void SaveHand(){
     //Save all bahan -> item in bottom of stack is written first
     int i=1;
     while(i<=bTop(hand())){
-        PrintKata(output_file,hand().T[i].Nama);
+        KataToFile(output_file,hand().T[i].Nama);
         PrintSpace(output_file);
         i++;
     }
@@ -77,6 +77,15 @@ void SaveRestoran(){
 }
 
 void SaveResep(){
+    int i;
+    //Algoritma
+    fprintf(output_file,"%d\n",24);
+    i=0;
+    while(i<=24){
+        KataToFile(output_file,arrResep(i).Nama);
+        PrintNewline(output_file);
+        i++;
+    }
 
 }
 
@@ -103,7 +112,7 @@ void SaveCustomerQueue(){
         i=Head(QCustomer);
         while(i<=Tail(QCustomer)){
             fprintf(output_file,"%d %d ",Kesabaran(QCustomer.T[i]),Jumlah(QCustomer.T[i]));
-            PrintKata(output_file, Makanan(QCustomer.T[i]).Nama);
+            KataToFile(output_file, Makanan(QCustomer.T[i]).Nama);
             PrintSpace(output_file);
             if(IsStar(QCustomer.T[i])){
                 fprintf(output_file,"%d\n",1);
