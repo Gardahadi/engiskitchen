@@ -252,8 +252,8 @@ void LoadKitchenSet(){
     KITCHENSET temp;
     ADVKATA();
     N = KataToInt(CKata);
-    i=1;
-    while(i<=N){
+    i=0;
+    while(i<N){
         ADVKATA();
         temp.Nama = CKata;
         ADVKATA();
