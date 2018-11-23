@@ -196,6 +196,6 @@ void PrintNewline(FILE *fp){
     fprintf(fp,"\n");
 }
 
-void PrintSpace(File *fp){
+void PrintSpace(FILE *fp){
     fprintf(fp," ");
 }

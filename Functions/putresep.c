@@ -6,6 +6,7 @@ void Masak(BSTACK S, FOOD *F,boolean *valid);
 void Recipe ()
 /*Menampilkan Resep*/
 {
+  
   PrintTreeResep(pohonresep(),2);
 }
 

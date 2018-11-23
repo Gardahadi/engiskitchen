@@ -181,7 +181,9 @@ A
     E
 */
 {
+
   PrintTreeResepRec(P,0,h);
+  
 }
 
 /*Untuk mengetahui kedalaman dibutuhkan parameter tambahan*/

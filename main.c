@@ -163,10 +163,12 @@ int main () {
 
   //Inisialisasi Peta
   BuildResto();
-  printf("%d\n",NextDoor(D1A)->Xpos);
-  printf("%d\n",NextDoor(D1A)->Ypos);
-  // Load();
-  // loadMap(); //Loading Map dari mapfile.txt
+  Load(2);
+  loadMap(); //Loading Map dari mapfile.txt
+
+  Recipe();
+
+
   // CreateUI(); //Membuat Window2 beserta isinya
   // printBoard(ArrRoom[1].RoomBoard); // Print Petak Ruangan
   // wrefresh(BoxBot);
