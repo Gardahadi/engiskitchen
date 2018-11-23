@@ -5,49 +5,48 @@
 
 
 #include <stdio.h>
-#include "../ADT Header/bahanstack.h"
+#include "bstack.h"
 
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
 void CreateEmptyBS (BSTACK *S) {
 /* I.S. sembarang; */
-/* F.S. Membuat sebuah BSTACK S yang kosong berkapasitas MaxElBS */
-/* jadi indeksnya antara 1.. MaxElBS+1 karena 0 tidak dipakai */
-/* Ciri BSTACK kosong : bTop bernilai Nil */
-
-  bTop(*S) = Nil;
+/* F.S. Membuat sebuah BSTACK S yang kosong berkapasitas MaxEl */
+/* jadi indeksnya antara 1.. MaxEl+1 karena 0 tidak dipakai */
+/* Ciri BSTACK kosong : TOP bernilai Nil */
+  Top(*S) = Nil;
 }
 
 
 
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmptyBS (BSTACK S) {
+boolean IsEmpty (BSTACK S) {
 /* Mengirim true jika BSTACK kosong: lihat definisi di atas */
-  return (bTop(S)==Nil);
+  return (Top(S)==Nil);
 }
-boolean IsFullBS (BSTACK S)
+boolean IsFull (BSTACK S)
 /* Mengirim true jika tabel penampung nilai elemen BSTACK penuh */
 {
-  return (bTop(S) == MaxElBS);
+  return (Top(S) == MaxEl);
 }
 
 /* ************ Menambahkan sebuah elemen ke BSTACK ************ */
-void PushBS (BSTACK * S, BAHAN X)
+void Push (BSTACK * S, infotype X)
 /* Menambahkan X sebagai elemen BSTACK S. */
 /* I.S. S mungkin kosong, tabel penampung elemen BSTACK TIDAK penuh */
-/* F.S. X menjadi bTop yang baru,bTop bertambah 1 */
+/* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 {
-    bTop(*S)++;
-    InfobTop(*S) = X;
+    Top(*S)++;
+    InfoTop(*S) = X;
 }
 /* ************ Menghapus sebuah elemen BSTACK ************ */
-void PopBS (BSTACK * S, BAHAN* X)
+void Pop (BSTACK * S, infotype* X)
 /* Menghapus X dari BSTACK S. */
 /* I.S. S  tidak mungkin kosong */
-/* F.S. X adalah nilai elemen bTop yang lama, bTop berkurang 1 */
+/* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 {
-  *X = InfobTop(*S);
-  bTop(*S)--;
+  *X = InfoTop(*S);
+  Top(*S)--;
 }

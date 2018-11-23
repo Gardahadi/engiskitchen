@@ -2,17 +2,10 @@
    Nama : Gardahadi
    Nama file : matriks.c
    */
-/*
-0 : kosong
-1 : Player
-2 : Kursi Kosong
-3 : Kursi Terisi
-4 : Penanda Meja
 
-*/
 #include <stdio.h>
-#include "../ADT Header/matriksroom.h"
-#include "../ADT Header/boolean.h"
+#include "ADT Header/matriks.h"
+#include "boolean.h"
 
 void MakeMATRIKS (int NB, int NK, MATRIKS * M)
 /* Membentuk sebuah MATRIKS "kosong" yang siap diisi berukuran NB x NK di "ujung kiri" memori */
@@ -90,8 +83,8 @@ void CopyMATRIKS (MATRIKS MIn, MATRIKS * MHsl)
   int i,j;
   NBrsEff(*MHsl) = NBrsEff(MIn);
   NKolEff(*MHsl) = NKolEff(MIn);
-  for (i=0;i<=NBrsEff(MIn);i++){
-    for (j=0;j<=NKolEff(MIn);j++){
+  for (i=1;i<=NBrsEff(MIn);i++){
+    for (j=1;j<=NKolEff(MIn);j++){
       Elmt(*MHsl,i,j) = Elmt(MIn,i,j);
     }
   }
@@ -111,18 +104,15 @@ void BacaMATRIKS (MATRIKS * M, int NB, int NK)
 8 9 10
 */
 {
-  int i,j;
-  char X;
-  i=1;
+  int i,j,X;
   MakeMATRIKS(NB,NK,M);
-  while(i<=NBrsEff(*M)){
-    j=1;
-    while(j<=NKolEff(*M)){
-      scanf(" %c",&X);
+  NBrsEff(*M) = NB;
+  NKolEff(*M) = NK;
+  for (i=GetFirstIdxBrs(*M);i<=NB;i++){
+    for(j=GetFirstIdxKol(*M);j<=NK;j++){
+      scanf("%s",&X);
       Elmt(*M,i,j)=X;
-      j++;
     }
-  i++;
   }
 }
 void TulisMATRIKS (MATRIKS M)
@@ -138,14 +128,21 @@ void TulisMATRIKS (MATRIKS M)
 {
   int i,j;
   //Membuat border a
+
+
   for (i=1;i<=NBrsEff(M);i++) {
+
+
     for (j=1;j<=NKolEff(M);j++) {
 
-      if ((j==NKolEff(M)))  {
+      if ((j==NKolEff(M)) && (i!=NBrsEff(M))) {
         printf(" %c |\n",Elmt(M,i,j));
       }
-      else {
+      else if ((j==NKolEff(M)) && (i==NBrsEff(M))) {
         printf(" %c |",Elmt(M,i,j));
+      }
+      else {
+        printf("%s ",Elmt(M,i,j));
       }
     }
   }

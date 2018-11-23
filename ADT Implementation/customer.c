@@ -1,6 +1,6 @@
 /* Auithor : Nur Alam Hasabie 13517096*/
 
-#include "customer.h"
+#include "../ADT Header/customer.h"
 #include "stdio.h"
 #include "stdlib.h"
 

@@ -1,22 +1,22 @@
 /* ********** Definisi TYPE MATRIKS dengan indeks dan elemen integer ********** */
 
-#ifndef MATRIKSROOM_H
-#define MATRIKSROOM_H
+#ifndef MATRIKS_H
+#define MATRIKS_H
 
 #include "boolean.h"
 
 /* Ukuran minimum dan maksimum baris dan kolom */
-#define BrsMin 1
+#define BrsMin 0
 #define BrsMax 100
-#define KolMin 1
+#define KolMin 0
 #define KolMax 100
-#define KOSONG ' ' //elemen room kosong
+#define Nil ' ' //elemen room kosong
 
 typedef int indeks; /* indeks baris, kolom */
 typedef char ElType;
 typedef struct {
 	ElType Mem[BrsMax+1][KolMax+1];
-  int NBrsEff; /* banyaknya/ukuran baris yg terdefinisi */
+    int NBrsEff; /* banyaknya/ukuran baris yg terdefinisi */
 	int NKolEff; /* banyaknya/ukuran kolom yg terdefinisi */
 } MATRIKS;
 /* NBrsEff <= 1 dan NKolEff <= 1 */
