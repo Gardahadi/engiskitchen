@@ -11,6 +11,7 @@
 #include "ADT Header/matriksroom.h"
 #include "ADT Header/customer.h"
 #include "ADT Header/treeresep.h"
+#include "ADT Header/roomgraph.h"
 
 
 
@@ -30,7 +31,7 @@ typedef struct {
   CQUEUE CustQueue; //queue of customer
   TabOrder TabOfOrder; // Sebuah Array of Order
   PLAYER P; //player P
-  //GRAPH RoomGraph;
+  GRAPH Building; //Gedung resto yang diimplementasi menggunakan GRAPH
 } RESTAURANT;
 
 /* Definisi elemen dan koleksi objek */
@@ -45,6 +46,9 @@ typedef struct {
 extern RESTAURANT R;
 extern TREEPACKAGE Rs;
 extern ROOM ArrRoom[5]; //indeks [1..4]
+extern adrNode R1,R2,R3,R4;
+extern adrDoorNode D1A,D1B,D2A,D2B,D3A,D3B,D4A,D4B;
+
 
 /* Definisi akses dengan Selektor : Get */
 #define hand() R.P.Hand
@@ -89,6 +93,8 @@ void Save (); //Alam
 void Load (); //Alam
 
 void UpdateCust(); //Alam
+
+void BuildResto();
 
 
 #endif

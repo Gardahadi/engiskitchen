@@ -1,16 +1,16 @@
 0
 0
-0
+5000
 10
-<x_awal, y_awal, nroom_awal>
+5 5 1
 0
 0
 0
 100
 0
-100
+101
 0
-<N_meja dan data tiap meja minta dong wkwkwkwkw>
+0
 24
 Piring
 Sendok

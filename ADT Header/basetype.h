@@ -49,11 +49,6 @@ typedef struct{
   POSITION Pos;
 } KITCHENSET;
 
-//Tipe bentukan order
-typedef struct {
-  Kata Name; //nama food yang diorder
-  int TableNumber; //nomer meja
-} ORDER;
 
 //Tipe bentukan room
 typedef struct{
@@ -64,6 +59,7 @@ typedef struct{
 
 /* Definisi elemen dan koleksi objek */
 typedef int IdxTypeOrder;  /* type indeks */
+
 typedef struct {
 	FOOD CustomerOrder; /* Menyimpan  */
 	int NomorMeja; /*Menyimpan Nomor meja yang memesan */

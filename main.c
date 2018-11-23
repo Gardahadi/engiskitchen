@@ -24,6 +24,9 @@ WINDOW* BoxBot, *MapBox;
 ROOM ArrRoom[5];
 RESTAURANT R;
 TREEPACKAGE Rs;
+adrNode R1,R2,R3,R4;
+adrDoorNode D1A,D1B,D2A,D2B,D3A,D3B,D4A,D4B;
+
 char cmd[10];
 
 void PrintText(WINDOW *Box);
@@ -50,9 +53,9 @@ void CreateUI(){
   wrefresh(BoxTop4);
   mvwprintw(BoxTop1,1,1,"Garda");
   wrefresh(BoxTop1);
-  mvwprintw(BoxTop2,1,1,"Money :");
+  mvwprintw(BoxTop2,1,1,"Money : %d",player().Money);
   wrefresh(BoxTop2);
-  mvwprintw(BoxTop3,1,1,"Lives :");
+  mvwprintw(BoxTop3,1,1,"Lives : %d",player().Life);
   wrefresh(BoxTop3);
   mvwprintw(BoxTop4,1,1,"Time : %s", cmd);
   wrefresh(BoxTop4);
@@ -159,39 +162,41 @@ int main () {
 
 
   //Inisialisasi Peta
-  Load();
-  loadMap(); //Loading Map dari mapfile.txt
-  
-  CreateUI(); //Membuat Window2 beserta isinya
-  printBoard(ArrRoom[1].RoomBoard); // Print Petak Ruangan
-  wrefresh(BoxBot);
-
-  //Looping Utama Program
-  wgetstr(BoxBot,cmd);
-  while(!(IsKataSama(StringToKata("Exit\0"),StringToKata(cmd)))){
-
-    if(IsKataSama(StringToKata(cmd),StringToKata("GU\0"))){
-      Move(1);
-      printBoard(ArrRoom[RN].RoomBoard);
-    }
-    else if(IsKataSama(StringToKata(cmd),StringToKata("GD\0"))){
-      Move(3);
-      printBoard(ArrRoom[RN].RoomBoard);
-    }
-    else if(IsKataSama(StringToKata(cmd),StringToKata("GL\0"))){
-      Move(2);
-      printBoard(ArrRoom[RN].RoomBoard);
-    }
-    else if(IsKataSama(StringToKata(cmd),StringToKata("GR\0"))){
-      Move(4);
-      printBoard(ArrRoom[RN].RoomBoard);
-    }
-
-    CreateUI();
-    printBoard(ArrRoom[RN].RoomBoard);
-    wgetstr(BoxBot,cmd);
-
-  }
-  endwin();
+  BuildResto();
+  printf("%d\n",NextDoor(D1A)->Xpos);
+  printf("%d\n",NextDoor(D1A)->Ypos);
+  // Load();
+  // loadMap(); //Loading Map dari mapfile.txt
+  // CreateUI(); //Membuat Window2 beserta isinya
+  // printBoard(ArrRoom[1].RoomBoard); // Print Petak Ruangan
+  // wrefresh(BoxBot);
+  //
+  // //Looping Utama Program
+  // wgetstr(BoxBot,cmd);
+  // while(!(IsKataSama(StringToKata("Exit\0"),StringToKata(cmd)))){
+  //
+  //   if(IsKataSama(StringToKata(cmd),StringToKata("GU\0"))){
+  //     Move(1);
+  //     printBoard(ArrRoom[RN].RoomBoard);
+  //   }
+  //   else if(IsKataSama(StringToKata(cmd),StringToKata("GD\0"))){
+  //     Move(3);
+  //     printBoard(ArrRoom[RN].RoomBoard);
+  //   }
+  //   else if(IsKataSama(StringToKata(cmd),StringToKata("GL\0"))){
+  //     Move(2);
+  //     printBoard(ArrRoom[RN].RoomBoard);
+  //   }
+  //   else if(IsKataSama(StringToKata(cmd),StringToKata("GR\0"))){
+  //     Move(4);
+  //     printBoard(ArrRoom[RN].RoomBoard);
+  //   }
+  //
+  //   CreateUI();
+  //   printBoard(ArrRoom[RN].RoomBoard);
+  //   wgetstr(BoxBot,cmd);
+  //
+  // }
+  // endwin();
 
 }

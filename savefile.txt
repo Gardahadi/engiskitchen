@@ -1,8 +1,11 @@
 //File untuk save
 //Komen harus dihapus ketika file diload
+
 //NO-SIMULASI-> Nomor simulasi haruslah unik untuk setiap simulasi
 //WAKTU->waktu komputer
-//Bagian dua: load data player
+
+<Bagian dua: load data player>
+
 //MONEY
 //LIFE
 //POSISI
