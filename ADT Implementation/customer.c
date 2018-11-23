@@ -168,7 +168,7 @@ CUSTOMER GenerateCustomer(int seed){
     } else {
         //Undefined guest
         Kesabaran(C) = UndefCustomer;
-        Jumlah(C) = UndefCustomer;
+        Jumlah(C) = 0;
         IsStar(C) = false;
     }
     return C;

@@ -4,7 +4,7 @@ File for procedure to Update Customer on Table
 Cause they're impatient little brats
 */
 
-void UpdateCust(){
+void UpdateCust(boolean *NewCustomer){
     //Update dilakukan per meja
     //Traversal dari room 1->3, meja 0->3
     int n_room, n_table;
@@ -31,5 +31,21 @@ void UpdateCust(){
             n_table++;
         }
         n_room++;
+    }
+    if(player().Life>0){
+        UpdateQueue(&QCustomer,&player().Life);
+    }
+    if(player().Life>0){
+        CUSTOMER temp;
+        int X = rand();
+        X = X%10;
+        temp = GenerateCustomer(X);
+        if(Kesabaran(temp)==UndefCustomer){
+            *NewCustomer = false;
+        } else {
+            //New customer is coming
+            AddCustomerToQueue(&QCustomer, temp);
+            *NewCustomer = true;
+        }
     }
 }
