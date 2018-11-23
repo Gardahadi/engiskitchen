@@ -30,6 +30,7 @@ void Save(){
     SaveTime();
     SaveDataPlayer();
     SaveRestoran();
+    fprintf(output_file"\n."); //Mark
     fclose(output_file);
 }
 void SaveNomorSimulasi(){
@@ -73,22 +74,12 @@ void SaveRestoran(){
     SaveOrder();
     //Save table data
     SaveTable();
+    //Save Resep
+    SaveResep();
+    //Save Kitchenset
+    SaveKitchenSet();
 
 }
-
-void SaveResep(){
-    int i;
-    //Algoritma
-    fprintf(output_file,"%d\n",24);
-    i=0;
-    while(i<=24){
-        KataToFile(output_file,arrResep(i).Nama);
-        PrintNewline(output_file);
-        i++;
-    }
-
-}
-
 void SaveTray(){
 
 }
@@ -132,4 +123,26 @@ void SaveOrder(){
 void SaveTable(){
 
 }
+void SaveResep(){
+    int i;
+    //Algoritma
+    fprintf(output_file,"%d\n",24);
+    i=0;
+    while(i<=24){
+        KataToFile(output_file,arrResep(i).Nama);
+        PrintNewline(output_file);
+        i++;
+    }
+}
+void SaveKitchenSet(){
+    i=0;
+    //Print number of kitchen set
+    fprintf(output_file,"%d\n",16);
+    while(i<16){
+        KataToFile(output_file,InfoKitchenArray(i));
+        PrintNewline(output_file);
+        i++;
+    }
+}
+
 
