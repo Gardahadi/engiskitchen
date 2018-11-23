@@ -17,7 +17,7 @@
 //TIME->Jumlah tick
 //TRAY
     //Number of food
-    //Food per baris : Konvensi food di bawah stack di baris pertama
+    //Food Konvensi food di bawah stack di baris pertama
     //Baris : (Nama_Makanan)
 //CUSTOMER QUEUE
     //MaxEL of QUEUE
