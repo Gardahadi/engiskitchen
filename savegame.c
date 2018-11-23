@@ -85,7 +85,35 @@ void SaveTray(){
 }
 
 void SaveCustomerQueue(){
-
+    //Kamus
+    int i;
+    //Algoritma
+    if(IsEmpty(CQ)){
+        i=0;
+    } else {
+        i=Head(QCustomer);
+        while(i<=Tail(QCustomer)){
+            i++;
+        }//i>Tail(QCustomer)
+    }
+        //MaxEl
+    fprintf(output_file,"%d\n",MaxEl(QCustomer));
+    fprintf(output_file,"%d\n",i);
+    if(!IsEmpty(CQ)){
+        i=Head(QCustomer);
+        while(i<=Tail(QCustomer)){
+            fprintf(output_file,"%d %d ",Kesabaran(QCustomer.T[i]),Jumlah(QCustomer.T[i]));
+            PrintKata(output_file, Makanan(QCustomer.T[i]).Nama);
+            PrintSpace(output_file);
+            if(IsStar(QCustomer.T[i])){
+                fprintf(output_file,"%d\n",1);
+            } else {
+                //not star
+                fprintf(output_file,"%d\n",0);
+            }
+            i++;
+        }
+    }
 }
 
 void SaveOrder(){
