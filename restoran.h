@@ -49,7 +49,7 @@ extern TREEPACKAGE Rs;
 extern ROOM ArrRoom[5]; //indeks [1..4]
 extern adrNode R1,R2,R3,R4;
 extern adrDoorNode D1A,D1B,D2A,D2B,D3A,D3B,D4A,D4B;
-
+extern boolean Hit;
 
 /* Definisi akses dengan Selektor : Get */
 #define hand() R.P.Hand
@@ -69,7 +69,7 @@ extern adrDoorNode D1A,D1B,D2A,D2B,D3A,D3B,D4A,D4B;
 #define TableArray(n, X) ArrRoom[(n)].TableArray[(X)]
 #define OrderResto R.TabOfOrder.TOrd
 #define QCustomer R.CustQueue
-
+#define BuildingResto R.Building
 
 void Move (int Dir); //Garda
 

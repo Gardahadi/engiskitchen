@@ -25,7 +25,7 @@ void DealokNode (adrNode P){
   free(P);
 }
 
-adrDoorNode AlokDoorNode (int X, int Y, adrNode D){
+adrDoorNode AlokDoorNode (int X, int Y, int d, adrNode D){
   adrDoorNode P = (adrDoorNode) malloc(sizeof(DoorNode));
   if (P != NULL) {
     Daddy(P) = D;
@@ -33,6 +33,7 @@ adrDoorNode AlokDoorNode (int X, int Y, adrNode D){
     NextGT(P) = NULL;
     P->Xpos = X;
     P->Ypos = Y;
+    P->Direction = d;
     return P;
   }
   else {

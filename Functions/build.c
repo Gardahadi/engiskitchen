@@ -15,17 +15,17 @@ void BuildResto() {
   NextGN(R3) = R4;
 
   //Membangun pintu-pintunya
-  D1A = AlokDoorNode(10,5,R1);
-  D1B = AlokDoorNode(5,10,R1);
+  D1A = AlokDoorNode(10,5,3,R1);
+  D1B = AlokDoorNode(5,10,2,R1);
 
-  D2A = AlokDoorNode(2,1,R2);
-  D2B = AlokDoorNode(10,5,R2);
+  D2A = AlokDoorNode(2,1,4,R2);
+  D2B = AlokDoorNode(10,5,3,R2);
 
-  D3A = AlokDoorNode(1,5,R3);
-  D3B = AlokDoorNode(2,1,R3);
+  D3A = AlokDoorNode(1,5,1,R3);
+  D3B = AlokDoorNode(2,1,4,R3);
 
-  D4A = AlokDoorNode(1,5,R4);
-  D4B = AlokDoorNode(5,10,R4);
+  D4A = AlokDoorNode(1,5,1,R4);
+  D4B = AlokDoorNode(5,10,2,R4);
   //Membuat Pintu di masing-masing Room
   Trail(R1) = D1A;
   NextGT(D1A) = D1B;

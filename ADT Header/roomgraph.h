@@ -16,6 +16,7 @@ typedef struct tDoorNode {
   adrNode Parent;
   int Xpos;
   int Ypos;
+  int Direction;
 }DoorNode;
 
 typedef struct Graph {
@@ -37,7 +38,7 @@ adrNode AlokNodeG(int X);
 
 void DealokNode (adrNode P);
 
-adrDoorNode AlokDoorNode (int X, int Y, adrNode D);
+adrDoorNode AlokDoorNode (int X, int Y, int d, adrNode D);
 
 void DealokDoorNode (adrDoorNode P);
 
@@ -46,3 +47,7 @@ adrNode SearchNode (GRAPH G, int X);
 void ConnectDoor(GRAPH G, adrNode *R, adrDoorNode *D );
 
 void BuildDoor(GRAPH *G, adrNode *R, adrDoorNode *D); //I.S Room sudah Connected!!
+
+boolean IsWall();
+
+void PosChanger(int dx, int dy, int direc);
