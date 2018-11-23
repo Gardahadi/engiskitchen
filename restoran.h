@@ -93,7 +93,7 @@ void Save (); //Alam
 
 void Load (); //Alam
 
-void UpdateCust(); //Alam
+void UpdateCust(boolean *NewCustomer); //Alam
 
 void BuildResto();
 

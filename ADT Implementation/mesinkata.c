@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../ADT Header/mesinkata.h"
+#include <string.h>
 
 boolean EndKata;
 Kata CKata;
@@ -198,4 +199,16 @@ void PrintNewline(FILE *fp){
 
 void PrintSpace(FILE *fp){
     fprintf(fp," ");
+}
+
+char* KataToString(Kata K){
+    size_t len = K.Length;
+    char *str = malloc(len+1);
+    int i=0;
+    while(i<K.Length){
+        str[i] = K.TabKata[i+1];
+        i++;
+    }//i =K.Length
+    str[K.Length] = '\0';
+    return str;
 }

@@ -68,4 +68,6 @@ void PrintNewline(FILE *fp);
 void PrintSpace(FILE *fp);
 //Print space in designated file
 
+char* KataToString(Kata K);
+//Kata to string
 #endif
