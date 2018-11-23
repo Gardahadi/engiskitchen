@@ -1,4 +1,4 @@
-#include "restoran.h"
+#include "../restoran.h"
 #include <stdio.h>
 
 //Global save variables
