@@ -12,16 +12,16 @@ void UpdateCust(){
     n_room=1;
     while(n_room<=3){
         n_table=0;
-        while(n_table<3){
+        while(n_table<4){
             if(Kesabaran(TableArray(n_room,n_table).C)>=0){
                 if(Kesabaran(TableArray(n_room,n_table).C)==1){
                     if(player().Life>0){
                         player().Life--;
                     }
                     Kesabaran(TableArray(n_room,n_table).C) = UndefCustomer;
-                    Jumlah(TableArray(n_room,n_table).C) = UndefCustomer;
+                    Jumlah(TableArray(n_room,n_table).C) = 0;
                     IsStar(TableArray(n_room,n_table).C) = false;
-                    Makanan(TableArray(n_room,n_table).C).Nama.Length=0;
+                    Makanan(TableArray(n_room,n_table).C).Nama = StringToKata("NoMakanan\0");
                     Makanan(TableArray(n_room,n_table).C).Harga = 0;
                     TableArray(n_room,n_table).IsFull = false;
                 } else {
