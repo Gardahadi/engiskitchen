@@ -130,7 +130,36 @@ void SaveOrderArray(){
 }
 
 void SaveTable(){
+    //Num of room
+    fprintf(output_file,"%d\n",3);
+    //Per room
+    i=1;
+    while(i<=3){
+        //Number room
+        fprintf(output_file,"%d\n",i);
+        j=0;
+        //4 tables
+        while(j<4){
+            fprintf(output_file,"%d %d ",((i-1)*4+(j+1)),ArrRoom[i].TableArray[j].Kapasitas);
+            //Kesabaran dan Jumlah
+            fprintf(output_file,"%d %d ",Kesabaran(ArrRoom[i].TableArray[j].C),Jumlah(ArrRoom[i].TableArray[j].C));
+            KataToFile(Makanan(ArrRoom[i].TableArray[j].C).Nama);
+            PrintSpace(output_file);
+            if(IsStar(ArrRoom[i].TableArray[j].C)){
+                fprintf(output_file,"%d ",1);
+            } else {
+                fprintf(output_file,"%d ",0);
+            }
 
+            if(ArrRoom[i].TableArray[j].IsFull){
+                fprintf(output_file,"%d\n",1);
+            } else {
+                fprintf(output_file,"%d\n",0);
+            }
+            j++;
+        }
+        i++;
+    }
 }
 void SaveResep(){
     int i;
