@@ -66,4 +66,9 @@ void PopBS (BSTACK * S, BAHAN* X);
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen bTop yang lama, bTop berkurang 1 */
 
+
+void PrintBS (BSTACK S);
+/*Mencetak ke layar semua isi S*/
+/*I.S. S terdefinisi*/
+/*F.S. S tetap*/
 #endif
