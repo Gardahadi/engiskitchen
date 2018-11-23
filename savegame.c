@@ -1,41 +1,69 @@
 #include "restoran.h"
+#include <stdio.h>
+
+//Global save variables
+FILE* output_file;
+
+
+void Save ();
+/**FUNGSI DAN PROSEDUR PEMBANTU**/
+/*PENCACAHAN FUNGSI UNTUK MODULARITAS PROGRAM*/
+void SaveNomorSimulasi();
+void SaveTime();
+void SaveDataPlayer();
+void SaveHand();
+void SaveDataRestoran();
+void SaveTickTime();
+void SaveTray();
+void SaveCustomerQueue();
+void SaveOrderArray();
+void SaveTable();
+void SaveResep();
+void SaveKitchenSet();
+
 
 void Save(){
     //Start file output interaction
     //Save nomor simulasi
+    output_file = fopen("save.txt","w");
     SaveNomorSimulasi();
     SaveTime();
-    SavePlayerData();
+    SaveDataPlayer();
     SaveRestoran();
-
-
+    fclose(output_file);
 }
 void SaveNomorSimulasi(){
-
+    //Nomor simulasi belum ADAAAAAA !
+    fprintf(output_file,"%d\n",Nomor_simulasi);
 }
 void SaveTime(){
-
-
+    fprintf(output_file,"%d\n",Waktu);
 }
 
-void SavePlayerData(){
+void SaveDataPlayer(){
     //Save money
+    fprintf(output_file,"%d\n",player().Money);
     //Save life
+    fprintf(output_file,"%d\n",player().Life);
     //Save posisi
+    fprintf(output_file,"%d %d %d\n",absis(),ordinat(),Rn);
     //Save Hand
     SaveHand();
-
-
 }
 
 void SaveHand(){
     //Save number of bahan in stack
     //Save all bahan -> item in bottom of stack is written first
+    int i=1;
+    while(i<=bTop(hand())){
+        PrintKata(output_file,hand().T[i].Nama);
+        PrintSpace(output_file);
+        i++;
+    }
+    PrintNewline(output_file);
 }
 
 void SaveRestoran(){
-    //Save resep
-    SaveResep();
     //Save tick
     //Save TRAY
     SaveTray();

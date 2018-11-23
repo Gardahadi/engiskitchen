@@ -179,3 +179,23 @@ int KataToInt(Kata K) {
     }
     return angka;
 }
+
+void KataToFile(FILE *fp , Kata K){
+    //Print kata to designated file
+    int i;
+    //Algo
+    i =1;
+    while(i<=K.Length){
+        fprintf(fp,"%c",K.TabKata[i]);
+        i++;
+    }
+}
+
+void PrintNewline(FILE *fp){
+    //Print newline in deisgnated file
+    fprintf(fp,"\n");
+}
+
+void PrintSpace(File *fp){
+    fprintf(fp," ");
+}

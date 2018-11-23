@@ -23,12 +23,18 @@ void LoadCustomerQueue();
 void LoadOrderArray();
 void LoadTable();
 void LoadResep();
+void LoadKitchenSet();
+/*PROSEDUR UNTUK MELAKUKAN PENGOSONGAN SEMUA DATA PADA GAME*/
+void CreateEmptyAll();
 
 
 /*IMPLEMENTATION*/
 
-void Load(){
-    STARTKATA(1);
+void Load(int N){
+    //Load file -> 1 if load from save
+    //Load file -> 2 if load from default
+    CreateEmptyAll();
+    STARTKATA(N);
     LoadNomorSimulasi();
     LoadTime();
     LoadDataPlayer();
@@ -40,6 +46,7 @@ void LoadNomorSimulasi(){
 }
 
 void LoadTime(){
+    ////ERRRORRRO
     ADVKATA();
     printf("Waktu : %d\n",KataToInt(CKata));
 }
@@ -70,6 +77,7 @@ void LoadDataPlayer(){
 }
 
 void LoadHand(){
+    BAHAN btemp;
     ADVKATA();
     //Number of bahan
     int N = KataToInt(CKata);
@@ -77,9 +85,8 @@ void LoadHand(){
     //BAHAN b;
     while(i<N){
         ADVKATA();
-        printf("Bahan ke-%d : ",(i+1));
-        PrintKata(CKata);
-        printf("\n");
+        btemp.Name = CKata;
+        PushBS(&hand(),btemp);
         i++;
     }//i=N, reading bahan selesai
 }
@@ -91,118 +98,177 @@ void LoadDataRestoran(){
     LoadOrderArray();
     LoadTable();
     LoadResep();
+    LoadKitchenSet();
 }
 
 void LoadTickTime(){
     ADVKATA();
-    printf("Waktu Tick : %d\n",KataToInt(CKata));
+    R.Time = KataToInt(CKata);
 }
 
 void LoadTray(){
+    FOOD food_temp;
     ADVKATA();
     int N = KataToInt(CKata);
     int i=0;
+    //HARGA MAKANAN BELUM DIKETAHUI CARA PENENTUANNYA!!!!!!!!!!!!
+    //Aku isi 0 aja ya wkwkwk
     while(i<N){
         ADVKATA();
-        printf("Nama Makanan ke-%d :",(i+1));
-        PrintKata(CKata);
-        ADVKATA();
-        printf(" Harga : %d\n",KataToInt(CKata));
+        food_temp.Nama = CKata;
+        food_temp.Harga = 0;
+        PushFS(&tray(),food_temp);
         i++;
     }
 
 }
 
 void LoadCustomerQueue(){
+    CUSTOMER Ctemp;
     ADVKATA();
-    printf("MaxEL of Queue : %d\n",KataToInt(CKata));
+    //Make queue
+    CreateEmptyCQ(&QCustomer,KataToInt(CKata));
+    //Isi Queue
     ADVKATA();
     int N = KataToInt(CKata);
     int i=0;
     while(i<N){
-        printf("Data Customer ke-%d : ",(i+1));
         ADVKATA();
-        printf("Kesabaran(%d) ",KataToInt(CKata));
+        Kesabaran(Ctemp) = KataToInt(CKata);
         ADVKATA();
-        printf("Jumlah(%d) ",KataToInt(CKata));
+        Jumlah(Ctemp) = KataToInt(CKata);
         ADVKATA();
-        PrintKata(CKata);
+        Makanan(Ctemp).Nama = CKata();
+        Makanan(Ctemp).Harga = 0;
+        //Harga belum ada!!!!!!!!!!!!!!!!
+        //Aku isi 0 lagi ya wkwkwk
         ADVKATA();
         if(KataToInt(CKata)==1){
-            printf(" IsStar");
+           IsStar(Ctemp) = true;
+        } else {
+            IsStar(Ctemp) = false;
         }
-        printf("\n");
+        //Add to Queue
+        AddCustomerToQueue(&QCustomer,Ctemp);
         i++;
     }
 }
 
 void LoadOrderArray(){
     int indeks;
-    Kata K_makanan;
+    Orderan Orderan_temp;
     int nomor;
+    //number of orders
     ADVKATA();
-    printf("MaxEl Order : %d\n",KataToInt(CKata));
-    ADVKATA();
-    printf("Number of Orders : %d\n",KataToInt(CKata));
     int N = KataToInt(CKata);
-    int i=0;
-    while(i<N){
+    int i=1;
+    while(i<=N){
+        //Get index
         ADVKATA();
         indeks = KataToInt(CKata);
         ADVKATA();
-        K_makanan = CKata;
+        //Food name
+        Orderan_temp.CustomerOrder.Nama = CKata;
+        //!!!!HARGA BELUM DITENTUKAN
+        Orderan_temp.CustomerOrder.Harga = 0;
+        //Aku isi 0 lagi ya wkwkwwk
         ADVKATA();
-        nomor = KataToInt(CKata);
-        printf("Data order ke-%d : indeks = %d makanan = ",(i+1),indeks);
-        PrintKata(K_makanan);
-        printf(" nomor = %d\n",nomor);
+        Orderan_temp.NomorMeja = KataToInt(CKata);
+        OrderResto[indeks] = Orderan_temp;
         i++;
     }
 }
 
 void LoadTable(){
-    int N;
+    int N,n_room,nomor_room;
+    TABLE table_temp;
     ADVKATA();
-    N = KataToInt(CKata);
-    printf("Number of meja = %d\n",N);
+    //Banyaknya ruangan
+    n_room = KataToInt(CKata);
     int i=0;
-    while(i<N){
+    int j=0;
+    while(i<n_room){
         ADVKATA();
-        printf("Kapasitas : %d |",KataToInt(CKata));
+        //Room berapa yang dibaca
+        nomor_room = KataToInt(CKata);
         ADVKATA();
-        printf("Kesabaran : %d |",KataToInt(CKata));
-        ADVKATA();
-        printf("Jumlah orang : %d |",KataToInt(CKata));
-        ADVKATA();
-        PrintKata(CKata);
-        ADVKATA();
-        if(KataToInt(CKata)==1){
-            printf("|IsStar");
+        //Berapa meja dalam room
+        N = KataToInt(CKata);
+        j=0;
+        while(j<N){
+            ADVKATA();
+            table_temp.Nomor = KataToInt(CKata);
+            ADVKATA();
+            table_temp.Kapasitas = KataToInt(CKata);
+            ADVKATA();
+            Kesabaran(table_temp.C) = KataToInt(CKata);
+            ADVKATA();
+            Jumlah(table_temp.C) = KataToInt(CKata);
+            ADVKATA();
+            Makanan(table_temp.C).Nama = CKata();
+            //HARGA 0 lagi ya wkwkwkk
+            Makanan(table_temp.C).Harga = 0;
+            ADVKATA();
+            if(KataToInt(CKata)==1){
+                IsStar(table_temp.C) = true;
+            } else {
+                IsStar(table_temp.C) = false;
+            }
+            ADVKATA();
+            if(KataToInt(CKata)==1){
+                table_temp.IsFull = true;
+            } else {
+                table_temp.IsFull = false;
+            }
+            ADVKATA();
+            table_temp.PosMeja.x = KataToInt(CKata);
+            ADVKATA();
+            table_temp.PosMeja.y = KataToInt(CKata);
+            table_temp.PosMeja.nRoom = nomor_room;
+            ArrRoom[nomor_room].TableArray[j] = table_temp;
+            j++;
         }
-        ADVKATA();
-        if(KataToInt(CKata)==1){
-            printf("|IsFull");
-        }
-        ADVKATA();
-        printf("| X = %d",KataToInt(CKata));
-        ADVKATA();
-        printf("| Y = %d",KataToInt(CKata));
-        ADVKATA();
-        printf("| n_room = %d\n",KataToInt(CKata));
         i++;
     }
 }
 
 void LoadResep(){
     int N,i;
+    RESEP temp;
     ADVKATA();
     N = KataToInt(CKata);
-    printf("Ada %d resep : \n",N);
-    i=0;
-    while(i<N){
+    i=1;
+    while(i<=N){
         ADVKATA();
-        PrintKata(CKata);
-        printf("\n");
+        temp.Nama = CKata;
+        TabResep[i] = temp;
         i++;
     }
+}
+
+
+void LoadKitchenSet(){
+    int N,i;
+    KITCHENSET temp;
+    ADVKATA();
+    N = KataToInt(CKata);
+    i=1;
+    while(i<=N){
+        ADVKATA();
+        temp.Nama = CKata;
+        ADVKATA();
+        temp.Pos.x = KataToInt(CKata);
+        ADVKATA();
+        temp.Pos.y = KataToInt(CKata);
+        temp.Pos.nRoom = 4;
+        ArrRoom[4].KitchenArray[i] = temp;
+        i++;
+    }
+}
+void CreateEmptyAll(){
+    //Empty hand
+    CreateEmptyBS(&(hand()));
+    //Empty stack
+    CreateEmptyFS(&tray());
+    MakeEmptyOrder()
 }
