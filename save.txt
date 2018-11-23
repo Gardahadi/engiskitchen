@@ -56,7 +56,7 @@ Carbonara
 Spaghetti_Carbonara
 Spaghetti_Bolognese
 16
-Piring 1 2
+Piring 1 2 //HARUS DIUBAH
 Sendok 1 3
 Eskrim 1 4
 Pisang 1 5
@@ -72,5 +72,4 @@ Garpu 5 6
 Roti 5 7
 Patty 5 8
 Sosis 5 9
-
 .

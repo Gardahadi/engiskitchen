@@ -5,64 +5,60 @@
 
 void Take (){
 	//KAMUS
-	int abs;
+	int Abs;
 	int ord;
-	int i;
+	int z;
 	BAHAN bhn;
 	//ALGORITMA
 
 
 	if (RN != 4){
-		printf("Anda sedang tidak berada di dapur\n");
+		printf(" Anda sedang tidak berada di dapur\n");
 	}
 	else{
 		//player ada di kitchen
 
 		//Mengecek apakah bahan bersebelahan dengan pemain
 
-		abs = -1;
+		Abs = -1;
 		ord = -1;
-
-		if(Room(RN, absis(), ordinat())=='M'){
-			abs = absis();
-			ord = ordinat();
+		if(Room(RN, ordinat(), absis())=='M'){
+			Abs = ordinat();
+			ord = absis();
 		}
 
-		if(Room(RN, absis()+1, ordinat())=='M'){
-			abs = absis()+1;
-			ord = ordinat();
+		if(Room(RN, ordinat()+1, absis())=='M'){
+			Abs = ordinat()+1;
+			ord = absis();
 		}
 
-		if(Room(RN, absis()-1, ordinat())=='M'){
-			abs = absis()-1;
-			ord = ordinat();
+		if(Room(RN, ordinat()-1, absis())=='M'){
+			Abs = ordinat()-1;
+			ord = absis();
 		}
 
-		if(Room(RN, absis(), ordinat()+1)=='M'){
-			abs = absis();
-			ord = ordinat()+1;
+		if(Room(RN, ordinat(), absis()+1)=='M'){
+			Abs = ordinat();
+			ord = absis()+1;
 		}
 
-		if(Room(RN, absis(), ordinat()-1)=='M'){
-			abs = absis();
-			ord = ordinat()-1;
+		if(Room(RN, ordinat(), absis()-1)=='M'){
+			Abs = ordinat();
+			ord = absis()-1;
 		}
-
-		if ((abs!=-1)&&(ord!=-1)){
+		if ((Abs!=-1)&&(ord!=-1)){
 			//bersebelahan dengan pemain
 
 			//menaruh makanan
-			i = 0;
-
-			while ((PosKitchenArray(i).x != abs) && (PosKitchenArray(i).y != ord)) {
-				i++;
+			z = 0;
+			while ((PosKitchenArray(z).x != ord) || (PosKitchenArray(z).y != Abs)) {
+				z++;
 			}
-			bhn.Name = InfoKitchenArray(i);
+			bhn.Name = InfoKitchenArray(z);
 			PushBS(&hand(), bhn);
-
 		}
 		else{
-			printf("Bahan tidak bersebelahan dengan pemain\n");
+			printf("  Bahan tidak bersebelahan dengan pemain\n");
 		}
 	}
 
@@ -85,7 +81,7 @@ void Give (){
 	//KAMUS
 	FOOD food;
 	int i;
-	int abs; //posisi x customer
+	int Abs; //posisi x customer
 	int ord; //posisi y customer
 	boolean found;
 	//ALGORITMA
@@ -93,35 +89,35 @@ void Give (){
 
 	//cek apakah ada pengunjung bertetanggaan
 
-	abs = -1;
+	Abs = -1;
 	ord = -1;
 
-	if(Room(RN, absis(), ordinat())=='C'){
-		abs = absis();
+	if(Room(RN, ordinat(), absis())=='C'){
 		ord = ordinat();
+		Abs = absis();
 	}
 
-	if(Room(RN, absis()+1, ordinat())=='C'){
-		abs = absis()+1;
-		ord = ordinat();
-	}
-
-	if(Room(RN, absis()-1, ordinat())=='C'){
-		abs = absis()-1;
-		ord = ordinat();
-	}
-
-	if(Room(RN, absis(), ordinat()+1)=='C'){
-		abs = absis();
+	if(Room(RN, ordinat()+1, absis())=='C'){
 		ord = ordinat()+1;
+		Abs = absis();
 	}
 
-	if(Room(RN, absis(), ordinat()-1)=='C'){
-		abs = absis();
+	if(Room(RN, ordinat()-1, absis())=='C'){
 		ord = ordinat()-1;
+		Abs = absis();
 	}
 
-	if ((abs!=-1)&&(ord!=-1)){
+	if(Room(RN, ordinat(), absis()+1)=='C'){
+		ord = ordinat();
+		Abs = absis()+1;
+	}
+
+	if(Room(RN, ordinat(), absis()-1)=='C'){
+		ord = ordinat();
+		Abs = absis()-1;
+	}
+
+	if ((Abs!=-1)&&(ord!=-1)){
 		//bersebelahan dengan pemain
 
 		//cek apakah pesanan sesuai
@@ -132,19 +128,19 @@ void Give (){
 
 		while (!found) {
 
-			if ((PosTableArray(RN, i).x + 1 == abs) && (PosTableArray(RN, i).y == ord)){
+			if ((PosTableArray(RN, i).x + 1 == Abs) && (PosTableArray(RN, i).y == ord)){
 				found = true;
 			}
 
-			if ((PosTableArray(RN, i).x - 1 == abs) && (PosTableArray(RN, i).y == ord)){
+			if ((PosTableArray(RN, i).x - 1 == Abs) && (PosTableArray(RN, i).y == ord)){
 				found = true;
 			}
 
-			if ((PosTableArray(RN, i).x == abs) && (PosTableArray(RN, i).y + 1 == ord)){
+			if ((PosTableArray(RN, i).x == Abs) && (PosTableArray(RN, i).y + 1 == ord)){
 				found = true;
 			}
 
-			if ((PosTableArray(RN, i).x == abs) && (PosTableArray(RN, i).y - 1 == ord)){
+			if ((PosTableArray(RN, i).x == Abs) && (PosTableArray(RN, i).y - 1 == ord)){
 				found = true;
 			}
 

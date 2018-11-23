@@ -84,11 +84,6 @@ void CreateUI(){
   wrefresh(Box3);
   mvwprintw(Box4,1,1,"Hand");
   wrefresh(Box4);
-  mvwprintw(Box4,2,1,"");
-  wrefresh(Box4);
-  printf("%s\n","Hey Tayo");
-  printf("%s\n", "Hey Tayo");
-  printf("%s\n", "Dia Bis Kecil Ramah");
 
 
   //Make Grid Zone
@@ -183,9 +178,6 @@ int main () {
   Load(2);
   Save();
   loadMap(); //Loading Map dari mapfile.txt
-  Recipe();
-
-
   CreateUI(); //Membuat Window2 beserta isinya
   printBoard(ArrRoom[RN].RoomBoard); // Print Petak Ruangan
   wrefresh(BoxBot);
@@ -208,11 +200,6 @@ int main () {
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("GR\0"))){
       Move(4);
-      printBoard(ArrRoom[RN].RoomBoard);
-    }
-    else if(IsKataSama(StringToKata(cmd),StringToKata("TAKE\0"))){
-      Take();
-      Message="Anda abis take wow";
       printBoard(ArrRoom[RN].RoomBoard);
     }
 
