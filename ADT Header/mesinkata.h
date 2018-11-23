@@ -59,4 +59,13 @@ int KataToInt(Kata K);
 Kata StringToKata(char *s);
 //konversi string ke kata, karena gk boleh pakai string.h
 
+void KataToFile(FILE *fp , Kata K);
+//Print kata to designated file
+
+void PrintNewline(FILE *fp);
+//Print newline in deisgnated file
+
+void PrintSpace(File *fp);
+//Print space in designated file
+
 #endif

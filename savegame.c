@@ -56,14 +56,11 @@ void SaveHand(){
     //Save all bahan -> item in bottom of stack is written first
     int i=1;
     while(i<=bTop(hand())){
-        j=1;
-        while(j<=hand().T[i].Nama.Length){
-            fprintf(output_file,"%c",hand().T[i].Nama.TabKata[j]);
-            j++;
-        }
-        fprintf(output_file," ");
+        PrintKata(output_file,hand().T[i].Nama);
+        PrintSpace(output_file);
         i++;
     }
+    PrintNewline(output_file);
 }
 
 void SaveRestoran(){
