@@ -166,7 +166,15 @@ int main () {
   Load(2);
   loadMap(); //Loading Map dari mapfile.txt
 
+  // for (i=1;i<=24;i++)
+  // {
+  //   PrintKata(arrResep(i).Name);
+  //   printf("\n");
+  // }
+
   Recipe();
+
+  // Recipe();
 
 
   // CreateUI(); //Membuat Window2 beserta isinya

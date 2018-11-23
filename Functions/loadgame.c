@@ -252,6 +252,10 @@ void LoadResep(){
         arrResep(i) = temp;
         i++;
     }
+    i=1;
+    pohonresep()= BuildTreeResep(23,Rs.TabResep,&i);
+
+
 }
 
 
