@@ -98,6 +98,7 @@ void PrintKata(Kata K){
 	}
 }
 
+
 Kata StringToKata(char s[]){
 	//Kamus
 	int i;

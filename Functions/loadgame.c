@@ -283,4 +283,5 @@ void CreateEmptyAll(){
     //Empty stack
     CreateEmptyFS(&tray());
     MakeEmptyOrder(&R.TabOfOrder);
+    CreateEmptyCQ(&QCustomer,100);
 }

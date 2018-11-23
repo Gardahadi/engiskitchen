@@ -3,7 +3,7 @@
 #include "../ADT Header/customer.h"
 #include "stdio.h"
 #include "stdlib.h"
-
+char *Message;
 /*PREDICATE FUNCTION AND PROCEDURE*/
 boolean IsEmptyCQ(CQUEUE Q){
     return (Head(Q)==EmptyCQ)&&(Tail(Q)==EmptyCQ);
@@ -172,4 +172,5 @@ CUSTOMER GenerateCustomer(int seed){
         IsStar(C) = false;
     }
     return C;
+
 }

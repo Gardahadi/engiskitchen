@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 #include "../ADT Header/bahanstack.h"
-
+#include <ncurses.h>
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */

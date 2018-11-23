@@ -76,13 +76,15 @@ void CreateUI(){
   wrefresh(Box3);
   wrefresh(Box4);
 
-  mvwprintw(Box1,1,1,"Waiting Cust");
+  mvwprintw(Box1,1,1,"Waiting Cust : %d", InfoTail(QCustomer).Jumlah);
   wrefresh(Box1);
   mvwprintw(Box2,1,1,"Order");
   wrefresh(Box2);
   mvwprintw(Box3,1,1,"Food Stack");
   wrefresh(Box3);
   mvwprintw(Box4,1,1,"Hand");
+  wrefresh(Box4);
+
 
 
 
@@ -179,8 +181,16 @@ int main () {
   Load(2);
   Save();
   loadMap(); //Loading Map dari mapfile.txt
-  Recipe();
 
+  //Test Inpur
+  PrintKata(InfoKitchenArray(2));
+  printf("\n");
+
+  printf("%d\n",GenerateCustomer(1).Jumlah);
+  AddCustomerToQueue(&QCustomer,GenerateCustomer(3));
+  printf("%d\n",InfoHead(QCustomer).Jumlah);
+  AddCustomerToQueue(&QCustomer,GenerateCustomer(3));
+  printf("%d\n",InfoTail(QCustomer).Jumlah);
 
   CreateUI(); //Membuat Window2 beserta isinya
   printBoard(ArrRoom[RN].RoomBoard); // Print Petak Ruangan
