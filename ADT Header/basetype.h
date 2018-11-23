@@ -40,6 +40,7 @@ typedef struct{
   CUSTOMER C;
   boolean IsFull;
   POSITION PosMeja;
+  int Nomor;
 } TABLE;
 
 //Tipe bentukan menyimpan object dapur

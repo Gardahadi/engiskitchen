@@ -27,11 +27,12 @@ typedef struct {
 
 /* Definisi elemen dan koleksi objek */
 typedef struct {
-  int Time; //waktu permainan
+  int Tick; //waktu permainan asli
   CQUEUE CustQueue; //queue of customer
   TabOrder TabOfOrder; // Sebuah Array of Order
   PLAYER P; //player P
   GRAPH Building; //Gedung resto yang diimplementasi menggunakan GRAPH
+  int Simulasi;
 } RESTAURANT;
 
 /* Definisi elemen dan koleksi objek */

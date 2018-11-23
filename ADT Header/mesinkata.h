@@ -6,7 +6,7 @@
 
 #include "boolean.h"
 #include "mesinkar.h"
-
+#include <stdlib.h>
 #define NMax 50
 #define BLANK ' '
 
@@ -65,7 +65,7 @@ void KataToFile(FILE *fp , Kata K);
 void PrintNewline(FILE *fp);
 //Print newline in deisgnated file
 
-void PrintSpace(File *fp);
+void PrintSpace(FILE *fp);
 //Print space in designated file
 
 #endif

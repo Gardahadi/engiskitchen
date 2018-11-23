@@ -9,7 +9,7 @@
 /**FUNGSI DAN PROSEDUR IMPLEMENTASI****/
 //Procedure untuk menyimpan data ke file eksternal
 //Format file eksternal ada di readme
-void Load ();
+void Load (int N);
 /**FUNGSI DAN PROSEDUR PEMBANTU**/
 /*PENCACAHAN FUNGSI UNTUK MODULARITAS PROGRAM*/
 void LoadNomorSimulasi();
@@ -82,6 +82,7 @@ void LoadHand(){
     //Number of bahan
     int N = KataToInt(CKata);
     int i=0;
+    printf("Jumlah di hand : %d\n",N);
     //BAHAN b;
     while(i<N){
         ADVKATA();
@@ -103,7 +104,8 @@ void LoadDataRestoran(){
 
 void LoadTickTime(){
     ADVKATA();
-    R.Time = KataToInt(CKata);
+    R.Tick = KataToInt(CKata);
+    printf("Jumlah tick : %d\n", R.Tick);
 }
 
 void LoadTray(){
@@ -111,6 +113,7 @@ void LoadTray(){
     ADVKATA();
     int N = KataToInt(CKata);
     int i=0;
+    printf("Jumlah di tray ada  %d \n",N);
     //HARGA MAKANAN BELUM DIKETAHUI CARA PENENTUANNYA!!!!!!!!!!!!
     //Aku isi 0 aja ya wkwkwk
     while(i<N){
@@ -129,16 +132,18 @@ void LoadCustomerQueue(){
     //Make queue
     CreateEmptyCQ(&QCustomer,KataToInt(CKata));
     //Isi Queue
+    printf("Maxel customer QUeue : %d\n",KataToInt(CKata) );
     ADVKATA();
     int N = KataToInt(CKata);
     int i=0;
+    printf("Jumlah orang di queue : %d\n",N);
     while(i<N){
         ADVKATA();
         Kesabaran(Ctemp) = KataToInt(CKata);
         ADVKATA();
         Jumlah(Ctemp) = KataToInt(CKata);
         ADVKATA();
-        Makanan(Ctemp).Nama = CKata();
+        Makanan(Ctemp).Nama = CKata;
         Makanan(Ctemp).Harga = 0;
         //Harga belum ada!!!!!!!!!!!!!!!!
         //Aku isi 0 lagi ya wkwkwk
@@ -162,6 +167,7 @@ void LoadOrderArray(){
     ADVKATA();
     int N = KataToInt(CKata);
     int i=1;
+    printf("Jumlah order di order array : %d\n",N );
     while(i<=N){
         //Get index
         ADVKATA();
@@ -187,6 +193,7 @@ void LoadTable(){
     n_room = KataToInt(CKata);
     int i=0;
     int j=0;
+    printf("Jumlah room ada : %d\n",N );
     while(i<n_room){
         ADVKATA();
         //Room berapa yang dibaca
@@ -205,7 +212,7 @@ void LoadTable(){
             ADVKATA();
             Jumlah(table_temp.C) = KataToInt(CKata);
             ADVKATA();
-            Makanan(table_temp.C).Nama = CKata();
+            Makanan(table_temp.C).Nama = CKata;
             //HARGA 0 lagi ya wkwkwkk
             Makanan(table_temp.C).Harga = 0;
             ADVKATA();
@@ -237,11 +244,12 @@ void LoadResep(){
     RESEP temp;
     ADVKATA();
     N = KataToInt(CKata);
+    printf("jumlah resep ada : %d\n",N);
     i=1;
     while(i<=N){
         ADVKATA();
-        temp.Nama = CKata;
-        TabResep[i] = temp;
+        temp.Name = CKata;
+        arrResep(i) = temp;
         i++;
     }
 }
@@ -255,7 +263,7 @@ void LoadKitchenSet(){
     i=0;
     while(i<N){
         ADVKATA();
-        temp.Nama = CKata;
+        temp.Name = CKata;
         ADVKATA();
         temp.Pos.x = KataToInt(CKata);
         ADVKATA();
@@ -270,5 +278,5 @@ void CreateEmptyAll(){
     CreateEmptyBS(&(hand()));
     //Empty stack
     CreateEmptyFS(&tray());
-    MakeEmptyOrder()
+    MakeEmptyOrder(&R.TabOfOrder);
 }
