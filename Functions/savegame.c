@@ -1,6 +1,6 @@
 #include "../restoran.h"
 #include <stdio.h>
-#include <time.h>
+// #include <time.h>
 
 //Global save variables
 FILE* output_file;
@@ -39,8 +39,8 @@ void SaveNomorSimulasi(){
     fprintf(output_file,"%d\n",R.Simulasi);
 }
 void SaveTime(){
-    time_t current_time = time(NULL);
-    fprintf(output_file,"%ld\n",current_time/186400);
+    // // time_t current_time = time(NULL);
+    // fprintf(output_file,"%ld\n",current_time/186400);
 }
 
 void SaveDataPlayer(){
@@ -66,9 +66,9 @@ void SaveHand(){
     PrintNewline(output_file);
 }
 
-void SaveRestoran(){
+void SaveDataRestoran(){
     //Save tick
-    SaveTickTime();
+    // SaveTickTime();
     //Save TRAY
     SaveTray();
     //Save customer Queue

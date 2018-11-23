@@ -10,7 +10,6 @@
 #XXXXXXXXKX#
 #KMKXXXXXXX#
 ############
-
 ############
 #XXXXXXXXXX#
 #KMKXXXKXXX#
@@ -23,7 +22,6 @@
 #XXXXXXKXXX#
 #XXXXXXXXXX#
 ############
-
 ############
 #XXXXXKXXXX#
 #XXXXKMKXXX#
@@ -36,7 +34,6 @@
 #XXXKMKXXXX#
 #XXXXKXXXXX#
 ############
-
 ############
 #XXXXXXXXXT#
 #MXXXXXXXXX#
