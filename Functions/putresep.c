@@ -6,7 +6,7 @@ void Masak(BSTACK S, FOOD *F,boolean *valid);
 void Recipe ()
 /*Menampilkan Resep*/
 {
-  
+
   PrintTreeResep(pohonresep(),2);
 }
 
@@ -101,7 +101,7 @@ void Masak(BSTACK S, FOOD *F,boolean *valid)
       while((Left(T) != Nil || Right(T)!=Nil) && bisadimasak)
       {
         PopBS(&S,&X);
-        if(Left(T)==Nil)
+        if(Left(T)==Nil && Right(T)!= Nil)
         {
           if(IsKataSama(X.Name,Akar(Right(T)).Name))
           {
@@ -112,7 +112,7 @@ void Masak(BSTACK S, FOOD *F,boolean *valid)
           else
           {bisadimasak = false;}
         }
-        else if(Right(T)==Nil)
+        else if(Right(T)==Nil && Left(T) != Nil)
         {
             if(IsKataSama(X.Name,Akar(Left(T)).Name))
             {
@@ -145,7 +145,7 @@ void Masak(BSTACK S, FOOD *F,boolean *valid)
       }
     }
 
-    if(Left(T) == Nil && Right(T)==Nil && bisadimasak)
+    if(Left(T) == Nil && Right(T)==Nil && bisadimasak && IsEmptyBS(S))
     {
       (*F).Harga = price;
       (*F).Nama = Akar(T).Name;
