@@ -22,7 +22,8 @@ void AddOrder(int j)
         if (!SudahAda){
             NeffOrd(R.TabOfOrder) += 1;
             OrderResto[NeffOrd(R.TabOfOrder)].CustomerOrder = TableArray(RN,j).C.Makanan;
-            OrderResto[NeffOrd(R.TabOfOrder)].NomorMeja = Nomor;
+            OrderResto[NeffOrd(R.TabOfOrder)].NomorMeja = TableArray(RN,j).Nomor;
+            
         }
     }
 }

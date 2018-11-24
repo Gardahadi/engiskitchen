@@ -133,7 +133,7 @@ CUSTOMER GenerateCustomer(int seed){
     /* Customer is generated with random generation */
     /* If undefined customer is returned, it means that no customer is generated */
     /* Dictionary */
-    int frequency_ratio = 19; //program X times more likely to not generate any customers in one tick time
+    int frequency_ratio = 1; //program X times more likely to not generate any customers in one tick time
     int number_ratio = 10; //program X times more likely to produce guest with 2 seats
     int star_ratio = 9;//program is X times more likely to generate normal guest instead of star guest
     int X; //number for placeholder

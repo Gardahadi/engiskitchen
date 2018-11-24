@@ -22,6 +22,7 @@ typedef struct {
   POSITION Pos; //posisi player
   BSTACK Hand; //stack of bahan
   FSTACK Tray; //stack of food
+  char Name[10];
 } PLAYER;
 
 

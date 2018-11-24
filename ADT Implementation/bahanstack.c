@@ -51,16 +51,3 @@ void PopBS (BSTACK * S, BAHAN* X)
   *X = InfobTop(*S);
   bTop(*S)--;
 }
-
-void PrintBS (BSTACK S)
-/*Mencetak ke layar semua isi S*/
-/*I.S. S terdefinisi*/
-/*F.S. S tetap*/
-{
-  BAHAN bhn;
-  while(!IsEmptyBS(S)){
-    PopBS(&S, &bhn);
-    PrintKata(bhn.Name);
-    printf("\n");
-  }
-}

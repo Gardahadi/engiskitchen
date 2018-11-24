@@ -1,31 +1,26 @@
 0
 186400
 0
-9
-1 1 1
-3
-Spaghetti Bolognese Burger 
-2
-2
-Sosis Kacang 
+10
+11 5 1
+0
+0
 100
-2
-20 2 Spaghetti 1
-10 4 Burger 0
+0
 0
 3
 1 4
-1 4 8 2 Spaghetti 0 1 4 2
+1 4 -1 0 NoMakanan 0 0 4 2
 2 2 -1 0 NoMakanan 0 0 6 2
 3 4 -1 0 NoMakanan 0 0 9 8
-4 2 3 4 Burger 1 1 10 2
+4 2 -1 0 NoMakanan 0 0 10 2
 2 4
 5 2 -1 0 NoMakanan 0 0 1 2
 6 4 -1 0 NoMakanan 0 0 3 7
 7 2 -1 0 NoMakanan 0 0 6 3
 8 4 -1 0 NoMakanan 0 0 8 7
 3 4
-9 4 1 2 Bolognese 0 1 2 6
+9 4 -1 0 NoMakanan 0 0 2 6
 10 2 -1 0 NoMakanan 0 0 5 3
 11 2 -1 0 NoMakanan 0 0 6 8
 12 4 -1 0 NoMakanan 0 0 9 5
@@ -56,20 +51,21 @@ Carbonara
 Spaghetti_Carbonara
 Spaghetti_Bolognese
 16
-Piring 1 2 //HARUS DIUBAH
-Sendok 1 3
-Eskrim 1 4
-Pisang 1 5
-Stroberi 1 6
-Spaghetti 1 7
-Bolognese 1 8
-Keju 1 9
-Carbonara 1 10
-Nasi 5 3
-Telur 5 4
-Ayam_Goreng 5 5
-Garpu 5 6
-Roti 5 7
-Patty 5 8
-Sosis 5 9
+Piring 2 3
+Sendok 2 4
+Eskrim 2 5
+Pisang 2 6
+Stroberi 2 7
+Spaghetti 2 8
+Bolognese 2 9
+Keju 2 10
+Carbonara 2 11
+Nasi 6 4
+Telur 6 5
+Ayam_Goreng 6 6
+Garpu 6 7
+Roti 6 8
+Patty 6 9
+Sosis 6 10
+
 .

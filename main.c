@@ -30,6 +30,24 @@ adrDoorNode D1A,D1B,D2A,D2B,D3A,D3B,D4A,D4B;
 char *Message,*Message2;
 char cmd[10];
 
+void PrintBS (BSTACK S)
+/*Mencetak ke layar semua isi S*/
+/*I.S. S terdefinisi*/
+/*F.S. S tetap*/
+{
+  int l,c;
+  BAHAN bhn;
+  //inisialisasi
+  l = 2;
+  c = 1;
+  while(!IsEmptyBS(S)){
+    PopBS(&S, &bhn);
+    mvwprintw(Box4,l,c,KataToString(bhn.Name));
+    wrefresh(Box4);
+    l++;
+  }
+}
+
 
 void CreateUI(){
 
@@ -51,13 +69,13 @@ void CreateUI(){
   wrefresh(BoxTop2);
   wrefresh(BoxTop3);
   wrefresh(BoxTop4);
-  mvwprintw(BoxTop1,1,1,"Garda");
+  mvwprintw(BoxTop1,1,1,"Nama : %s",player().Name);
   wrefresh(BoxTop1);
   mvwprintw(BoxTop2,1,1,"Money : %d",player().Money);
   wrefresh(BoxTop2);
   mvwprintw(BoxTop3,1,1,"Lives : %d",player().Life);
   wrefresh(BoxTop3);
-  mvwprintw(BoxTop4,1,1,"Time : %s", cmd);
+  mvwprintw(BoxTop4,1,1,"Time : %d", R.Tick);
   wrefresh(BoxTop4);
 
 
@@ -78,11 +96,19 @@ void CreateUI(){
 
   mvwprintw(Box1,1,1,"Waiting Cust : %d", InfoTail(QCustomer).Jumlah);
   wrefresh(Box1);
+
   mvwprintw(Box2,1,1,"Order");
   wrefresh(Box2);
+
   mvwprintw(Box3,1,1,"Food Stack");
   wrefresh(Box3);
+
   mvwprintw(Box4,1,1,"Hand");
+  PrintBS(player().Hand);
+
+
+
+
   wrefresh(Box4);
 
 
@@ -109,19 +135,26 @@ void CreateUI(){
 char GetChar(int y, int x){
 
   if(Room(RN,y,x) == '#') {
+    wattron(MapBox,A_BOLD);
     return 'X';
   }
 
   else if (Room(RN,y,x)=='K'){
+    wattron(MapBox,A_BOLD);
     return 'K';
   }
 
   else if (Room(RN,y,x)=='M'){
+    wattron(MapBox,A_BOLD);
+    wattron(MapBox,A_STANDOUT);
     return 'M';
   }
 
   else if (y == ordinat() && x == absis()){
-    return 'G';
+    wattron(MapBox,A_BOLD);
+    wattron(MapBox,A_STANDOUT);
+    wattron(MapBox,COLOR_PAIR(1));
+    return 'P';
   }
 
   else {
@@ -133,7 +166,7 @@ void printBoard(MATRIKS X) {
 
   //Kamus Lokal
   int px,py,i,j;
-
+  char C;
   //Inisialisasi
   px=1;
   py=1;
@@ -142,27 +175,29 @@ void printBoard(MATRIKS X) {
 
   for (i=1;i<=NBrsEff(X);i++) {
     for (j=1;j<=NKolEff(X);j++) {
-
+      C=GetChar(i,j);
       if ((j==NKolEff(X)))  {
-        mvwprintw(MapBox,py,px," %c ",GetChar(i,j));
+        mvwprintw(MapBox,py,px," %c ",C);
         wrefresh(MapBox);
         px=1;
         py=py+2;
-
       }
 
       else if ((j==1))  {
-        mvwprintw(MapBox,py,px," %c ",GetChar(i,j));
+        mvwprintw(MapBox,py,px," %c ",C);
         wrefresh(MapBox);
         px=px+5;
 
       }
 
       else {
-        mvwprintw(MapBox,py,px," %c ",GetChar(i,j));
+        mvwprintw(MapBox,py,px," %c ",C);
           wrefresh(MapBox);
           px=px+5;
       }
+      wattroff(MapBox,A_BOLD);
+      wattroff(MapBox,A_STANDOUT);
+      wattroff(MapBox,COLOR_PAIR(1));
     }
   }
 }
@@ -172,33 +207,80 @@ int main () {
 
   //kamus lokal
   int i,j;
-
+  int Choice; //Menyimpan input awal dari player
+  boolean adaCustomer,isRunning;
+  char  InputName[10];
   //Inisialisasi Message
   Message = "Selamat datang kembali di Engi's Kitchen!\n";
+  isRunning = true;
+  adaCustomer = false;
 
-  //Inisialisasi Peta
-  BuildResto();
-  Load(2);
-  Save();
-  loadMap(); //Loading Map dari mapfile.txt
+
+  BuildResto(); //Membangun peta
+
+  //
+  system("clear");
+  printf("         )          (    (          )  (                     )          )"); printf("\n");
+  printf("      ( /(  (       )\\ ) )\\ )    ( /(  )\\ )  *   )   (    ( /(       ( /(");printf("\n");
+  printf(" (    )\\()) )\\ )   (()/((()/(    )\\())(()/(` )  /(   )\\   )\\()) (    )\\())");printf("\n");
+  printf(" )\\  ((_)\\ (()/(    /(_))/(_)) |((_)\\  /(_))( )(_))(((_) ((_)\\  )\\  ((_)\\");printf("\n");
+  printf("((_)  _((_) /(_))_ (_)) (_))   |_ ((_)(_)) (_(_()) )\\___  _((_)((_)  _((_)");printf("\n");
+  printf("| __|| \\| |(_)) __||_ _|/ __|  | |/ / |_ _||_   _|((/ __|| || || __|| \\| |");printf("\n");
+  printf("| _| | .` |  | (_ | | | \\__ \\    ' <   | |   | |   | (__ | __ || _| | .` |");printf("\n");
+  printf("|___||_|\\_|   \\___||___||___/  __|\\_\\ |___|  |_|    \\___||_||_||___||_|\\_|");printf("\n");
+
+  if (has_colors() == FALSE) {
+    printf("WARNING : Your terminal does not support color\n");
+  }
+
+  printf("Selamat datang di Engi's Kitchen, Silahkan Input pilihan : \n");
+  printf("[1] New Game\n");
+  printf("[2] Load Game\n");
+  printf("[3] Exit]\n");
+  printf("Pilihan : " );
+  scanf("%d",&Choice);
+  while (Choice != 1 && Choice !=2 && Choice != 3) {
+    printf("Invalid Choice, Please input either 1,2 or 3 : ");
+    scanf("%d\n",&Choice);
+  }
+
+  //Jika Player memilih New Game
+  if (Choice == 1){
+    /*Inisialisasi Restoran*/
+    printf("Silahkan Input Nama (WARNING : MAX 10 Karakter ): ");
+    scanf("%s",player().Name);
+    Load(2); //Melakukan loading data-data dari default save
+    loadMap(); //Loading Map dari mapfile.txt
+  }
+
+  else if (Choice == 2){
+    Load(1);
+    loadMap();
+  }
+
+  else {
+    printf("Bye-bye :)\n");
+    isRunning =false;
+  }
 
   //Test Inpur
-  PrintKata(InfoKitchenArray(2));
-  printf("\n");
+  //
+  while(!adaCustomer){
+    UpdateCust(&adaCustomer);
+  }
 
-  printf("%d\n",GenerateCustomer(1).Jumlah);
-  AddCustomerToQueue(&QCustomer,GenerateCustomer(3));
-  printf("%d\n",InfoHead(QCustomer).Jumlah);
-  AddCustomerToQueue(&QCustomer,GenerateCustomer(3));
-  printf("%d\n",InfoTail(QCustomer).Jumlah);
+  start_color();
+  init_pair(1,COLOR_RED,COLOR_YELLOW);
+  /*Looping Utama Program*/
+  while (isRunning)
+  {
 
-  CreateUI(); //Membuat Window2 beserta isinya
-  printBoard(ArrRoom[RN].RoomBoard); // Print Petak Ruangan
-  wrefresh(BoxBot);
+    CreateUI(); //Membuat Window2 beserta isinya
+    printBoard(ArrRoom[RN].RoomBoard); // Print Petak Ruangan
+    wrefresh(BoxBot);
 
-  //Looping Utama Program
-  wgetstr(BoxBot,cmd);
-  while(!(IsKataSama(StringToKata("Exit\0"),StringToKata(cmd)))){
+    //Meminta Input dari User
+    wgetstr(BoxBot,cmd);
 
     if(IsKataSama(StringToKata(cmd),StringToKata("GU\0"))){
       Move(1);
@@ -218,15 +300,18 @@ int main () {
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("TAKE\0"))){
       Take();
-      Message="Anda abis take wow";
+      Message="Anda abis take, wow!";
       printBoard(ArrRoom[RN].RoomBoard);
     }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("Exit\0"))){
+      isRunning = false;
+    }
 
+    R.Tick++;
     CreateUI();
     printBoard(ArrRoom[RN].RoomBoard);
-    wgetstr(BoxBot,cmd);
 
   }
+  //Program Selesai
   endwin();
-
 }
