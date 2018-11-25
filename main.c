@@ -91,8 +91,8 @@ void PrintFS (FSTACK S)
   c = 1;
   while(!IsEmptyFS(S)){
     PopFS(&S, &bhn);
-    mvwprintw(Box4,l,c,KataToString(bhn.Nama));
-    wrefresh(Box4);
+    mvwprintw(Box3,l,c,KataToString(bhn.Nama));
+    wrefresh(Box3);
     l++;
   }
 }
@@ -452,6 +452,16 @@ int main () {
     else if(IsKataSama(StringToKata(cmd),StringToKata("PUT\0"))){
       Put();
       Message="Anda abis PUT, Wow";
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
+
+    else if(IsKataSama(StringToKata(cmd),StringToKata("CT\0"))){
+      Buang(StringToKata(cmd));
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("CH\0"))){
+      Buang(StringToKata(cmd));
+      printBoard(ArrRoom[RN].RoomBoard);
     }
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("Exit\0"))){

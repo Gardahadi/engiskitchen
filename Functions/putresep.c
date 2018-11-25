@@ -92,85 +92,132 @@ void Masak(BSTACK S, FOOD *F,boolean *valid)
 
   T= pohonresep();
   //printf("Test1\n");
-  bisadimasak = false;
+  bisadimasak = true;
   price = 0;
-  PopBS(&S,&X);
-  if(IsKataSama(X.Name,Akar(T).Name))
+  if(!IsKataSama(Akar(T).Name, InfobTop(S).Name))
+  {
+    bisadimasak = false;
+  }
+  else{
+    price+=30;
+    PopBS(&S,&X);
+    while(bisadimasak && !IsEmptyBS(S))
     {
-      price +=30;
-      bisadimasak = true;
-      //printf("Test2\n");
-      while((Left(T) != Nil || Right(T)!=Nil) && bisadimasak && !IsEmptyBS(S))
+      if(Right(T)==Nil && Left(T) != Nil) //Pohon uner Left
       {
-        //printf("Test3\n");
-        PopBS(&S,&X);
-        if(Left(T)==Nil && Right(T)!= Nil)
+        if(IsKataSama(Akar(Left(T)).Name, InfobTop(S).Name))
         {
-          if(IsKataSama(X.Name,Akar(Right(T)).Name))
-          {
-            T = Right(T);
-            //printf("Test4\n");
-            price +=30;
-            bisadimasak = true;
-          }
-          else
-          //printf("Test5\n");
-          {bisadimasak = false;}
-        }
-        else if(Right(T)==Nil && Left(T) != Nil)
-        {
-          //printf("Test6\n");
-          if(!IsEmptyBS(S)){
-            if(IsKataSama(X.Name,Akar(Left(T)).Name))
-            {
-              //printf("Test7\n");
-              T = Left(T);
-              price +=30;
-              bisadimasak = true;
-            }
-            else
-            //printf("Test8\n");
-            {bisadimasak = false;}
-          }
-          else {
-            bisadimasak = true;
-          }
+          T = Left(T);
+          price+=30;
+          PopBS(&S,&X);
         }
         else
         {
-          if(IsKataSama(X.Name,Akar(Left(T)).Name))
-          {
-            //printf("Test9\n");
-            T = Left(T);
-            price +=30;
-            bisadimasak = true;
-          }
-          else if(IsKataSama(X.Name,Akar(Right(T)).Name))
-          {
-            //printf("Test10\n");
-            T = Right(T);
-            price +=30;
-            bisadimasak = true;
-          }
-          else
-          {
-            bisadimasak = false;
-          }
+          bisadimasak = false;
+        }
+      }
+      else //Pohon Biner
+      {
+        if(IsKataSama(Akar(Left(T)).Name , InfobTop(S).Name))
+        {
+          T = Left(T);
+          price+=30;
+          PopBS(&S,&X);
+        }
+        else if(IsKataSama(Akar(Right(T)).Name ,InfobTop(S).Name))
+        {
+          T = Right(T);
+          price+=30;
+          PopBS(&S,&X);
+        }
+        else
+        {
+          bisadimasak = false;
         }
       }
     }
-
-    if(Left(T) == Nil && Right(T)==Nil && bisadimasak && IsEmptyBS(S))
-    {
-      //printf("Test11\n");
-      (*F).Harga = price;
-      (*F).Nama = Akar(T).Name;
-      *valid = true;
-    }
-    else
-    {
-      *valid = false;
-      printf("Tidak dapat membuat makanan\n");
-    }
-
+  }
+if(!bisadimasak)
+{
+  *valid = false;
+  printf("Tidak dapat membuat makanan\n");
 }
+else // Stack kosong
+{
+  if(Left(Left(T))== Nil)
+  {
+    (*F).Harga = price;
+    (*F).Nama = Akar(Left(T)).Name;
+    *valid = true;
+  }
+  else
+  {
+    *valid = false;
+    printf("Tidak dapat membuat makanan\n");
+  }
+}
+}
+  // if(IsKataSama(X.Name,Akar(T).Name))
+  //   {
+  //     price +=30;
+  //     bisadimasak = true;
+  //     //printf("Test2\n");
+  //     while(bisadimasak && !IsEmptyBS(S))
+  //     {
+  //       //printf("Test3\n");
+  //       PopBS(&S,&X);
+  //       if(Left(T)==Nil && Right(T)!= Nil)
+  //       {
+  //         if(IsKataSama(X.Name,Akar(Right(T)).Name))
+  //         {
+  //           T = Right(T);
+  //           //printf("Test4\n");
+  //           price +=30;
+  //           bisadimasak = true;
+  //         }
+  //         else
+  //         //printf("Test5\n");
+  //         {bisadimasak = false;}
+  //       }
+  //       else if(Right(T)==Nil && Left(T) != Nil)
+  //       {
+  //         //printf("Test6\n");
+  //         if(!IsEmptyBS(S)){
+  //           if(IsKataSama(X.Name,Akar(Left(T)).Name))
+  //           {
+  //             //printf("Test7\n");
+  //             T = Left(T);
+  //             price +=30;
+  //             bisadimasak = true;
+  //           }
+  //           else
+  //           //printf("Test8\n");
+  //           {bisadimasak = false;}
+  //         }
+  //         else {
+  //           bisadimasak = true;
+  //         }
+  //       }
+  //       else
+  //       {
+  //         if(IsKataSama(X.Name,Akar(Left(T)).Name))
+  //         {
+  //           //printf("Test9\n");
+  //           T = Left(T);
+  //           price +=30;
+  //           bisadimasak = true;
+  //         }
+  //         else if(IsKataSama(X.Name,Akar(Right(T)).Name))
+  //         {
+  //           //printf("Test10\n");
+  //           T = Right(T);
+  //           price +=30;
+  //           bisadimasak = true;
+  //         }
+  //         else
+  //         {
+  //           bisadimasak = false;
+  //         }
+  //       }
+  //     }
+  //   }
