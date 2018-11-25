@@ -23,7 +23,7 @@ void AddOrder(int j)
             NeffOrd(R.TabOfOrder) += 1;
             OrderResto[NeffOrd(R.TabOfOrder)].CustomerOrder = TableArray(RN,j).C.Makanan;
             OrderResto[NeffOrd(R.TabOfOrder)].NomorMeja = TableArray(RN,j).Nomor;
-            
+
         }
     }
 }
@@ -68,14 +68,3 @@ void GetOrder()
                         }
             }
 }
-
-// void PrintOrder(TabOrder To)
-// {
-//     int i;
-//
-//     i = 0;
-//     while (i < NeffOrder(To))
-//     {
-//         printf(To.TOrd[i].CustomerOrder.C.Makanan); //Gimana cara nulis nama makanan ke layar??? %c atau %s
-//     }
-// }
