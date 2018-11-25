@@ -58,7 +58,7 @@ void UpdateQueue(){
                 Tail(QCustomer)--;
                 if(player().Life>0){
                     //Mengurangi nyawa
-                    Message = "Nyawa berkurang";
+                    Message = "SEORANG PELANGGAN KABUR KARENA KELAMAAN NGANTRI DILUAR";
                     player().Life--;
                 }
             } else {
@@ -103,7 +103,7 @@ void UpdateCust(boolean *NewCustomer){
             if(Kesabaran(TableArray(n_room,n_table).C)>=0){
                 if(Kesabaran(TableArray(n_room,n_table).C)==1){
                     if(player().Life>0){
-                        Message = "HEY TAYOOOO";
+                        Message = "ANDA TERLALU LAMBAT, SEORANG PELANGGAN PERGI KARENA KELAMAAN NUNGGU MAKANAN";
                         player().Life--;
                         DelCust(n_table);
                         DelOrderan(n_table);

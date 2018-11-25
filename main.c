@@ -510,14 +510,17 @@ int main () {
     else if(IsKataSama(StringToKata(cmd),StringToKata("RECIPE\0"))){
       endwin();
       Recipe();
-      printf("%s\n","Input string random untuk lanjut");
+      printf("%s\n","Masukkan input string random untuk melanjutkan");
       scanf("%s",InputName);
     }
 
-    // else if(IsKataSama(StringToKata(cmd),StringToKata("HELP\0"))){
-    //   endwin();
-    //   PrintHelp();
-    // }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("HELP\0"))){
+      endwin();
+      PrintHelp();
+      printf("Masukkan input string random untuk melanjutkan\n");
+      scanf("%s",InputName);
+    }
+
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("EXIT\0"))){
       isRunning = false;
@@ -529,10 +532,14 @@ int main () {
       printf("Input Number : ");
       scanf("%d",&Choice);
       if(Choice==1){
+        PrintCredit();
         Save();
       }
       else if(Choice==3){
         isRunning=true;
+      }
+      else{
+        PrintCredit();
       }
     }
 
@@ -544,18 +551,19 @@ int main () {
       isRunning = false;
       endwin();
       printf("Anda telah kehabisan nyawa\n");
+      PrintCredit();
       printf("Input apapun untuk exit : ");
       scanf("%s",InputName);
     }
 
+    if(isRunning){
+      UpdateQueue(&QCustomer);
+      UpdateCust(&adaCustomer);
+      R.Tick++;
+      CreateUI();
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
 
-    UpdateQueue(&QCustomer);
-    UpdateCust(&adaCustomer);
-    R.Tick++;
-    CreateUI();
-    printBoard(ArrRoom[RN].RoomBoard);
 
   }
-  //Program Selesai
-  endwin();
 }
