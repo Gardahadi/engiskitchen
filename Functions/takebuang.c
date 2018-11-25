@@ -70,9 +70,12 @@ void Buang (Kata Perintah){
 
 	if (Perintah.TabKata[1] == 'H'){
 		//perintah CH
+		printf("Hand kosong");
 		CreateEmptyBS (&hand());
-	}else{
+
+	}else if (Perintah.TabKata[1] == 'T'){
 		//perintah CT
+		printf("tray kosong");
 		CreateEmptyFS (&tray());
 	}
 }
