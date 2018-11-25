@@ -74,12 +74,12 @@ void Place(){
                                     TableArray(RN,i).IsFull = true;
 
 
-                                    // if (IsStar(C2)){
-                                    //     Kesabaran(C2) = //terdefinisi ulang untuk customer star
-                                    // } else{
-                                    //     Kesabaran(C2) = //terdefinisi ulang unuk customer biasa
-                                    // }
-                                    // *R.TableArray[i].C = C2;
+                                    if (IsStar(C2)){
+                                         Kesabaran(C2) = 40;
+                                     } else{
+                                         Kesabaran(C2) = 50;
+                                     }
+                                    TableArray(RN,i).C = C2;
                                 }
 
                             }
@@ -94,12 +94,12 @@ void Place(){
 
                                     (TableArray(RN,i).IsFull = true);
 
-                                    //
-                                    // if (IsStar(CMasuk)){
-                                    //     *R.TableArray[i].C.Kesabaran = //terdefinisi ulang
-                                    // } else{
-                                    //     *R.TableArray[i].C.Kesabaran = //terdefinisi ulang
-                                    // }
+
+                                     if (IsStar(CMasuk)){
+                                         Kesabaran(CMasuk) = 40;
+                                     } else{
+                                         Kesabaran(CMasuk) = 50;
+                                     }
 
                                     TableArray(RN,i).C = CMasuk;
 
@@ -115,12 +115,12 @@ void Place(){
                                     Room(RN, (PosTableArray(RN,i).y), (PosTableArray(RN,i).x) -1) = 'C';
 
                                     TableArray(RN,i).IsFull = true;
-                                    //
-                                    // if (IsStar(CMasuk)){
-                                    //     Kesabaran(CMasuk) = //terdefinisi ulang. nah, nanti yg dilihat adalah kesabaran costume atau kesabaran meja?
-                                    // } else{
-                                    //     Kesabaran(CMasuk) = //terdefinisi ulang. nah, nanti yg dilihat adalah kesabaran costume atau kesabaran meja?
-                                    // }
+
+                                     if (IsStar(CMasuk)){
+                                         Kesabaran(CMasuk) = 40;
+                                     } else{
+                                         Kesabaran(CMasuk) = 50;
+                                     }
                                     TableArray(RN,i).C = CMasuk;
                                 }
                             }
@@ -133,9 +133,9 @@ void Place(){
     }
 }
 
-void DelCust(int j)
+void DelCust(int i)
 {
-    if ((TableArray(RN, j).Kapasitas) == 4){
+    if ((TableArray(RN, i).Kapasitas) == 4){
         Room(RN, (PosTableArray(RN,i).y)+1, PosTableArray(RN,i).x) = 'X';
 
         Room(RN, (PosTableArray(RN,i).y)-1, PosTableArray(RN,i).x) = 'X';
