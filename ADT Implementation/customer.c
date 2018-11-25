@@ -126,6 +126,21 @@ CUSTOMER GenerateCustomer(int seed){
             IsStar(C)=false;
             Kesabaran(C)=30;
         }
+
+        //Insert customer food
+        KATA ArrayMakanan[8];
+        ArrayMakanan[0] = StringToKata("Banana_Split\0");
+        ArrayMakanan[1] = StringToKata("Sundae\0");
+        ArrayMakanan[2] = StringToKata("Nasi_telur_dadar\0");
+        ArrayMakanan[3] = StringToKata("Nasi_Ayam_Goreng\0");
+        ArrayMakanan[4] = StringToKata("Burger\0");
+        ArrayMakanan[5] = StringToKata("Hot_Dog\0");
+        ArrayMakanan[6] = StringToKata("Spaghetti_Carbonara\0");
+        ArrayMakanan[7] = StringToKata("Spaghetti_Carbonara\0");
+        X= rand();
+        X = X/8;
+        Makanan(C).Nama = ArrayMakanan[X];
+        Makanan(C).Harga = 0;
     } else {
         //Undefined guest
         Kesabaran(C) = UndefCustomer;

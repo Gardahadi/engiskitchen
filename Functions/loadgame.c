@@ -5,6 +5,7 @@
 #include "../restoran.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 /**FUNGSI DAN PROSEDUR IMPLEMENTASI****/
 //Procedure untuk menyimpan data ke file eksternal
@@ -12,6 +13,7 @@
 void Load (int N);
 /**FUNGSI DAN PROSEDUR PEMBANTU**/
 /*PENCACAHAN FUNGSI UNTUK MODULARITAS PROGRAM*/
+void LoadPlayerName();
 void LoadNomorSimulasi();
 void LoadTime();
 void LoadDataPlayer();
@@ -41,14 +43,25 @@ void Load(int N){
     LoadDataRestoran();
 }
 
+void LoadPlayerName(){
+    ADVKATA();
+    if((CKata.Length!=1)||(CKata.TabKata[1]!='%')){
+        //Load name, because length == 1 and % is default_name
+        strcpy(player().Nama,KataToString(CKata));
+    }
+}
+
 void LoadNomorSimulasi(){
-    printf("Nomor simulasi : %d\n",KataToInt(CKata));
+    ADVKATA();
+    R.Simulasi = KataToInt(CKata);
 }
 
 void LoadTime(){
     ////ERRRORRRO
     ADVKATA();
-    printf("Waktu : %d ekon wkwkwkwk\n",KataToInt(CKata));
+    JAM J_LOAD = DetikToJAM(KataToInt(CKata));
+    J_LOAD = NextNDetik(J_LOAD,25200);
+    printf("Savefile saved at %d:%d:%d GMT +07:00\n",Hour(J_LOAD),Minute(J_LOAD),Second(J_LOAD));
 }
 
 void LoadDataPlayer(){
