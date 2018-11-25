@@ -119,6 +119,7 @@ void PrintQC (CQUEUE Q)
       else{
         mvwprintw(Box1,l,6,"Normal");
       }
+      mvwprintw(Box1,l,12,KataToString(QCustomer.T[i].Makanan.Nama));
       wrefresh(Box1);
       l++;
       i++;
@@ -129,6 +130,26 @@ void PrintQC (CQUEUE Q)
       mvwprintw(Box1,l,c1,"Antrian Sepi");
   }
 }
+
+void PrintOrder(TabOrder T){
+  int l,c1,c2,i;
+  //inisialisasi
+  l = 2;
+  c1 = 1;
+  c2 = 12;
+  if(IsEmptyOrder(T)){
+    mvwprintw(Box2,l,c1,"Tab Order Kosong");
+  }
+  else{
+    for(i=1;i<=NeffOrd(T);i++){
+      mvwprintw(Box2,l,c1,KataToString(OrderResto[i].CustomerOrder.Nama));
+      mvwprintw(Box2,l,c2,", %d",OrderResto[i].NomorMeja);
+      l++;
+    }
+  }
+
+}
+
 
 void CreateUI(){
 
@@ -181,6 +202,7 @@ void CreateUI(){
 
   mvwprintw(Box2,1,1,"Order");
   wrefresh(Box2);
+  PrintOrder(R.TabOfOrder);
 
   mvwprintw(Box3,1,1,"Food Stack");
   wrefresh(Box3);
@@ -258,20 +280,17 @@ char GetChar(int y, int x){
 
 
   else if (Room(RN,y,x)=='M'){
+    boolean found=false;
     wattron(MapBox,A_BOLD);
     wattron(MapBox,A_STANDOUT);
     for(int i=0;i<4;i++){
       if(ArrRoom[RN].TableArray[i].PosMeja.x==x && ArrRoom[RN].TableArray[i].PosMeja.y==y ) {
-        if (ArrRoom[RN].TableArray[i].Nomor>9){
-            return 'M';
-        }
-        else{
+          found=true;
           return IntToChar(ArrRoom[RN].TableArray[i].Nomor);
         }
-      }
-      else {
-        return 'M';
-      }
+    }
+    if(!found){
+      return 'M';
     }
   }
 
@@ -443,6 +462,9 @@ int main () {
       Place();
       Message="Anda abis PLACE, wow!";
       printBoard(ArrRoom[RN].RoomBoard);
+      Message2="ini adalah order di meja 2 :";
+      Message3=KataToString(TableArray(RN,2).C.Makanan.Nama);
+
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("SAVE\0"))){
       Save();
@@ -464,6 +486,13 @@ int main () {
       printBoard(ArrRoom[RN].RoomBoard);
     }
 
+    else if(IsKataSama(StringToKata(cmd),StringToKata("ORDER\0"))){
+      GetOrder();
+      printf("%d\n",OrderResto[1].NomorMeja);
+      Message=KataToString(OrderResto[1].CustomerOrder.Nama);
+
+    }
+
     else if(IsKataSama(StringToKata(cmd),StringToKata("Exit\0"))){
       isRunning = false;
     }
@@ -471,6 +500,8 @@ int main () {
     if(player().Life == 0){
       isRunning = false;
     }
+
+
     UpdateQueue(&QCustomer);
     UpdateCust(&adaCustomer);
     R.Tick++;

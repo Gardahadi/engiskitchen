@@ -23,7 +23,7 @@ void AddOrder(int j)
             NeffOrd(R.TabOfOrder) += 1;
             OrderResto[NeffOrd(R.TabOfOrder)].CustomerOrder = TableArray(RN,j).C.Makanan;
             OrderResto[NeffOrd(R.TabOfOrder)].NomorMeja = TableArray(RN,j).Nomor;
-            
+
         }
     }
 }
@@ -46,7 +46,7 @@ void GetOrder()
 {
     boolean nearP;
     int i;
-
+    i=0;
     nearP = false;
         while ((!nearP) && (i<4)){
             if ((TableArray(RN,i).IsFull == true)
@@ -61,6 +61,7 @@ void GetOrder()
                            || ((PosTableArray(RN,i).x == absis()) && ((PosTableArray(RN,i).y)+2 == ordinat()))
                             || ((PosTableArray(RN,i).x == absis()) && ((PosTableArray(RN,i).y)-2 == ordinat()))  )  ){
                          nearP = true;
+                                
                                 AddOrder(i);
                         }
                         else{
