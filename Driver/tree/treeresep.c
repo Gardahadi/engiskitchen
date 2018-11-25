@@ -3,8 +3,7 @@
 /* Implementasi dengan menggunakan pointer */
 
 #include <stdio.h>
-#include "../ADT Header/treeresep.h"
-
+#include "treeresep.h"
 
 
 /* ***Alokasi Memori untuk Tree Resep*** */
