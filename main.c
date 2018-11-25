@@ -29,6 +29,7 @@ char *Message,*Message2, *Message3;
 char cmd[10];
 
 
+//Fungsi untuk merubah Karakter ke Integer
 char IntToChar(int N){
   if(N==1){
     return '1';
@@ -60,7 +61,7 @@ char IntToChar(int N){
 }
 
 
-
+//Fungsi untuk print Stack Bahan menggunakan Ncurses
 void PrintBS (BSTACK S)
 /*Mencetak ke layar semua isi S*/
 /*I.S. S terdefinisi*/
@@ -79,6 +80,8 @@ void PrintBS (BSTACK S)
   }
 }
 
+
+//Fungsi untuk print Stack Makanan menggunakan Ncurses
 void PrintFS (FSTACK S)
 /*Mencetak ke layar semua isi S*/
 /*I.S. S terdefinisi*/
@@ -97,6 +100,7 @@ void PrintFS (FSTACK S)
   }
 }
 
+//Fungsi untuk print antrian Customer menggunakan Ncurses
 void PrintQC (CQUEUE Q)
 /*Mencetak ke layar semua isi S*/
 /*I.S. S terdefinisi*/
@@ -131,6 +135,7 @@ void PrintQC (CQUEUE Q)
   }
 }
 
+//Fungsi untuk print array of order menggunakan ncurses
 void PrintOrder(TabOrder T){
   int l,c1,c2,i;
   //inisialisasi
@@ -152,10 +157,10 @@ void PrintOrder(TabOrder T){
 
 }
 
-
+//Algoritma untuk menampilkan UI Program menggunakan Ncurses
 void CreateUI(){
 
-  initscr();
+  initscr(); //Inisiasi Ncurses
   cbreak();
   keypad(stdscr,TRUE);
 
@@ -269,6 +274,7 @@ char GetChar(int y, int x){
 
   else if (Room(RN,y,x)=='T'){
     wattron(MapBox,A_BOLD);
+    wattron(MapBox,A_STANDOUT);
     return 'T';
   }
 
@@ -360,7 +366,6 @@ int main () {
   boolean adaCustomer,isRunning;
   char  InputName[10];
   //Inisialisasi Message
-  Message = "Selamat datang kembali di Engi's Kitchen!\n";
   isRunning = true;
   adaCustomer = false;
 
@@ -418,12 +423,14 @@ int main () {
   }
 
   //testing zone
-  Recipe();
+  Message = "Selamat datang kembali di Engi's Kitchen!\n";
+  Message2="<Posisi x>";
+  Message3="<Posisi y>";
   //
   // start_color();
   // init_pair(1,COLOR_RED,COLOR_YELLOW);
   /*Looping Utama Program*/
-  printf("JALAN\n");
+
   scanf("%s",InputName);
   while (isRunning)
   {
@@ -502,12 +509,10 @@ int main () {
       scanf("%s",InputName);
     }
 
-    else if(IsKataSama(StringToKata(cmd),StringToKata("HELP\0"))){
-      endwin();
-      Recipe();
-      printf("%s\n","Input string random untuk lanjut");
-      scanf("%s",InputName);
-    }
+    // else if(IsKataSama(StringToKata(cmd),StringToKata("HELP\0"))){
+    //   endwin();
+    //   PrintHelp();
+    // }
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("EXIT\0"))){
       isRunning = false;

@@ -58,6 +58,7 @@ void Move (int Dir) {
 	switch (Dir) {
 		case 1:
 			ordinat()--;
+			Message = "Gunakan [HELP] untuk menampilkan daftar perintah";
 			Message2=IntToString(absis());
 			Message3= IntToString(ordinat());
 			if(IsWall()){
@@ -67,6 +68,7 @@ void Move (int Dir) {
 			break;
 		case 2 :
 			absis()--;
+			Message = "Gunakan [HELP] untuk menampilkan daftar perintah";
 			Message2=IntToString(absis());
 			Message3= IntToString(ordinat());
 			if(IsWall()){
@@ -76,6 +78,7 @@ void Move (int Dir) {
 			break;
 		case 3 :
 			ordinat()++;
+			Message = "Gunakan [HELP] untuk menampilkan daftar perintah";
 			Message2=IntToString(absis());
 			Message3= IntToString(ordinat());
 			if(IsWall()){
@@ -85,6 +88,7 @@ void Move (int Dir) {
 			break;
 		case 4 :
 			absis()++;
+			Message = "Gunakan [HELP] untuk menampilkan daftar perintah";
 			Message2=IntToString(absis());
 			Message3= IntToString(ordinat());
 			if(IsWall()){
@@ -126,19 +130,3 @@ void PosChanger(int dx, int dy, int direc){
 
 
 }
-
-// void GetOrder (); //Badur
-//
-// void Put (); //Badur
-//
-//
-// void Place (); //Lukas
-
-//
-// void Recipe (); //Lukas
-//
-// void Save (); //Alam
-//
-// void Load (); //Alam
-//
-// void UpdateCust(); //Alam
