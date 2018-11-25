@@ -18,14 +18,14 @@ void BuildResto() {
   D1A = AlokDoorNode(11,5,4,R1);
   D1B = AlokDoorNode(5,11,3,R1);
 
-  D2A = AlokDoorNode(2,2,1,R2);
-  D2B = AlokDoorNode(11,5,4,R2);
+  D4A = AlokDoorNode(2,2,1,R4);
+  D4B = AlokDoorNode(11,5,4,R4);
 
   D3A = AlokDoorNode(2,5,2,R3);
   D3B = AlokDoorNode(2,2,1,R3);
 
-  D4A = AlokDoorNode(2,5,2,R4);
-  D4B = AlokDoorNode(5,11,3,R4);
+  D2A = AlokDoorNode(2,5,2,R2);
+  D2B = AlokDoorNode(5,11,3,R2);
   //Membuat Pintu di masing-masing Room
   Trail(R1) = D1A;
   NextGT(D1A) = D1B;
@@ -40,12 +40,12 @@ void BuildResto() {
   NextGT(D4A) = D4B;
 
   //Menyambungkan Pintu-pintunya
-  NextDoor(D1A) = D4A;
-  NextDoor(D1B) = D2A;
-  NextDoor(D2A) = D1B;
-  NextDoor(D2B) = D3A;
-  NextDoor(D3A) = D2B;
-  NextDoor(D3B) = D4B;
-  NextDoor(D4A) = D1A;
-  NextDoor(D4B) = D3B;
+  NextDoor(D1A) = D2A;
+  NextDoor(D1B) = D4A;
+  NextDoor(D2A) = D1A;
+  NextDoor(D2B) = D3B;
+  NextDoor(D3A) = D4B;
+  NextDoor(D3B) = D2B;
+  NextDoor(D4A) = D1B;
+  NextDoor(D4B) = D3A;
   }

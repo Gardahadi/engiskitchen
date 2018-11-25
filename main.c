@@ -219,16 +219,16 @@ void CreateUI(){
 char GetChar(int y, int x){
 
   if(Room(RN,y,x) == '#') {
-    if (x==5 && y==12 && (RN==1||RN==4)){
+    if (x==5 && y==12 && (RN==1||RN==2)){
       return '_';
     }
-    else if (x==2 && y==1 && (RN==2||RN==3)){
+    else if (x==2 && y==1 && (RN==4||RN==3)){
       return '_';
     }
-    else if (x==1 && y==5 && (RN==4||RN==3)){
+    else if (x==1 && y==5 && (RN==2||RN==3)){
       return '_';
     }
-    else if (x==12 && y==5 && (RN==1||RN==2)){
+    else if (x==12 && y==5 && (RN==1||RN==4)){
       return '_';
     }
     else{
@@ -252,6 +252,7 @@ char GetChar(int y, int x){
 
   else if (Room(RN,y,x)=='C'){
     wattron(MapBox,A_BOLD);
+    wattron(MapBox,A_STANDOUT);
     return 'C';
   }
 
