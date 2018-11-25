@@ -39,7 +39,8 @@ void Save(){
 }
 
 void SavePlayerName(){
-    fprintf(output_file,"%s\n",KataToString(player().Name));
+    KataToFile(output_file,player().Name);
+    PrintSpace(output_file);
 }
 void SaveNomorSimulasi(){
     fprintf(output_file,"%d\n",R.Simulasi);
