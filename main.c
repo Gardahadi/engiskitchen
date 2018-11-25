@@ -136,14 +136,16 @@ void PrintOrder(TabOrder T){
   //inisialisasi
   l = 2;
   c1 = 1;
-  c2 = 12;
+  c2 = 20;
   if(IsEmptyOrder(T)){
     mvwprintw(Box2,l,c1,"Tab Order Kosong");
+    wrefresh(Box2);
   }
   else{
     for(i=1;i<=NeffOrd(T);i++){
       mvwprintw(Box2,l,c1,KataToString(OrderResto[i].CustomerOrder.Nama));
       mvwprintw(Box2,l,c2,", %d",OrderResto[i].NomorMeja);
+      wrefresh(Box2);
       l++;
     }
   }
@@ -171,13 +173,13 @@ void CreateUI(){
   wrefresh(BoxTop2);
   wrefresh(BoxTop3);
   wrefresh(BoxTop4);
-  mvwprintw(BoxTop1,1,1,"Nama : ");
+  mvwprintw(BoxTop1,1,1,"Nama : %s", KataToString(player().Name));
   wrefresh(BoxTop1);
   mvwprintw(BoxTop2,1,1,"Money : %d",player().Money);
   wrefresh(BoxTop2);
   mvwprintw(BoxTop3,1,1,"Lives : %d",player().Life);
   wrefresh(BoxTop3);
-  mvwprintw(BoxTop4,1,1,"Time : %d", R.Tick);
+  mvwprintw(BoxTop4,1,1,"Time : %02d:%02d:%02d", Hour(DetikToJAM(R.Tick)),Minute(DetikToJAM(R.Tick)),Second(DetikToJAM(R.Tick)));
   wrefresh(BoxTop4);
 
 
@@ -398,13 +400,16 @@ int main () {
     printf("Silahkan Input Nama (WARNING : MAX 10 Karakter ): ");
     scanf("%s",InputName);
     player().Name = StringToKata(InputName);
+    printf("Nama adalah : %s\n",KataToString(player().Name));
     Load(2); //Melakukan loading data-data dari default save
     loadMap(); //Loading Map dari mapfile.txt
+    while(!adaCustomer){
+      UpdateCust(&adaCustomer);
+    }
   }
-
   else if (Choice == 2){
-    Load(1);
     loadMap();
+    Load(1);
   }
 
   else {
@@ -414,17 +419,12 @@ int main () {
 
   //testing zone
   Recipe();
-  //Test Inpur
-  //
-  printf("Jalan\n");
-  while(!adaCustomer){
-    UpdateCust(&adaCustomer);
-  }
   //
   // start_color();
   // init_pair(1,COLOR_RED,COLOR_YELLOW);
   /*Looping Utama Program*/
   printf("JALAN\n");
+  scanf("%s",InputName);
   while (isRunning)
   {
 
@@ -465,7 +465,7 @@ int main () {
       Message="Anda abis PLACE, wow!";
       printBoard(ArrRoom[RN].RoomBoard);
       Message2="ini adalah order di meja 2 :";
-      Message3=KataToString(TableArray(RN,1).C.Makanan.Nama);
+      Message3=KataToString(TableArray(RN,3).C.Makanan.Nama);
 
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("SAVE\0"))){
@@ -495,12 +495,36 @@ int main () {
 
     }
 
-    else if(IsKataSama(StringToKata(cmd),StringToKata("Exit\0"))){
+    else if(IsKataSama(StringToKata(cmd),StringToKata("RECIPE\0"))){
+      endwin();
+      Recipe();
+      printf("%s\n","Input string random untuk lanjut");
+      scanf("%s",InputName);
+    }
+
+    else if(IsKataSama(StringToKata(cmd),StringToKata("HELP\0"))){
+      endwin();
+      Recipe();
+      printf("%s\n","Input string random untuk lanjut");
+      scanf("%s",InputName);
+    }
+
+    else if(IsKataSama(StringToKata(cmd),StringToKata("EXIT\0"))){
       isRunning = false;
+      endwin();
+      printf("Apakah anda yakin ingin selesai?\n");
+      printf("Input 0 untuk Exit dan 1 untuk main lagi: ");
+      scanf("%d",&Choice);
+      if(Choice==1){
+        isRunning=true;
+      }
     }
 
     if(player().Life == 0){
       isRunning = false;
+      printf("Anda telah kehabisan nyawa\n");
+      printf("Input apapun untuk exit : ");
+      scanf("%s",InputName);
     }
 
 

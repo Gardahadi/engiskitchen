@@ -44,7 +44,8 @@ void Place(){
                          || ((PosTableArray(RN,i).x == absis()) && ((PosTableArray(RN,i).y)+1 == ordinat()))
                           || ((PosTableArray(RN,i).x == absis()) && ((PosTableArray(RN,i).y)-1 == ordinat()))
                            || ((PosTableArray(RN,i).x == absis()) && ((PosTableArray(RN,i).y)+2 == ordinat()))
-                            || ((PosTableArray(RN,i).x == absis()) && ((PosTableArray(RN,i).y)-2 == ordinat()))  )  ){
+                            || ((PosTableArray(RN,i).x == absis()) && ((PosTableArray(RN,i).y)-2 == ordinat()))  )  )
+                {
                          nearP = true;
                          if (TableArray(RN,i).Kapasitas == 2){
                                 // Akan dilakukan pengecekan apakah ada costumer yang berjumlah 2. jika ada, maka akan menjadi
@@ -88,9 +89,9 @@ void Place(){
                                 DeleteCustomerFromQueue(&QCustomer,&CMasuk); //apakah C sudah mewakili Costumer walau tidak diinisialisasikan di proram saya?
                                 if (Jumlah(CMasuk) == 2)
                                 {
-                                    Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x+1) = 'V';
+                                    Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x+1) = 'C';
 
-                                    Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x-1) = 'V';
+                                    Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x-1) = 'C';
 
                                     (TableArray(RN,i).IsFull = true);
 

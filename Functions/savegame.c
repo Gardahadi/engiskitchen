@@ -1,7 +1,7 @@
 #include "../restoran.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include<stdbool.h>
 
 //Global save variables
 FILE* output_file;
@@ -49,7 +49,9 @@ void SaveTime(){
     // time_t seconds;
     // seconds = time(NULL);
     // seconds = seconds%86400;
-    // fprintf(output_file,"%ld\n",seconds);
+    int sec;
+    sec = R.Tick;
+    fprintf(output_file,"%d\n",sec);
 
 }
 
@@ -83,7 +85,7 @@ void SaveHand(){
 
 void SaveDataRestoran(){
     //Save tick
-    // SaveTickTime();
+    SaveTickTime();
     //Save TRAY
     SaveTray();
     //Save customer Queue
