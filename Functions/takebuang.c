@@ -64,20 +64,16 @@ void Take (){
 
 }
 
-void Buang (Kata Perintah){
-	//KAMUS
-	//ALGORITMA
+void BuangH(){
+	Message2 = "Isi HAND kosong";
+	Message3 = "Mubadzir loh :(";
+	CreateEmptyBS (&hand());
+}
 
-	if (Perintah.TabKata[1] == 'H'){
-		//perintah CH
-		printf("Hand kosong");
-		CreateEmptyBS (&hand());
-
-	}else if (Perintah.TabKata[1] == 'T'){
-		//perintah CT
-		printf("tray kosong");
-		CreateEmptyFS (&tray());
-	}
+void BuangT(){
+	Message2 = "Isi TRAY kosong";
+	Message3 = "Mubadzir loh :(";
+	CreateEmptyFS (&tray());
 }
 
 void Give (){
@@ -88,7 +84,8 @@ void Give (){
 	int ord; //posisi y customer
 	boolean found;
 	//ALGORITMA
-	PopFS(&tray(), &food);
+
+	//PopFS(&tray(), &food);
 
 	//cek apakah ada pengunjung bertetanggaan
 
@@ -122,51 +119,56 @@ void Give (){
 
 	if ((Abs!=-1)&&(ord!=-1)){
 		//bersebelahan dengan pemain
+		if(!IsEmptyFS(tray())){
+			//cek apakah pesanan sesuai
+			PopFS(&tray(), &food);
 
-		//cek apakah pesanan sesuai
-		PopFS(&tray(), &food);
+			i = 0;
+			found = false;
 
-		i = 0;
-		found = false;
+			while (!found) {
 
-		while (!found) {
+				if ((PosTableArray(RN, i).x + 1 == Abs) && (PosTableArray(RN, i).y == ord)){
+					found = true;
+				}
 
-			if ((PosTableArray(RN, i).x + 1 == Abs) && (PosTableArray(RN, i).y == ord)){
-				found = true;
+				if ((PosTableArray(RN, i).x - 1 == Abs) && (PosTableArray(RN, i).y == ord)){
+					found = true;
+				}
+
+				if ((PosTableArray(RN, i).x == Abs) && (PosTableArray(RN, i).y + 1 == ord)){
+					found = true;
+				}
+
+				if ((PosTableArray(RN, i).x == Abs) && (PosTableArray(RN, i).y - 1 == ord)){
+					found = true;
+				}
+
+				if(!found){
+					i++;
+				}
+
+			}
+			printf("%d |",i);
+			printf("\n");
+			if (IsKataSama(food.Nama, InfoTableArray(RN, i))){
+				// pesanan sesuai
+				TableArray(RN, i).IsFull = false;
+				DelCust(i);
+				DelOrderan(i);
+				player().Money += food.Harga;
+			}else{
+				printf("Pesanan tidak sesuai\n");
+				PushFS(&tray(), food);
 			}
 
-			if ((PosTableArray(RN, i).x - 1 == Abs) && (PosTableArray(RN, i).y == ord)){
-				found = true;
-			}
 
-			if ((PosTableArray(RN, i).x == Abs) && (PosTableArray(RN, i).y + 1 == ord)){
-				found = true;
-			}
-
-			if ((PosTableArray(RN, i).x == Abs) && (PosTableArray(RN, i).y - 1 == ord)){
-				found = true;
-			}
-
-			if(!found){
-				i++;
-			}
-
-		}
-
-		if (IsKataSama(food.Nama, InfoTableArray(RN, i))){
-			// pesanan sesuai
-			TableArray(RN, i).IsFull = false;
-			DelCust(i);
-			player().Money += food.Harga;
-		}else{
-			printf("Pesanan tidak sesuai\n");
-			PushFS(&tray(), food);
 		}
 
 
 	}
 	else{
-		printf("Pelanggan tidak bersebelahan dengan pemain\n");
+		printf("Pelanggan tidak bersebelahan dengan pemain");
 	}
 
 

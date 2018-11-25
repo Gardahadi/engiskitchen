@@ -10,9 +10,7 @@
 
 //Included Libraries
 #include <stdio.h>
-// #include "restoran.h"
 #include <ncurses.h>
-
 #include "restoran.h"
 
 
@@ -95,6 +93,7 @@ void PrintFS (FSTACK S)
   while(!IsEmptyFS(S)){
     PopFS(&S, &bhn);
     mvwprintw(Box3,l,c,KataToString(bhn.Nama));
+    mvwprintw(Box3,l,20,"%ld",bhn.Harga);
     wrefresh(Box3);
     l++;
   }
@@ -123,7 +122,6 @@ void PrintQC (CQUEUE Q)
       else{
         mvwprintw(Box1,l,6,"Normal");
       }
-      mvwprintw(Box1,l,13,KataToString(QCustomer.T[i].Makanan.Nama));
       wrefresh(Box1);
       l++;
       i++;
@@ -454,10 +452,6 @@ int main () {
       Move(2);
       printBoard(ArrRoom[RN].RoomBoard);
     }
-    else if(IsKataSama(StringToKata(cmd),StringToKata("L\0"))){
-      Move(2);
-      printBoard(ArrRoom[RN].RoomBoard);
-    }
     else if(IsKataSama(StringToKata(cmd),StringToKata("GR\0"))){
       Move(4);
       printBoard(ArrRoom[RN].RoomBoard);
@@ -471,8 +465,6 @@ int main () {
       Place();
       Message="Anda abis PLACE, wow!";
       printBoard(ArrRoom[RN].RoomBoard);
-      Message2="ini adalah order di meja 2 :";
-      Message3=KataToString(TableArray(RN,3).C.Makanan.Nama);
 
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("SAVE\0"))){
@@ -487,12 +479,25 @@ int main () {
     }
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("CT\0"))){
-      Buang(StringToKata(cmd));
-      printBoard(ArrRoom[RN].RoomBoard);
+      BuangT();
+      Message="Anda habis BUANG dari TRAY, wow";
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("CH\0"))){
-      Buang(StringToKata(cmd));
-      printBoard(ArrRoom[RN].RoomBoard);
+      BuangH();
+      Message="Anda habis BUANG dari HAND, wow";
+    }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("GIVE\0"))){
+      Give();
+      Message="Anda Habis GIVE makanan";
+    }
+
+
+
+    else if(IsKataSama(StringToKata(cmd),StringToKata("ORDER\0"))){
+      GetOrder();
+      printf("%d\n",OrderResto[1].NomorMeja);
+      Message=KataToString(OrderResto[1].CustomerOrder.Nama);
+
     }
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("ORDER\0"))){
@@ -501,6 +506,7 @@ int main () {
       Message=KataToString(OrderResto[1].CustomerOrder.Nama);
 
     }
+
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("RECIPE\0"))){
       endwin();
@@ -527,6 +533,7 @@ int main () {
 
     if(player().Life == 0){
       isRunning = false;
+      endwin();
       printf("Anda telah kehabisan nyawa\n");
       printf("Input apapun untuk exit : ");
       scanf("%s",InputName);

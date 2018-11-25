@@ -17,16 +17,17 @@
 
 
 
-
 ROOM ArrRoom[5];
 RESTAURANT R;
 TREEPACKAGE Rs;
-
+adrNode R1,R2,R3,R4;
+adrDoorNode D1A,D1B,D2A,D2B,D3A,D3B,D4A,D4B;
 int main () {
 
   //Inisialisasi Peta
   BuildResto();
-  Load(2);
+  Load(0);
+
   Recipe();
 
 

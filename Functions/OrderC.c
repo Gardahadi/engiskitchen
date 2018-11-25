@@ -28,7 +28,7 @@ void AddOrder(int j)
     }
 }
 
-void DelOrderan (int i){
+void DelOrderan (int i) {
 	/* Menghapus elemen ke-i tabel tanpa mengganggu kontiguitas */
 	/* I.S. Tabel tidak kosong, i adalah indeks efektif yang valid */
 	/* F.S. X adalah nilai elemen ke-i T sebelum penghapusan */
@@ -36,12 +36,30 @@ void DelOrderan (int i){
 	/*      Tabel T mungkin menjadi kosong */
 	/* Proses : Geser elemen ke-i+1 s.d. elemen terakhir */
 	/*          Kurangi elemen efektif tabel */
-	int j;
-	for (j = i; j < NeffOrd(R.TabOfOrder); j++) {
-		OrderResto[j] = OrderResto[j];
+	int j,k; //j merupakan iterator, k merupakan indeks ditemukan nomor meja i
+  boolean found;
+  k=1;
+  found = false;
+
+
+
+  while(!found){
+    if(R.TabOfOrder.TOrd[k].NomorMeja == i){
+      found = true;
+    }
+    else {
+      k++;
+    }
+  }
+
+
+	for (j = k; j < NeffOrd(R.TabOfOrder); j++) {
+		OrderResto[j] = OrderResto[j+1];
 	}
-	NeffOrd(R.TabOfOrder);
+	NeffOrd(R.TabOfOrder)--;
 }
+
+
 void GetOrder()
 {
     boolean nearP;
@@ -61,7 +79,7 @@ void GetOrder()
                            || ((PosTableArray(RN,i).x == absis()) && ((PosTableArray(RN,i).y)+2 == ordinat()))
                             || ((PosTableArray(RN,i).x == absis()) && ((PosTableArray(RN,i).y)-2 == ordinat()))  )  ){
                          nearP = true;
-                                
+
                                 AddOrder(i);
                         }
                         else{
