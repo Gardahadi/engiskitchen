@@ -59,7 +59,7 @@ void Place(){
                                     }
                                 }
                                 if (foundCust2){
-                            
+
                                     DelQCustAfter(&QCustomer, &C2, j);
                                     Room(RN, PosTableArray(RN,i).y, PosTableArray(RN,i).x-1) = 'C';
 
@@ -130,5 +130,24 @@ void Place(){
                 }
 
         }
+    }
+}
+
+void DelCust(int j)
+{
+    if ((TableArray(RN, j).Kapasitas) == 4){
+        Room(RN, (PosTableArray(RN,i).y)+1, PosTableArray(RN,i).x) = 'X';
+
+        Room(RN, (PosTableArray(RN,i).y)-1, PosTableArray(RN,i).x) = 'X';
+
+        Room(RN, (PosTableArray(RN,i).y), (PosTableArray(RN,i).x) +1) = 'X';
+
+        Room(RN, (PosTableArray(RN,i).y), (PosTableArray(RN,i).x) -1) = 'X';
+    }
+    else{
+              Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x+1) = 'X';
+
+              Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x-1) = 'X';
+
     }
 }
