@@ -79,11 +79,14 @@ void GetOrder()
                            || ((PosTableArray(RN,i).x == absis()) && ((PosTableArray(RN,i).y)+2 == ordinat()))
                             || ((PosTableArray(RN,i).x == absis()) && ((PosTableArray(RN,i).y)-2 == ordinat()))  )  ){
                          nearP = true;
-
+                         Message="Anda baru saja meminta ORDER, Keren!";
                                 AddOrder(i);
                         }
                         else{
                             i++;
                         }
+            }
+            if(!nearP){
+              Message="Anda mau ngambil ORDER siapa? Tidak ada pelanggan disekitar";
             }
 }

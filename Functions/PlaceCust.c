@@ -47,6 +47,7 @@ void Place(){
                             || ((PosTableArray(RN,i).x == absis()) && ((PosTableArray(RN,i).y)-2 == ordinat()))  )  )
                 {
                          nearP = true;
+                         Message="Pemain bersebelah dengan customer";
                          if (TableArray(RN,i).Kapasitas == 2){
                                 // Akan dilakukan pengecekan apakah ada costumer yang berjumlah 2. jika ada, maka akan menjadi
                                 // prioritas dan antrian akan digeser.
@@ -130,6 +131,9 @@ void Place(){
                     i++;
                 }
 
+        }
+        if(!nearP){
+          Message="Pemain tidak di samping pelanggan";
         }
     }
 }

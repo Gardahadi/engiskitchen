@@ -54,11 +54,12 @@ void Take (){
 			while ((PosKitchenArray(z).x != ord) || (PosKitchenArray(z).y != Abs)) {
 				z++;
 			}
+			Message = "Anda baru saja TAKE, Luar biasa!";
 			bhn.Name = InfoKitchenArray(z);
 			PushBS(&hand(), bhn);
 		}
 		else{
-			printf("  Bahan tidak bersebelahan dengan pemain\n");
+			Message="Bahan tidak bersebelahan dengan pemain";
 		}
 	}
 
@@ -158,7 +159,7 @@ void Give (){
 				TableArray(RN, i).IsFull = false;
 				player().Money += food.Harga;
 			}else{
-				printf("Pesanan tidak sesuai\n");
+				Message="Pesanan tidak sesuai";
 				PushFS(&tray(), food);
 			}
 
@@ -168,7 +169,7 @@ void Give (){
 
 	}
 	else{
-		printf("Pelanggan tidak bersebelahan dengan pemain");
+		Message="Pelanggan tidak bersebelahan dengan pemain";
 	}
 
 

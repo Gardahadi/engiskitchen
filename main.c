@@ -457,33 +457,31 @@ int main () {
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("TAKE\0"))){
       Take();
-      Message="Anda abis take, wow!";
       printBoard(ArrRoom[RN].RoomBoard);
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("PLACE\0"))){
       Place();
-      Message="Anda abis PLACE, wow!";
+
       printBoard(ArrRoom[RN].RoomBoard);
 
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("SAVE\0"))){
       Save();
-      Message="Anda abis SAVE, wow!";
+      Message ="Anda bru saja save permainan, Hebat!";
       printBoard(ArrRoom[RN].RoomBoard);
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("PUT\0"))){
       Put();
-      Message="Anda abis PUT, Wow";
       printBoard(ArrRoom[RN].RoomBoard);
     }
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("CT\0"))){
       BuangT();
-      Message="Anda habis BUANG dari TRAY, wow";
+
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("CH\0"))){
       BuangH();
-      Message="Anda habis BUANG dari HAND, wow";
+
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("GIVE\0"))){
       Give();
@@ -494,15 +492,6 @@ int main () {
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("ORDER\0"))){
       GetOrder();
-      printf("%d\n",OrderResto[1].NomorMeja);
-      Message=KataToString(OrderResto[1].CustomerOrder.Nama);
-
-    }
-
-    else if(IsKataSama(StringToKata(cmd),StringToKata("ORDER\0"))){
-      GetOrder();
-      printf("%d\n",OrderResto[1].NomorMeja);
-      Message=KataToString(OrderResto[1].CustomerOrder.Nama);
 
     }
 

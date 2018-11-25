@@ -24,7 +24,7 @@ void Put()
 
   /*Algoritma*/
   if (RN != 4){
-    printf("Anda sedang tidak berada di dapur\n");
+    Message="Anda sedang tidak berada di dapur";
   }
   else /*Player berada di dapur*/
   {
@@ -77,7 +77,7 @@ void Put()
     }
     else
     {
-        printf("Anda terlalu jauh dari tray\n");
+        Message="Anda terlalu jauh dari tray";
     }
   }
 }
@@ -140,7 +140,7 @@ void Masak(BSTACK S, FOOD *F,boolean *valid)
 if(!bisadimasak)
 {
   *valid = false;
-  printf("Tidak dapat membuat makanan\n");
+  Message2="Tidak dapat membuat makanan";
 }
 else // Stack kosong
 {
@@ -153,7 +153,7 @@ else // Stack kosong
   else
   {
     *valid = false;
-    printf("Tidak dapat membuat makanan\n");
+    Message2="Tidak dapat membuat makanan";
   }
 }
 }
