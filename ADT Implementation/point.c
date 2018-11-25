@@ -6,7 +6,7 @@ Tanggal   : 9 September 2018
 Deskripsi : ADT Point
 */
 
-#include "point.h"
+#include "../ADT Header/point.h"
 #include <stdio.h>
 #include <math.h>
 
@@ -55,18 +55,18 @@ void TulisPOINT (POINT P){
 
 
 /* *** Kelompok operasi relasional terhadap POINT *** */
-boolean EQ (POINT P1, POINT P2){
+boolean Equivalen (POINT P1, POINT P2){
     /* Mengirimkan true jika P1 = P2 : absis dan ordinatnya sama */
     //KAMUS
     //ALGORITMA
     return ((Absis(P1)==Absis(P2))&&(Ordinat(P1)==Ordinat(P2)));
 }
 
-boolean NEQ (POINT P1, POINT P2){
+boolean NEquivalen (POINT P1, POINT P2){
     /* Mengirimkan true jika P1 tidak sama dengan P2 */
     //KAMUS
     //ALGORITMA
-    return (!EQ(P1,P2));
+    return (!Equivalen(P1,P2));
 }
 
 /* *** Kelompok menentukan di mana P berada *** */
@@ -216,4 +216,3 @@ void Putar (POINT *P, float Sudut){
     Absis (*P)=x;
     Ordinat(*P)=y;
 }
-

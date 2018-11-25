@@ -6,7 +6,7 @@ Tanggal   : 9 September 2018
 Deskripsi : ADT jam
 */
 
-#include "jam.h"
+#include "../ADT Header/jam.h"
 #include <stdio.h>
 
 /* ***************************************************************** */
