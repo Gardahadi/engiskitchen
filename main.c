@@ -159,8 +159,8 @@ void PrintOrder(TabOrder T){
 void CreateUI(){
 
   initscr(); //Inisiasi Ncurses
-  cbreak();
-  keypad(stdscr,TRUE);
+  cbreak();  //Membuat layar berbeda dengan layar terminal
+  keypad(stdscr,TRUE); //Membuat user dapat memasukan input
 
   //Make Top Bar
   BoxTop1 = newwin(LINES/12,COLS/4,0,0);
@@ -201,18 +201,22 @@ void CreateUI(){
   wrefresh(Box3);
   wrefresh(Box4);
 
+  //Membuat bagian box kiri atas
   mvwprintw(Box1,1,1,"Waiting Cust ");
   wrefresh(Box1);
   PrintQC(QCustomer);
 
+  //Membuat bagian box kiri bawah
   mvwprintw(Box2,1,1,"Order");
   wrefresh(Box2);
   PrintOrder(R.TabOfOrder);
 
+  //Membuat bagian box kanan atas
   mvwprintw(Box3,1,1,"Food Stack");
   wrefresh(Box3);
   PrintFS(tray());
 
+  //Membuat bagian box kanan bawah
   mvwprintw(Box4,1,1,"Hand");
   PrintBS(player().Hand);
 
@@ -242,7 +246,7 @@ void CreateUI(){
 
 }
 
-
+//Fungsi untuk mengembalikan karakter sesui dengan lokasi barang2 di ADT restoran
 char GetChar(int y, int x){
 
   if(Room(RN,y,x) == '#') {
@@ -510,7 +514,6 @@ int main () {
     else if(IsKataSama(StringToKata(cmd),StringToKata("GIVE\0"))){
       Give();
       R.Tick++;
-
       // Message="Anda Habis GIVE makanan";
     }
 
@@ -558,11 +561,12 @@ int main () {
         PrintCredit();
       }
     }
-
+    //Pesan apabila input tidak valid
     else{
       Message="Bukan Input Valid!";
     }
 
+    //Keadaan Life  == 0;
     if(player().Life == 0){
       isRunning = false;
       endwin();
@@ -572,6 +576,7 @@ int main () {
       scanf("%s",InputName);
     }
 
+    //Keadaan apabila program masih berjalan, akan melakukan update customer dan tampilan program
     if(isRunning){
       UpdateQueue(&QCustomer);
       UpdateCust(&adaCustomer);
