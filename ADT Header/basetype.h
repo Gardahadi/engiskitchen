@@ -6,6 +6,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "mesinkata.h" //Mesin kata untuk tipe kata dan mesin kata untuk pembacaan file
+#include "jam.h"
 
 #ifndef BASETYPE_H
 #define BASETYPE_H
