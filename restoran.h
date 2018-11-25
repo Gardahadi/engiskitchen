@@ -107,6 +107,10 @@ char IntToChar(int X);
 
 void DelCust(int i);
 
+void PrintHelp();
+
+void PrintCredit();
+
 void DelOrderan(int i);
 
 #endif
