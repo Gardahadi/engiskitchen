@@ -429,7 +429,6 @@ int main () {
   // init_pair(1,COLOR_RED,COLOR_YELLOW);
   /*Looping Utama Program*/
 
-  scanf("%s",InputName);
   while (isRunning)
   {
 
@@ -488,7 +487,7 @@ int main () {
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("GIVE\0"))){
       Give();
-      Message="Anda Habis GIVE makanan";
+      // Message="Anda Habis GIVE makanan";
     }
 
 
@@ -524,11 +523,21 @@ int main () {
       isRunning = false;
       endwin();
       printf("Apakah anda yakin ingin selesai?\n");
-      printf("Input 0 untuk Exit dan 1 untuk main lagi: ");
+      printf("[1] Exit & Save\n");
+      printf("[2] Exit without saving\n");
+      printf("[3] Keep Playing\n");
+      printf("Input Number : ");
       scanf("%d",&Choice);
       if(Choice==1){
+        Save();
+      }
+      else if(Choice==3){
         isRunning=true;
       }
+    }
+
+    else{
+      Message="Bukan Input Valid!";
     }
 
     if(player().Life == 0){

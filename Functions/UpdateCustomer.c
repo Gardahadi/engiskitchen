@@ -103,7 +103,10 @@ void UpdateCust(boolean *NewCustomer){
             if(Kesabaran(TableArray(n_room,n_table).C)>=0){
                 if(Kesabaran(TableArray(n_room,n_table).C)==1){
                     if(player().Life>0){
+                        Message = "HEY TAYOOOO";
                         player().Life--;
+                        DelCust(n_table);
+                        DelOrderan(n_table);
                     }
                     Kesabaran(TableArray(n_room,n_table).C) = UndefCustomer;
                     Jumlah(TableArray(n_room,n_table).C) = 0;
