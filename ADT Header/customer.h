@@ -17,6 +17,7 @@ typedef struct {
     CAddress HEAD;  /* alamat penghapusan */
     CAddress TAIL;  /* alamat penambahan */
     int MaxEl;     /* Max elemen queue */
+    int Neff;
 } CQUEUE;
 
 //Selectors with macros
@@ -26,7 +27,7 @@ typedef struct {
 #define InfoHead(Q) (Q).T[(Q).HEAD]
 #define InfoTail(Q) (Q).T[(Q).TAIL]
 #define MaxEl(Q) (Q).MaxEl
-
+#define Neff(Q) (Q).Neff
 //Customer selector
 #define Makanan(C) (C).Makanan
 #define Jumlah(C) (C).Jumlah
@@ -45,7 +46,7 @@ void CreateEmptyCQ(CQUEUE * Q, int Max);
 
 void DeAlokasi(CQUEUE * Q);
 /* F.S. Q is deallocated */
-void AddCustomerToQueue(CQUEUE *Q,CUSTOMER C);
+void AddCustomerToQueue(CUSTOMER C);
 /* I.S. Q is defined-> Q may be full */
 /* F.S. a new customer is added If new customer is star customer, then
 addition is by priority.
@@ -56,7 +57,7 @@ void DeleteCustomerFromQueue(CQUEUE *Q,CUSTOMER *C);
 /* F.S. Head customer is deleted : Queue maybe empty */
 /* C adalah customer yang didelete*/
 
-void UpdateQueue(CQUEUE *Q,int *Life);
+void UpdateQueue();
 /* I.S. Sembarang, Q boleh kosong */
 /* F.S. Seluruh customer dengan kesabaran 1 dihapus , seluruh customer kesabarannya dikurangi 1*/
 /* Life berkurang sejumlah dengan pelanggan yang yang dihapus*/

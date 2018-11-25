@@ -16,8 +16,6 @@
 #include "restoran.h"
 
 
-
-
 //KAMUS GLOBAL
 WINDOW* BoxTop1, *BoxTop2, *BoxTop3, *BoxTop4;
 WINDOW* Box1, *Box2, *Box3, *Box4;
@@ -27,8 +25,41 @@ RESTAURANT R;
 TREEPACKAGE Rs;
 adrNode R1,R2,R3,R4;
 adrDoorNode D1A,D1B,D2A,D2B,D3A,D3B,D4A,D4B;
-char *Message,*Message2;
+char *Message,*Message2, *Message3;
 char cmd[10];
+
+
+char IntToChar(int N){
+  if(N==1){
+    return '1';
+  }
+  else if(N==2){
+    return '2';
+  }
+  else if(N==3){
+    return '3';
+  }
+  else if(N==4){
+    return '4';
+  }
+  else if(N==5){
+    return '5';
+  }
+  else if(N==6){
+    return '6';
+  }
+  else if(N==7){
+    return '7';
+  }
+  else if(N==8){
+    return '8';
+  }
+  else if(N==9){
+    return '9';
+  }
+}
+
+
 
 void PrintBS (BSTACK S)
 /*Mencetak ke layar semua isi S*/
@@ -48,6 +79,56 @@ void PrintBS (BSTACK S)
   }
 }
 
+void PrintFS (FSTACK S)
+/*Mencetak ke layar semua isi S*/
+/*I.S. S terdefinisi*/
+/*F.S. S tetap*/
+{
+  int l,c;
+  FOOD bhn;
+  //inisialisasi
+  l = 2;
+  c = 1;
+  while(!IsEmptyFS(S)){
+    PopFS(&S, &bhn);
+    mvwprintw(Box4,l,c,KataToString(bhn.Nama));
+    wrefresh(Box4);
+    l++;
+  }
+}
+
+void PrintQC (CQUEUE Q)
+/*Mencetak ke layar semua isi S*/
+/*I.S. S terdefinisi*/
+/*F.S. S tetap*/
+{
+  int l,c1,c2,i;
+  //inisialisasi
+  l = 2;
+  c1 = 1;
+  c2 = 3;
+  i=Head(Q);
+  if(!IsEmptyCQ(Q)){
+
+    while(i<=Tail(Q)){
+      mvwprintw(Box1,l,c1,"%d",QCustomer.T[i].Jumlah);
+      mvwprintw(Box1,l,c2,"%d",QCustomer.T[i].Kesabaran);
+      if(QCustomer.T[i].IsStar){
+        mvwprintw(Box1,l,6,"Star");
+      }
+      else{
+        mvwprintw(Box1,l,6,"Normal");
+      }
+      wrefresh(Box1);
+      l++;
+      i++;
+    }
+
+  }
+  else {
+      mvwprintw(Box1,l,c1,"Antrian Sepi");
+  }
+}
 
 void CreateUI(){
 
@@ -94,24 +175,21 @@ void CreateUI(){
   wrefresh(Box3);
   wrefresh(Box4);
 
-  mvwprintw(Box1,1,1,"Waiting Cust : %d", InfoTail(QCustomer).Jumlah);
+  mvwprintw(Box1,1,1,"Waiting Cust ");
   wrefresh(Box1);
+  PrintQC(QCustomer);
 
   mvwprintw(Box2,1,1,"Order");
   wrefresh(Box2);
 
   mvwprintw(Box3,1,1,"Food Stack");
   wrefresh(Box3);
+  PrintFS(tray());
 
   mvwprintw(Box4,1,1,"Hand");
   PrintBS(player().Hand);
 
-
-
-
   wrefresh(Box4);
-
-
 
 
 
@@ -125,18 +203,39 @@ void CreateUI(){
   box(BoxBot,0,0);
   wrefresh(BoxBot);
   mvwprintw(BoxBot,1,1,"%s",Message);
-  mvwprintw(BoxBot,2,1,"%s",Message2);
-  mvwprintw(BoxBot,5,1,"COMMAND : ");
+  mvwprintw(BoxBot,2,1,"%s","Player berada di room ");
+  mvwprintw(BoxBot,2,23,"%c",IntToChar(RN));
+  mvwprintw(BoxBot,3,1,"%s",Message2);
+  mvwprintw(BoxBot,4,1,"%s",Message3);
+
+
+  mvwprintw(BoxBot,6,1,"COMMAND : ");
   wrefresh(BoxBot);
 
 
 }
 
+
 char GetChar(int y, int x){
 
   if(Room(RN,y,x) == '#') {
-    wattron(MapBox,A_BOLD);
-    return 'X';
+    if (x==5 && y==12 && (RN==1||RN==4)){
+      return '_';
+    }
+    else if (x==2 && y==1 && (RN==2||RN==3)){
+      return '_';
+    }
+    else if (x==1 && y==5 && (RN==4||RN==3)){
+      return '_';
+    }
+    else if (x==12 && y==5 && (RN==1||RN==2)){
+      return '_';
+    }
+    else{
+      wattron(MapBox,A_BOLD);
+      return 'X';
+
+    }
   }
 
   else if (Room(RN,y,x)=='K'){
@@ -144,10 +243,35 @@ char GetChar(int y, int x){
     return 'K';
   }
 
+  else if (Room(RN,y,x)=='T'){
+    wattron(MapBox,A_BOLD);
+    return 'T';
+  }
+
+
+
+  else if (Room(RN,y,x)=='C'){
+    wattron(MapBox,A_BOLD);
+    return 'C';
+  }
+
+
   else if (Room(RN,y,x)=='M'){
     wattron(MapBox,A_BOLD);
     wattron(MapBox,A_STANDOUT);
-    return 'M';
+    for(int i=0;i<4;i++){
+      if(ArrRoom[RN].TableArray[i].PosMeja.x==x && ArrRoom[RN].TableArray[i].PosMeja.y==y ) {
+        if (ArrRoom[RN].TableArray[i].Nomor>9){
+            return 'M';
+        }
+        else{
+          return IntToChar(ArrRoom[RN].TableArray[i].Nomor);
+        }
+      }
+      else {
+        return 'M';
+      }
+    }
   }
 
   else if (y == ordinat() && x == absis()){
@@ -156,6 +280,8 @@ char GetChar(int y, int x){
     wattron(MapBox,COLOR_PAIR(1));
     return 'P';
   }
+
+  //PRINT Pintu
 
   else {
     return '_';
@@ -168,8 +294,9 @@ void printBoard(MATRIKS X) {
   int px,py,i,j;
   char C;
   //Inisialisasi
-  px=1;
-  py=1;
+
+  px=COLS/8;
+  py=(LINES-LINES/4-LINES/32)/4;
 
   //Algoritma
 
@@ -179,7 +306,7 @@ void printBoard(MATRIKS X) {
       if ((j==NKolEff(X)))  {
         mvwprintw(MapBox,py,px," %c ",C);
         wrefresh(MapBox);
-        px=1;
+        px=COLS/8;
         py=py+2;
       }
 
@@ -238,6 +365,7 @@ int main () {
   printf("[2] Load Game\n");
   printf("[3] Exit]\n");
   printf("Pilihan : " );
+
   scanf("%d",&Choice);
   while (Choice != 1 && Choice !=2 && Choice != 3) {
     printf("Invalid Choice, Please input either 1,2 or 3 : ");
@@ -263,14 +391,17 @@ int main () {
     isRunning =false;
   }
 
+  //testing zone
+  Recipe();
+  scanf("%s",InputName);
   //Test Inpur
   //
   while(!adaCustomer){
     UpdateCust(&adaCustomer);
   }
-
-  start_color();
-  init_pair(1,COLOR_RED,COLOR_YELLOW);
+  //
+  // start_color();
+  // init_pair(1,COLOR_RED,COLOR_YELLOW);
   /*Looping Utama Program*/
   while (isRunning)
   {
@@ -294,6 +425,10 @@ int main () {
       Move(2);
       printBoard(ArrRoom[RN].RoomBoard);
     }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("L\0"))){
+      Move(2);
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
     else if(IsKataSama(StringToKata(cmd),StringToKata("GR\0"))){
       Move(4);
       printBoard(ArrRoom[RN].RoomBoard);
@@ -303,10 +438,30 @@ int main () {
       Message="Anda abis take, wow!";
       printBoard(ArrRoom[RN].RoomBoard);
     }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("PLACE\0"))){
+      Place();
+      Message="Anda abis PLACE, wow!";
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("SAVE\0"))){
+      Save();
+      Message="Anda abis SAVE, wow!";
+      printBoard(ArrRoom[RN].RoomBoard);
+    }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("PUT\0"))){
+      Put();
+      Message="Anda abis PUT, Wow";
+    }
+
     else if(IsKataSama(StringToKata(cmd),StringToKata("Exit\0"))){
       isRunning = false;
     }
 
+    if(player().Life == 0){
+      isRunning = false;
+    }
+    UpdateQueue(&QCustomer);
+    UpdateCust(&adaCustomer);
     R.Tick++;
     CreateUI();
     printBoard(ArrRoom[RN].RoomBoard);

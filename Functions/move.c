@@ -1,10 +1,10 @@
 /*Implementasi dari procedure Take, Buang, dan Give*/
 #include "../restoran.h"
 
-char *Message,*Message2;
+char *Message,*Message2, *Message3;
 //DUplicate type jangan sampe ada
 
-char* IntToChar(int X){
+char* IntToString(int X){
 	if (X==1){
 		return "1\0";
 	}
@@ -38,6 +38,9 @@ char* IntToChar(int X){
 	else if (X==11){
 		return "11\0";
 	}
+	else if (X==12){
+		return "11\0";
+	}
 }
 
 boolean IsWall(){
@@ -55,35 +58,37 @@ void Move (int Dir) {
 	switch (Dir) {
 		case 1:
 			ordinat()--;
-			Message=IntToChar(absis());
-			Message2= IntToChar(ordinat());
+			Message2=IntToString(absis());
+			Message3= IntToString(ordinat());
 			if(IsWall()){
+				Message="Anda menabrak dinding";
 				PosChanger(0,1,Dir);
 			}
 			break;
 		case 2 :
 			absis()--;
-			Message=IntToChar(absis());
-			Message2= IntToChar(ordinat());
+			Message2=IntToString(absis());
+			Message3= IntToString(ordinat());
 			if(IsWall()){
-
+				Message="Anda menabrak dinding";
 				PosChanger(1,0,Dir);
 			}
 			break;
 		case 3 :
-			ordinat() ++;
-			Message=IntToChar(absis());
-			Message2= IntToChar(ordinat());
-			break;
+			ordinat()++;
+			Message2=IntToString(absis());
+			Message3= IntToString(ordinat());
 			if(IsWall()){
-
+				Message="Anda menabrak dinding";
 				PosChanger(0,-1,Dir);
 			}
+			break;
 		case 4 :
 			absis()++;
-			Message=IntToChar(absis());
-			Message2= IntToChar(ordinat());
+			Message2=IntToString(absis());
+			Message3= IntToString(ordinat());
 			if(IsWall()){
+				Message="Anda menabrak dinding";
 				PosChanger(-1,0,Dir);
 			}
 			break;
@@ -101,8 +106,6 @@ void PosChanger(int dx, int dy, int direc){
 	found = false;
 	P = SearchNode(BuildingResto, RN);
 	Pt = Trail(P);
-	Message= IntToChar(Pt->Xpos);
-	Message2= IntToChar(Pt->Direction);
 	while(!found && Pt != NULL){
 		if(absis()+dx == Pt->Xpos && ordinat()+dy == Pt->Ypos && direc == Pt->Direction){
 			found = true;
@@ -115,10 +118,8 @@ void PosChanger(int dx, int dy, int direc){
 		absis() = NextDoor(Pt)->Xpos;
 		ordinat() = NextDoor(Pt)->Ypos;
 		RN = Id(Daddy(NextDoor(Pt)));
-
 	}
 	else{
-
 		absis() = absis()+dx;
 		ordinat() = ordinat()+dy;
 	}

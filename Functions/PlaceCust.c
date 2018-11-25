@@ -11,7 +11,7 @@ void DelQCustAfter(CQUEUE *Qc, CUSTOMER *C2, int i)
     int j;
 
     *C2 = (*Qc).T[i];
-    j = Head(*Qc);
+    j = 0;
     while (j<i)
     {
         j++;
@@ -19,8 +19,8 @@ void DelQCustAfter(CQUEUE *Qc, CUSTOMER *C2, int i)
     while(j<Tail(*Qc)){
                 (*Qc).T[j]=(*Qc).T[j+1];
                 j++;
-            } //j=Tail(*Q)
-        Tail(*Qc)--;
+    } //j=Tail(*Q)
+      Tail(*Qc)--;
 }
 
 void Place(){
@@ -49,9 +49,9 @@ void Place(){
                          if (TableArray(RN,i).Kapasitas == 2){
                                 // Akan dilakukan pengecekan apakah ada costumer yang berjumlah 2. jika ada, maka akan menjadi
                                 // prioritas dan antrian akan digeser.
-                                j = Head(QCustomer); //inisialisasi
+                                j = 0; //inisialisasi
                                 foundCust2 = false; //inisialisasi
-                                while ((j != Tail(QCustomer)) && (!foundCust2)) {
+                                while (j != Tail(QCustomer) && (!foundCust2)) {
                                     if (QCustomer.T[j].Jumlah == 2){
                                         foundCust2=true;
                                     }else{
@@ -59,11 +59,18 @@ void Place(){
                                     }
                                 }
                                 if (foundCust2){
+                            
                                     DelQCustAfter(&QCustomer, &C2, j);
-                                    Room(RN, (PosTableArray(RN,i).x)+1, PosTableArray(RN,i).y) = 'C';
+                                    Room(RN, PosTableArray(RN,i).y, PosTableArray(RN,i).x-1) = 'C';
 
-                                    Room(RN, (PosTableArray(RN,i).x)-1, PosTableArray(RN,i).y) = 'C';
+                                    Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x+1) = 'C';
 
+                                    // printf(" %d | ",i+1);
+                                    // printf(" %d |",j+1);
+                                    // printf(" %d |",PosTableArray(RN,i).x);
+                                    // printf(" %d |",PosTableArray(RN,i).y);
+                                    // printf(" %c |",Room(RN, PosTableArray(RN,i).x+1, PosTableArray(RN,i).y));
+                                    printf("\n");
                                     TableArray(RN,i).IsFull = true;
 
 
@@ -81,9 +88,9 @@ void Place(){
                                 DeleteCustomerFromQueue(&QCustomer,&CMasuk); //apakah C sudah mewakili Costumer walau tidak diinisialisasikan di proram saya?
                                 if (Jumlah(CMasuk) == 2)
                                 {
-                                    Room(RN, (PosTableArray(RN,i).x)+1, PosTableArray(RN,i).y) = 'C';
+                                    Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x+1) = 'C';
 
-                                    Room(RN, (PosTableArray(RN,i).x)-1, PosTableArray(RN,i).y) = 'C';
+                                    Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x-1) = 'C';
 
                                     (TableArray(RN,i).IsFull = true);
 
@@ -99,13 +106,13 @@ void Place(){
                                 }
                                 else if (Jumlah(CMasuk) == 4)
                                 {
-                                    Room(RN, (PosTableArray(RN,i).x)+1, PosTableArray(RN,i).y) = 'C';
+                                    Room(RN, (PosTableArray(RN,i).y)+1, PosTableArray(RN,i).x) = 'C';
 
-                                    Room(RN, (PosTableArray(RN,i).x)-1, PosTableArray(RN,i).y) = 'C';
+                                    Room(RN, (PosTableArray(RN,i).y)-1, PosTableArray(RN,i).x) = 'C';
 
-                                    Room(RN, (PosTableArray(RN,i).x), (PosTableArray(RN,i).y) +1) = 'C';
+                                    Room(RN, (PosTableArray(RN,i).y), (PosTableArray(RN,i).x) +1) = 'C';
 
-                                    Room(RN, (PosTableArray(RN,i).x), (PosTableArray(RN,i).y) -1) = 'C';
+                                    Room(RN, (PosTableArray(RN,i).y), (PosTableArray(RN,i).x) -1) = 'C';
 
                                     TableArray(RN,i).IsFull = true;
                                     //

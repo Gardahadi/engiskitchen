@@ -14,7 +14,7 @@ void Put()
 /*Menaruh isi stack dari Hand ke Tray lalu diproses untuk menghasilkan Food Stack jika bahan sesuai resep*/
 {
   //KAMUS
-	int abs;
+	int Abs;
 	int ord;
 	int i;
   BSTACK TempStack,TempStackRev;
@@ -30,34 +30,34 @@ void Put()
   {
     //Mengecek apakah tray/kompor bersebelahan dengan pemain
 
-		abs = -1;
+		Abs = -1;
 		ord = -1;
 
-		if(Room(RN, absis(), ordinat())=='T'){
-			abs = absis();
-			ord = ordinat();
+    if(Room(RN, ordinat(), absis())=='T'){
+			Abs = ordinat();
+			ord = absis();
 		}
 
-		if(Room(RN, absis()+1, ordinat())=='T'){
-			abs = absis()+1;
-			ord = ordinat();
+		if(Room(RN, ordinat()+1, absis())=='T'){
+			Abs = ordinat()+1;
+			ord = absis();
 		}
 
-		if(Room(RN, absis()-1, ordinat())=='T'){
-			abs = absis()-1;
-			ord = ordinat();
+		if(Room(RN, ordinat()-1, absis())=='T'){
+			Abs = ordinat()-1;
+			ord = absis();
 		}
 
-		if(Room(RN, absis(), ordinat()+1)=='T'){
-			abs = absis();
-			ord = ordinat()+1;
+		if(Room(RN, ordinat(), absis()+1)=='T'){
+			Abs = ordinat();
+			ord = absis()+1;
 		}
 
-		if(Room(RN, absis(), ordinat()-1)=='T'){
-			abs = absis();
-			ord = ordinat()-1;
+		if(Room(RN, ordinat(), absis()-1)=='T'){
+			Abs = ordinat();
+			ord = absis()-1;
 		}
-    if ((abs!=-1)&&(ord!=-1))
+    if ((Abs!=-1)&&(ord!=-1))
     {
       //tray dapat diakses oleh pemain
       CreateEmptyBS(&TempStack);
@@ -91,6 +91,7 @@ void Masak(BSTACK S, FOOD *F,boolean *valid)
   boolean bisadimasak;
 
   T= pohonresep();
+  //printf("Test1\n");
   bisadimasak = false;
   price = 0;
   PopBS(&S,&X);
@@ -98,41 +99,55 @@ void Masak(BSTACK S, FOOD *F,boolean *valid)
     {
       price +=30;
       bisadimasak = true;
-      while((Left(T) != Nil || Right(T)!=Nil) && bisadimasak)
+      //printf("Test2\n");
+      while((Left(T) != Nil || Right(T)!=Nil) && bisadimasak && !IsEmptyBS(S))
       {
+        //printf("Test3\n");
         PopBS(&S,&X);
         if(Left(T)==Nil && Right(T)!= Nil)
         {
           if(IsKataSama(X.Name,Akar(Right(T)).Name))
           {
             T = Right(T);
+            //printf("Test4\n");
             price +=30;
             bisadimasak = true;
           }
           else
+          //printf("Test5\n");
           {bisadimasak = false;}
         }
         else if(Right(T)==Nil && Left(T) != Nil)
         {
+          //printf("Test6\n");
+          if(!IsEmptyBS(S)){
             if(IsKataSama(X.Name,Akar(Left(T)).Name))
             {
+              //printf("Test7\n");
               T = Left(T);
               price +=30;
               bisadimasak = true;
             }
             else
+            //printf("Test8\n");
             {bisadimasak = false;}
+          }
+          else {
+            bisadimasak = true;
+          }
         }
         else
         {
           if(IsKataSama(X.Name,Akar(Left(T)).Name))
           {
+            //printf("Test9\n");
             T = Left(T);
             price +=30;
             bisadimasak = true;
           }
           else if(IsKataSama(X.Name,Akar(Right(T)).Name))
           {
+            //printf("Test10\n");
             T = Right(T);
             price +=30;
             bisadimasak = true;
@@ -147,6 +162,7 @@ void Masak(BSTACK S, FOOD *F,boolean *valid)
 
     if(Left(T) == Nil && Right(T)==Nil && bisadimasak && IsEmptyBS(S))
     {
+      //printf("Test11\n");
       (*F).Harga = price;
       (*F).Nama = Akar(T).Name;
       *valid = true;

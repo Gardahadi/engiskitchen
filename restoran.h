@@ -50,7 +50,7 @@ extern TREEPACKAGE Rs;
 extern ROOM ArrRoom[5]; //indeks [1..4]
 extern adrNode R1,R2,R3,R4;
 extern adrDoorNode D1A,D1B,D2A,D2B,D3A,D3B,D4A,D4B;
-extern char *Message,*Message2;
+extern char *Message,*Message2, *Message3;
 
 /* Definisi akses dengan Selektor : Get */
 #define hand() R.P.Hand
@@ -98,5 +98,6 @@ void UpdateCust(boolean *NewCustomer); //Alam
 
 void BuildResto();
 
+char IntToChar(int X);
 
 #endif

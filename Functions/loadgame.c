@@ -154,7 +154,7 @@ void LoadCustomerQueue(){
             IsStar(Ctemp) = false;
         }
         //Add to Queue
-        AddCustomerToQueue(&QCustomer,Ctemp);
+        AddCustomerToQueue(Ctemp);
         i++;
     }
 }
