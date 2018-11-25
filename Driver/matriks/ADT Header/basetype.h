@@ -6,7 +6,6 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "mesinkata.h" //Mesin kata untuk tipe kata dan mesin kata untuk pembacaan file
-#include "jam.h"
 
 #ifndef BASETYPE_H
 #define BASETYPE_H
@@ -25,7 +24,7 @@ typedef struct {
   int nRoom; //nomer ruangan
   //Definisi ruangan : room 1 = 1
   //room 2 = 2, room 3 = 3 , kitchen = 4
-} POSITION;
+} POSISI;
 
 //Tipe bentukan customer
 typedef struct {
@@ -40,17 +39,21 @@ typedef struct{
   int Kapasitas;
   CUSTOMER C;
   boolean IsFull;
-  POSITION PosMeja;
-  int Nomor;
+  POSISI PosMeja;
 } TABLE;
 
 //Tipe bentukan menyimpan object dapur
 
 typedef struct{
-  Kata Name;
-  POSITION Pos;
+  char *Name;
+  POSISI Pos;
 } KITCHENSET;
 
+//Tipe bentukan order
+typedef struct {
+  Kata Name; //nama food yang diorder
+  int TableNumber; //nomer meja
+} ORDER;
 
 //Tipe bentukan room
 typedef struct{
@@ -59,22 +62,9 @@ typedef struct{
   KITCHENSET KitchenArray[16];
 } ROOM;
 
-/* Definisi elemen dan koleksi objek */
-typedef int IdxTypeOrder;  /* type indeks */
-
-typedef struct {
-	FOOD CustomerOrder; /* Menyimpan  */
-	int NomorMeja; /*Menyimpan Nomor meja yang memesan */
-} Orderan;
-
-typedef struct {
-	Orderan TOrd[100+1]; /* memori tempat penyimpan elemen (container) */
-	int NeffOrder; /* >=0, banyaknya elemen efektif */
-} TabOrder;
-
 //Tipe bentukan resep
 typedef struct {
-	Kata Name;
+	//Tree of food
 } RESEP;
 
 typedef struct {

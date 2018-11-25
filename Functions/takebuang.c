@@ -156,6 +156,7 @@ void Give (){
 		if (IsKataSama(food.Nama, InfoTableArray(RN, i))){
 			// pesanan sesuai
 			TableArray(RN, i).IsFull = false;
+			DelCust(i);
 			player().Money += food.Harga;
 		}else{
 			printf("Pesanan tidak sesuai\n");

@@ -1,6 +1,7 @@
 #include "../restoran.h"
 #include <stdio.h>
-// #include <time.h>
+#include <time.h>
+#include <stdlib.h>
 
 //Global save variables
 FILE* output_file;
@@ -9,6 +10,7 @@ FILE* output_file;
 void Save ();
 /**FUNGSI DAN PROSEDUR PEMBANTU**/
 /*PENCACAHAN FUNGSI UNTUK MODULARITAS PROGRAM*/
+void SavePlayerName();
 void SaveNomorSimulasi();
 void SaveTime();
 void SaveDataPlayer();
@@ -27,6 +29,7 @@ void Save(){
     //Start file output interaction
     //Save nomor simulasi
     output_file = fopen("save.txt","w");
+    SavePlayerName();
     SaveNomorSimulasi();
     SaveTime();
     SaveDataPlayer();
@@ -34,13 +37,18 @@ void Save(){
     fprintf(output_file,"\n."); //Mark
     fclose(output_file);
 }
+
+SavePlayerName(){
+    fprintf(output_file,"%s\n",player().Name);
+}
 void SaveNomorSimulasi(){
-    //Nomor simulasi belum ADAAAAAA !
     fprintf(output_file,"%d\n",R.Simulasi);
 }
 void SaveTime(){
-
-    fprintf(output_file,"%d\n",186400);
+    time_t seconds;
+    seconds = time(NULL);
+    seconds = seconds%86400;
+    fprintf(output_file,"%ld\n",seconds);
 
 }
 
