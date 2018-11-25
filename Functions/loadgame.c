@@ -36,6 +36,7 @@ void Load(int N){
     //Load file -> 2 if load from default
     CreateEmptyAll();
     STARTKATA(N);
+    LoadPlayerName();
     LoadNomorSimulasi();
     LoadTime();
     LoadDataPlayer();
@@ -43,7 +44,9 @@ void Load(int N){
 }
 
 void LoadPlayerName(){
-    ADVKATA();
+    printf("Nama Player adalah : ");
+    PrintKata(CKata);
+    printf("\n");
     if((CKata.Length!=1)||(CKata.TabKata[1]!='%')){
         //Load name, because length == 1 and % is default_name
         player().Name = CKata;
@@ -53,6 +56,7 @@ void LoadPlayerName(){
 void LoadNomorSimulasi(){
     ADVKATA();
     R.Simulasi = KataToInt(CKata);
+    printf("No. Simulasi adalah : %d\n",R.Simulasi);
 }
 
 void LoadTime(){

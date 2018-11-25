@@ -16,6 +16,8 @@
 
 
 
+
+
 //Tipe bentukan player
 typedef struct {
   long Money; //uang player
@@ -83,7 +85,9 @@ void Put (); //Done
 
 void Take (); //Done
 
-void Buang (Kata Command); //Done
+void BuangT (); //Done
+
+void BuangH (); //Done
 
 void Place (); //Done
 
@@ -106,5 +110,7 @@ void DelCust(int i);
 void PrintHelp();
 
 void PrintCredit();
+
+void DelOrderan(int i);
 
 #endif

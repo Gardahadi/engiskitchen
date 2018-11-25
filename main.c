@@ -10,9 +10,7 @@
 
 //Included Libraries
 #include <stdio.h>
-// #include "restoran.h"
 #include <ncurses.h>
-
 #include "restoran.h"
 
 
@@ -29,6 +27,7 @@ char *Message,*Message2, *Message3;
 char cmd[10];
 
 
+//Fungsi untuk merubah Karakter ke Integer
 char IntToChar(int N){
   if(N==1){
     return '1';
@@ -60,7 +59,7 @@ char IntToChar(int N){
 }
 
 
-
+//Fungsi untuk print Stack Bahan menggunakan Ncurses
 void PrintBS (BSTACK S)
 /*Mencetak ke layar semua isi S*/
 /*I.S. S terdefinisi*/
@@ -79,6 +78,8 @@ void PrintBS (BSTACK S)
   }
 }
 
+
+//Fungsi untuk print Stack Makanan menggunakan Ncurses
 void PrintFS (FSTACK S)
 /*Mencetak ke layar semua isi S*/
 /*I.S. S terdefinisi*/
@@ -92,11 +93,13 @@ void PrintFS (FSTACK S)
   while(!IsEmptyFS(S)){
     PopFS(&S, &bhn);
     mvwprintw(Box3,l,c,KataToString(bhn.Nama));
+    mvwprintw(Box3,l,20,"%ld",bhn.Harga);
     wrefresh(Box3);
     l++;
   }
 }
 
+//Fungsi untuk print antrian Customer menggunakan Ncurses
 void PrintQC (CQUEUE Q)
 /*Mencetak ke layar semua isi S*/
 /*I.S. S terdefinisi*/
@@ -119,7 +122,6 @@ void PrintQC (CQUEUE Q)
       else{
         mvwprintw(Box1,l,6,"Normal");
       }
-      mvwprintw(Box1,l,13,KataToString(QCustomer.T[i].Makanan.Nama));
       wrefresh(Box1);
       l++;
       i++;
@@ -131,6 +133,7 @@ void PrintQC (CQUEUE Q)
   }
 }
 
+//Fungsi untuk print array of order menggunakan ncurses
 void PrintOrder(TabOrder T){
   int l,c1,c2,i;
   //inisialisasi
@@ -152,10 +155,10 @@ void PrintOrder(TabOrder T){
 
 }
 
-
+//Algoritma untuk menampilkan UI Program menggunakan Ncurses
 void CreateUI(){
 
-  initscr();
+  initscr(); //Inisiasi Ncurses
   cbreak();
   keypad(stdscr,TRUE);
 
@@ -269,6 +272,7 @@ char GetChar(int y, int x){
 
   else if (Room(RN,y,x)=='T'){
     wattron(MapBox,A_BOLD);
+    wattron(MapBox,A_STANDOUT);
     return 'T';
   }
 
@@ -360,7 +364,6 @@ int main () {
   boolean adaCustomer,isRunning;
   char  InputName[10];
   //Inisialisasi Message
-  Message = "Selamat datang kembali di Engi's Kitchen!\n";
   isRunning = true;
   adaCustomer = false;
 
@@ -418,12 +421,14 @@ int main () {
   }
 
   //testing zone
-  Recipe();
+  Message = "Selamat datang kembali di Engi's Kitchen!\n";
+  Message2="<Posisi x>";
+  Message3="<Posisi y>";
   //
   // start_color();
   // init_pair(1,COLOR_RED,COLOR_YELLOW);
   /*Looping Utama Program*/
-  printf("JALAN\n");
+
   scanf("%s",InputName);
   while (isRunning)
   {
@@ -447,10 +452,6 @@ int main () {
       Move(2);
       printBoard(ArrRoom[RN].RoomBoard);
     }
-    else if(IsKataSama(StringToKata(cmd),StringToKata("L\0"))){
-      Move(2);
-      printBoard(ArrRoom[RN].RoomBoard);
-    }
     else if(IsKataSama(StringToKata(cmd),StringToKata("GR\0"))){
       Move(4);
       printBoard(ArrRoom[RN].RoomBoard);
@@ -464,8 +465,6 @@ int main () {
       Place();
       Message="Anda abis PLACE, wow!";
       printBoard(ArrRoom[RN].RoomBoard);
-      Message2="ini adalah order di meja 2 :";
-      Message3=KataToString(TableArray(RN,3).C.Makanan.Nama);
 
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("SAVE\0"))){
@@ -480,12 +479,25 @@ int main () {
     }
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("CT\0"))){
-      Buang(StringToKata(cmd));
-      printBoard(ArrRoom[RN].RoomBoard);
+      BuangT();
+      Message="Anda habis BUANG dari TRAY, wow";
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("CH\0"))){
-      Buang(StringToKata(cmd));
-      printBoard(ArrRoom[RN].RoomBoard);
+      BuangH();
+      Message="Anda habis BUANG dari HAND, wow";
+    }
+    else if(IsKataSama(StringToKata(cmd),StringToKata("GIVE\0"))){
+      Give();
+      Message="Anda Habis GIVE makanan";
+    }
+
+
+
+    else if(IsKataSama(StringToKata(cmd),StringToKata("ORDER\0"))){
+      GetOrder();
+      printf("%d\n",OrderResto[1].NomorMeja);
+      Message=KataToString(OrderResto[1].CustomerOrder.Nama);
+
     }
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("ORDER\0"))){
@@ -495,6 +507,7 @@ int main () {
 
     }
 
+
     else if(IsKataSama(StringToKata(cmd),StringToKata("RECIPE\0"))){
       endwin();
       Recipe();
@@ -502,12 +515,10 @@ int main () {
       scanf("%s",InputName);
     }
 
-    else if(IsKataSama(StringToKata(cmd),StringToKata("HELP\0"))){
-      endwin();
-      Recipe();
-      printf("%s\n","Input string random untuk lanjut");
-      scanf("%s",InputName);
-    }
+    // else if(IsKataSama(StringToKata(cmd),StringToKata("HELP\0"))){
+    //   endwin();
+    //   PrintHelp();
+    // }
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("EXIT\0"))){
       isRunning = false;
@@ -522,6 +533,7 @@ int main () {
 
     if(player().Life == 0){
       isRunning = false;
+      endwin();
       printf("Anda telah kehabisan nyawa\n");
       printf("Input apapun untuk exit : ");
       scanf("%s",InputName);

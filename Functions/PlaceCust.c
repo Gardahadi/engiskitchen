@@ -137,19 +137,18 @@ void Place(){
 void DelCust(int j)
 {
     if ((TableArray(RN, j).Kapasitas) == 4){
-        Room(RN, (PosTableArray(RN,j).y)+1, PosTableArray(RN,j).x) = 'X';
+        Room(RN, (PosTableArray(RN,j).y)+1, PosTableArray(RN,j).x) = 'K';
 
+        Room(RN, (PosTableArray(RN,j).y)-1, PosTableArray(RN,j).x) = 'K';
 
-        Room(RN, (PosTableArray(RN,j).y)-1, PosTableArray(RN,j).x) = 'X';
+        Room(RN, (PosTableArray(RN,j).y), (PosTableArray(RN,j).x) +1) = 'K';
 
-        Room(RN, (PosTableArray(RN,j).y), (PosTableArray(RN,j).x) +1) = 'X';
-
-        Room(RN, (PosTableArray(RN,j).y), (PosTableArray(RN,j).x) -1) = 'X';
+        Room(RN, (PosTableArray(RN,j).y), (PosTableArray(RN,j).x) -1) = 'K';
     }
     else{
-              Room(RN, (PosTableArray(RN,j).y), PosTableArray(RN,j).x+1) = 'X';
+              Room(RN, (PosTableArray(RN,j).y), PosTableArray(RN,j).x+1) = 'K';
 
-              Room(RN, (PosTableArray(RN,j).y), PosTableArray(RN,j).x-1) = 'X';
+              Room(RN, (PosTableArray(RN,j).y), PosTableArray(RN,j).x-1) = 'K';
 
     }
 }
