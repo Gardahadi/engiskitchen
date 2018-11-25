@@ -9,7 +9,7 @@
 #include "basetype.h"
 
 #define Nil 0
-#define MaxElBS 10
+#define MaxElBS 100
 /* Nil adalah BSTACK dengan elemen kosong . */
 /* Karena indeks dalam bhs C dimulai 0 maka tabel dg indeks 0 tidak dipakai */
 

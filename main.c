@@ -394,7 +394,7 @@ int main () {
   printf("Selamat datang di Engi's Kitchen, Silahkan Input pilihan : \n");
   printf("[1] New Game\n");
   printf("[2] Load Game\n");
-  printf("[3] Exit]\n");
+  printf("[3] Exit\n");
   printf("Pilihan : " );
 
   scanf("%d",&Choice);
@@ -448,27 +448,39 @@ int main () {
     if(IsKataSama(StringToKata(cmd),StringToKata("GU\0"))){
       Move(1);
       printBoard(ArrRoom[RN].RoomBoard);
+      R.Tick++;
+
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("GD\0"))){
       Move(3);
       printBoard(ArrRoom[RN].RoomBoard);
+      R.Tick++;
+
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("GL\0"))){
       Move(2);
       printBoard(ArrRoom[RN].RoomBoard);
+      R.Tick++;
+
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("GR\0"))){
       Move(4);
       printBoard(ArrRoom[RN].RoomBoard);
+      R.Tick++;
+
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("TAKE\0"))){
       Take();
       printBoard(ArrRoom[RN].RoomBoard);
+      R.Tick++;
+
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("PLACE\0"))){
       Place();
 
       printBoard(ArrRoom[RN].RoomBoard);
+      R.Tick++;
+
 
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("SAVE\0"))){
@@ -479,18 +491,26 @@ int main () {
     else if(IsKataSama(StringToKata(cmd),StringToKata("PUT\0"))){
       Put();
       printBoard(ArrRoom[RN].RoomBoard);
+      R.Tick++;
+
     }
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("CT\0"))){
       BuangT();
+      R.Tick++;
+
 
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("CH\0"))){
       BuangH();
+      R.Tick++;
+
 
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("GIVE\0"))){
       Give();
+      R.Tick++;
+
       // Message="Anda Habis GIVE makanan";
     }
 
@@ -498,6 +518,7 @@ int main () {
 
     else if(IsKataSama(StringToKata(cmd),StringToKata("ORDER\0"))){
       GetOrder();
+      R.Tick++;
 
     }
 
@@ -554,7 +575,6 @@ int main () {
     if(isRunning){
       UpdateQueue(&QCustomer);
       UpdateCust(&adaCustomer);
-      R.Tick++;
       CreateUI();
       printBoard(ArrRoom[RN].RoomBoard);
     }

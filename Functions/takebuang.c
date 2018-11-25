@@ -13,7 +13,7 @@ void Take (){
 
 
 	if (RN != 4){
-		printf(" Anda sedang tidak berada di dapur\n");
+		Message=" Anda sedang tidak berada di dapur";
 	}
 	else{
 		//player ada di kitchen
@@ -150,8 +150,7 @@ void Give (){
 				}
 
 			}
-			printf("%d |",i);
-			printf("\n");
+
 			if (IsKataSama(food.Nama, InfoTableArray(RN, i))){
 				// pesanan sesuai
 				DelCust(i);
