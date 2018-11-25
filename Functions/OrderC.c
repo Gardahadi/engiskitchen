@@ -69,14 +69,3 @@ void GetOrder()
                         }
             }
 }
-
-// void PrintOrder(TabOrder To)
-// {
-//     int i;
-//
-//     i = 0;
-//     while (i < NeffOrder(To))
-//     {
-//         printf(To.TOrd[i].CustomerOrder.C.Makanan); //Gimana cara nulis nama makanan ke layar??? %c atau %s
-//     }
-// }
