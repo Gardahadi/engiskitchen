@@ -103,4 +103,8 @@ char IntToChar(int X);
 
 void DelCust(int i);
 
+void PrintHelp();
+
+void PrintCredit();
+
 #endif

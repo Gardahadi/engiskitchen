@@ -1,9 +1,9 @@
 /*  ENGI'S KITCHEN EXTENDED
     Program untuk tugas besar Algoritma dan Struktur Data yang berupa simulaasi restoran.
     Kelompok "Back to Nature"
-    1. Nur Alam Hasabie - 13517006
-    2.
-    4.
+    1. Lukas Kurnia Jonathan - 13517006
+    2. Nur Alam Hasabie - 13517096
+    3. Abdurrahman Adni - 13517117
     5. Gardahadi - 13517144
     6. Rika Dewi - 13517147
 */
