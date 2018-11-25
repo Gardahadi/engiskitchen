@@ -67,7 +67,7 @@ void UpdateQueue(){
             }
         }//i = Tail(Q)
         //Pengolahan elemen terakhir
-        
+
         if(Kesabaran((QCustomer).T[i])==1){
             if(Head(QCustomer)==Tail(QCustomer)){
                 //kasus satu elemen -> create empty queue
@@ -93,6 +93,7 @@ void UpdateQueue(){
 void UpdateCust(boolean *NewCustomer){
     //Update dilakukan per meja
     //Traversal dari room 1->3, meja 0->3
+
     int n_room, n_table;
     //Algoritma
     n_room=1;
@@ -133,6 +134,5 @@ void UpdateCust(boolean *NewCustomer){
             *NewCustomer = true;
         }
     }
-
 
 }

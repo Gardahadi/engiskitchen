@@ -128,7 +128,7 @@ CUSTOMER GenerateCustomer(int seed){
         }
 
         //Insert customer food
-        KATA ArrayMakanan[8];
+        Kata ArrayMakanan[8];
         ArrayMakanan[0] = StringToKata("Banana_Split\0");
         ArrayMakanan[1] = StringToKata("Sundae\0");
         ArrayMakanan[2] = StringToKata("Nasi_telur_dadar\0");
@@ -138,7 +138,7 @@ CUSTOMER GenerateCustomer(int seed){
         ArrayMakanan[6] = StringToKata("Spaghetti_Carbonara\0");
         ArrayMakanan[7] = StringToKata("Spaghetti_Carbonara\0");
         X= rand();
-        X = X/8;
+        X = X%8;
         Makanan(C).Nama = ArrayMakanan[X];
         Makanan(C).Harga = 0;
     } else {

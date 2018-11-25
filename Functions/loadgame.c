@@ -5,7 +5,6 @@
 #include "../restoran.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 
 /**FUNGSI DAN PROSEDUR IMPLEMENTASI****/
 //Procedure untuk menyimpan data ke file eksternal
@@ -47,7 +46,7 @@ void LoadPlayerName(){
     ADVKATA();
     if((CKata.Length!=1)||(CKata.TabKata[1]!='%')){
         //Load name, because length == 1 and % is default_name
-        strcpy(player().Nama,KataToString(CKata));
+        player().Name = CKata;
     }
 }
 

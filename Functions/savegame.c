@@ -1,7 +1,7 @@
 #include "../restoran.h"
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
+
 
 //Global save variables
 FILE* output_file;
@@ -38,17 +38,17 @@ void Save(){
     fclose(output_file);
 }
 
-SavePlayerName(){
-    fprintf(output_file,"%s\n",player().Name);
+void SavePlayerName(){
+    fprintf(output_file,"%s\n",KataToString(player().Name));
 }
 void SaveNomorSimulasi(){
     fprintf(output_file,"%d\n",R.Simulasi);
 }
 void SaveTime(){
-    time_t seconds;
-    seconds = time(NULL);
-    seconds = seconds%86400;
-    fprintf(output_file,"%ld\n",seconds);
+    // time_t seconds;
+    // seconds = time(NULL);
+    // seconds = seconds%86400;
+    // fprintf(output_file,"%ld\n",seconds);
 
 }
 

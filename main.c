@@ -119,7 +119,7 @@ void PrintQC (CQUEUE Q)
       else{
         mvwprintw(Box1,l,6,"Normal");
       }
-      mvwprintw(Box1,l,12,KataToString(QCustomer.T[i].Makanan.Nama));
+      mvwprintw(Box1,l,13,KataToString(QCustomer.T[i].Makanan.Nama));
       wrefresh(Box1);
       l++;
       i++;
@@ -171,7 +171,7 @@ void CreateUI(){
   wrefresh(BoxTop2);
   wrefresh(BoxTop3);
   wrefresh(BoxTop4);
-  mvwprintw(BoxTop1,1,1,"Nama : %s",player().Name);
+  mvwprintw(BoxTop1,1,1,"Nama : ");
   wrefresh(BoxTop1);
   mvwprintw(BoxTop2,1,1,"Money : %d",player().Money);
   wrefresh(BoxTop2);
@@ -396,7 +396,8 @@ int main () {
   if (Choice == 1){
     /*Inisialisasi Restoran*/
     printf("Silahkan Input Nama (WARNING : MAX 10 Karakter ): ");
-    scanf("%s",player().Name);
+    scanf("%s",InputName);
+    player().Name = StringToKata(InputName);
     Load(2); //Melakukan loading data-data dari default save
     loadMap(); //Loading Map dari mapfile.txt
   }
@@ -413,9 +414,9 @@ int main () {
 
   //testing zone
   Recipe();
-  scanf("%s",InputName);
   //Test Inpur
   //
+  printf("Jalan\n");
   while(!adaCustomer){
     UpdateCust(&adaCustomer);
   }
@@ -423,6 +424,7 @@ int main () {
   // start_color();
   // init_pair(1,COLOR_RED,COLOR_YELLOW);
   /*Looping Utama Program*/
+  printf("JALAN\n");
   while (isRunning)
   {
 
@@ -463,7 +465,7 @@ int main () {
       Message="Anda abis PLACE, wow!";
       printBoard(ArrRoom[RN].RoomBoard);
       Message2="ini adalah order di meja 2 :";
-      Message3=KataToString(TableArray(RN,2).C.Makanan.Nama);
+      Message3=KataToString(TableArray(RN,1).C.Makanan.Nama);
 
     }
     else if(IsKataSama(StringToKata(cmd),StringToKata("SAVE\0"))){

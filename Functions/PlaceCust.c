@@ -70,7 +70,7 @@ void Place(){
                                     // printf(" %d |",PosTableArray(RN,i).x);
                                     // printf(" %d |",PosTableArray(RN,i).y);
                                     // printf(" %c |",Room(RN, PosTableArray(RN,i).x+1, PosTableArray(RN,i).y));
-                                    printf("\n");
+
                                     TableArray(RN,i).IsFull = true;
 
 
@@ -88,9 +88,9 @@ void Place(){
                                 DeleteCustomerFromQueue(&QCustomer,&CMasuk); //apakah C sudah mewakili Costumer walau tidak diinisialisasikan di proram saya?
                                 if (Jumlah(CMasuk) == 2)
                                 {
-                                    Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x+1) = 'C';
+                                    Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x+1) = 'V';
 
-                                    Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x-1) = 'C';
+                                    Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x-1) = 'V';
 
                                     (TableArray(RN,i).IsFull = true);
 
@@ -136,18 +136,18 @@ void Place(){
 void DelCust(int j)
 {
     if ((TableArray(RN, j).Kapasitas) == 4){
-        Room(RN, (PosTableArray(RN,i).y)+1, PosTableArray(RN,i).x) = 'X';
+        Room(RN, (PosTableArray(RN,j).y)+1, PosTableArray(RN,j).x) = 'X';
 
-        Room(RN, (PosTableArray(RN,i).y)-1, PosTableArray(RN,i).x) = 'X';
+        Room(RN, (PosTableArray(RN,j).y)-1, PosTableArray(RN,j).x) = 'X';
 
-        Room(RN, (PosTableArray(RN,i).y), (PosTableArray(RN,i).x) +1) = 'X';
+        Room(RN, (PosTableArray(RN,j).y), (PosTableArray(RN,j).x) +1) = 'X';
 
-        Room(RN, (PosTableArray(RN,i).y), (PosTableArray(RN,i).x) -1) = 'X';
+        Room(RN, (PosTableArray(RN,j).y), (PosTableArray(RN,j).x) -1) = 'X';
     }
     else{
-              Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x+1) = 'X';
+              Room(RN, (PosTableArray(RN,j).y), PosTableArray(RN,j).x+1) = 'X';
 
-              Room(RN, (PosTableArray(RN,i).y), PosTableArray(RN,i).x-1) = 'X';
+              Room(RN, (PosTableArray(RN,j).y), PosTableArray(RN,j).x-1) = 'X';
 
     }
 }

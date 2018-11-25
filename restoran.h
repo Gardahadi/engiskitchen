@@ -22,7 +22,7 @@ typedef struct {
   POSITION Pos; //posisi player
   BSTACK Hand; //stack of bahan
   FSTACK Tray; //stack of food
-  char Name[10];
+  Kata Name;
 } PLAYER;
 
 
@@ -99,5 +99,7 @@ void UpdateCust(boolean *NewCustomer); //Alam
 void BuildResto();
 
 char IntToChar(int X);
+
+void DelCust(int i);
 
 #endif
