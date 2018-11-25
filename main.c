@@ -267,6 +267,9 @@ char GetChar(int y, int x){
 
   else if (Room(RN,y,x)=='K'){
     wattron(MapBox,A_BOLD);
+    if(x==absis() && y==ordinat()){
+      Message="Anda mengumpat di bawah kursi untuk mencari kedamaian";
+    }
     return 'K';
   }
 
@@ -294,6 +297,9 @@ char GetChar(int y, int x){
           found=true;
           return IntToChar(ArrRoom[RN].TableArray[i].Nomor);
         }
+      if (ArrRoom[RN].TableArray[i].PosMeja.x==absis() && ArrRoom[RN].TableArray[i].PosMeja.y==ordinat()){
+        Message ="Anda berada di kolong meja, entah mengapa";
+      }
     }
     if(!found){
       return 'M';
