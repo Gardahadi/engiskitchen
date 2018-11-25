@@ -52,27 +52,26 @@ void AddDaunResep(BinTree *P, resinfotype X, resinfotype Y);
 BinTree BuildTreeResepRec(int n,resinfotype *TabResep, int *idx);
 /* Menghasilkan sebuah balanced tree dengan n node, nilai setiap node dibaca */
 /*Jika sebuah akar hanya mempunya satu buah daun, maka daun tersebut ada di sebelah kiri (IsUnerLeft)*/
-/* Untuk tubes ini n= 23 untuk membuat resep dengan Balance (kecuali Spaghetti Bolognese).*/
+/* Untuk tubes ini n= 23 untuk membuat resep dengan Balance (kecuali Spaghetti Bolognese).
+ */
 
-BinTree BuildTreeResep(int n,resinfotype *TabResep, int *idx);
-/* Di Akhir fungsi menambahkan resep ke 24 (Spaghetti Bolognese) menggunakan AddDaunResep*/
+ BinTree BuildTreeResep(int n,resinfotype *TabResep, int *idx);
+ /* Membuat Binary tree seimbang dengan  N buah simpul*/
 
-/* *** Predikat-Predikat Penting *** */
-boolean IsTreeEmpty(BinTree P);
-/* Mengirimkan true jika P adalah pohon biner kosong */
+ /* *** Predikat-Predikat Penting *** */
+ boolean IsTreeEmpty(BinTree P);
+ /* Mengirimkan true jika P adalah pohon biner kosong */
 
-boolean IsTreeOneElmt(BinTree P);
-/* Mengirimkan true jika P adalah pohon biner tidak kosong dan hanya memiliki 1 elemen */
+ boolean IsTreeOneElmt(BinTree P);
+ /* Mengirimkan true jika P adalah pohon biner tidak kosong dan hanya memiliki 1 elemen */
 
-/* ***** Fungsi Pendukung ***** */
-boolean SearchTree(BinTree P, resinfotype X);
-/* Mengirimkan true jika ada node dari P yang bernilai X */
+ /* ***** Fungsi Pendukung ***** */
+ boolean SearchTree(BinTree P, resinfotype X);
+ /* Mengirimkan true jika ada node dari P yang bernilai X */
+
 
 /* ***** Menampilkan Tree resep ke Layar dalam bentuk 2 dimensi. ***** */
 void PrintTreeResep(BinTree P, int h);
-/* Pada dasarnya hanya memanggil prosedur PrintTreeResepRec */
-
-void PrintTreeResepRec(BinTree P, int kedalaman,int h);
 /* I.S. P terdefinisi, h adalah jarak indentasi (spasi) */
 /* F.S. Semua simpul P sudah ditulis dengan bentuk Indentasi */
 /* Penulisan akar selalu pada baris baru (diakhiri newline) */
@@ -84,4 +83,10 @@ A
   C
     E
 */
+
+/*Untuk mengetahui kedalaman dibutuhkan parameter tambahan*/
+void PrintTreeResepRec(BinTree P, int kedalaman,int h);
+/*Prosedur tambahan untuk melakukan rekursi terhadap PrintTree
+I.S : P terdefinisi, kedalaman terdefinisi, h adalah jarak dari bagian kiri Layar
+F.S : melakukan rekursi hingga tree kosong*/
 #endif
