@@ -8,5 +8,8 @@ int main(){
 	scanf("%s",c);
 	Kata K= StringToKata("Edelweiss\0");
 	PrintKata(K);
+	Kata K2 = StringToKata("13567\0");
+	int i = KataToInt(K2);
+	printf("%d\n",i);
 	printf("\n");
 }
