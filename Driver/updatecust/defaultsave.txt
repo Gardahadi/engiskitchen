@@ -1,0 +1,71 @@
+%
+1
+0
+0
+10
+5 9 1
+0
+0
+0
+100
+0
+0
+3
+1 4
+1 4 5 4 NoMakanan 0 0 5 3
+2 2 -1 0 NoMakanan 0 0 3 7
+3 2 -1 0 NoMakanan 0 0 3 11
+4 4 -1 0 NoMakanan 0 0 10 9
+2 4
+5 2 5 3 NoMakanan 0 0 3 3
+6 4 -1 0 NoMakanan 0 0 8 4
+7 2 9 2 NoMakanan 0 0 4 7
+8 4 -1 0 NoMakanan 0 0 8 9
+3 4
+9 4 -1 0 NoMakanan 0 0 7 3
+10 2 -1 0 NoMakanan 0 0 4 6
+11 2 -1 0 NoMakanan 0 0 9 7
+12 4 -1 0 NoMakanan 0 0 6 10
+24
+Piring
+Sendok
+Eskrim
+Pisang
+Banana_Split
+Stroberi
+Sundae
+Nasi
+Telur
+Nasi_telur_dadar
+Ayam_Goreng
+Nasi_Ayam_Goreng
+Garpu
+Roti
+Patty
+Burger
+Sosis
+Hot_Dog
+Spaghetti
+Bolognese
+Keju
+Carbonara
+Spaghetti_Carbonara
+Spaghetti_Bolognese
+16
+Piring 2 3
+Sendok 2 4
+Eskrim 2 5
+Pisang 2 6
+Stroberi 2 7
+Spaghetti 2 8
+Bolognese 2 9
+Keju 2 10
+Carbonara 2 11
+Nasi 6 4
+Telur 6 5
+Ayam_Goreng 6 6
+Garpu 6 7
+Roti 6 8
+Patty 6 9
+Sosis 6 10
+.
