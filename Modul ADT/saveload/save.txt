@@ -1,0 +1,58 @@
+2
+3
+500
+10
+20 30
+2 
+6
+Kacang Susu Nasi Daging Ikan Sambal 
+23
+5
+Spaghetti 6000
+Lasagna 5000
+Ratatouille 10000
+Souffle 8000
+Caviar 6000
+100
+4
+20 4 Caviar 1
+20 2 Lasagna 1
+30 2 Ratatouille 0
+30 4 Souffle 0 
+50
+3
+1 Caviar 2
+2 Souffle 10
+3 Lasagna 8 
+4
+4 3 2 Caviar 1 1 2 3 1
+4 2 2 Souffle 0 1 3 3 2
+2 20 2 Lasagna 0 1 2 2 2
+2 -1 0 NoMakanan 0 0 3 3 3 
+24
+Piring
+Sendok
+Eskrim
+Pisang
+Banana_Split
+Stroberi
+Sundae
+Nasi
+Telur
+Nasi_telur dadar
+Ayam_Goreng
+Nasi_Ayam Goreng
+Garpu
+Roti
+Patty
+Burger
+Sosis
+Hot_Dog
+Spaghetti
+Bolognese
+Keju
+Carbonara
+Spaghetti_Carbonara
+Spaghetti_Bolognese .
+
+
