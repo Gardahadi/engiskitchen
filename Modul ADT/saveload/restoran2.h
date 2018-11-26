@@ -3,17 +3,17 @@
 #ifndef RESTAURANT_H
 #define RESTAURANT_H
 
-//File-file header yang digunakan 
-#include "ADT Header/boolean.h"
-#include "ADT Header/basetype.h"
-#include "ADT Header/Order.h"
-#include "ADT Header/foodstack.h"
-#include "ADT Header/bahanstack.h"
-#include "ADT Header/matriksroom.h"
-#include "ADT Header/customer.h"
-#include "ADT Header/treeresep.h"
-#include "ADT Header/roomgraph.h"
-#include "ADT Header/jam.h"
+//File-file header yang digunakan
+// #include "ADT Header/boolean.h"
+// #include "ADT Header/basetype.h"
+// #include "ADT Header/Order.h"
+// #include "ADT Header/foodstack.h"
+// #include "ADT Header/bahanstack.h"
+// #include "ADT Header/matriksroom.h"
+// #include "ADT Header/customer.h"
+// #include "ADT Header/treeresep.h"
+// #include "ADT Header/roomgraph.h"
+// #include "ADT Header/jam.h"
 
 
 
